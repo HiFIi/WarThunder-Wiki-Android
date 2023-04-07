@@ -1,0 +1,209 @@
+private static final String A
+private static final String 
+private static final String A-10A
+private static final String A-10A Late
+private static final String A-1H
+private static final String A-20G-25
+private static final String A-26B-10
+private static final String A-26B-50
+private static final String A-26C-45
+private static final String A-26C-45DT
+private static final String A-36
+private static final String A-4B
+private static final String A-4E Early
+private static final String A-6E TRAM
+private static final String A-7D
+private static final String A-7E
+private static final String A2D-1
+private static final String A6M2 (USA)
+private static final String AD-2
+private static final String AD-4
+private static final String AM-1
+private static final String AU-1
+private static final String AV-8A
+private static final String AV-8C
+private static final String 
+private static final String B
+private static final String 
+private static final String B-10B
+private static final String B-17E
+private static final String B-17E/L
+private static final String B-17G-60-VE
+private static final String B-18A
+private static final String B-24D-25-CO
+private static final String B-25J-1
+private static final String B-25J-20
+private static final String B-26B
+private static final String B-29A-BN
+private static final String B-34
+private static final String B-57A
+private static final String B-57B
+private static final String Bf 109 F-4 (USA)
+private static final String Bong's P-38J-15
+private static final String Bostwick's P-47M-1-RE
+private static final String BTD-1
+private static final String 
+private static final String F
+private static final String 
+private static final String F-100D
+private static final String F-104A
+private static final String F-104C
+private static final String F-105D
+private static final String F-14A Early
+private static final String F-16A
+private static final String F-16A ADF
+private static final String F-4C Phantom II
+private static final String F-4E Phantom II
+private static final String F-4J Phantom II
+private static final String F-4S Phantom II
+private static final String F-5A
+private static final String F-5C
+private static final String F-5E
+private static final String F-80A-5
+private static final String F-80C-10
+private static final String F-82E
+private static final String F-84B-26
+private static final String F-84F
+private static final String F-84G-21-RE
+private static final String F-86A-5
+private static final String F-86F-2
+private static final String F-86F-25
+private static final String F-86F-35
+private static final String F-89B
+private static final String F-89D
+private static final String F-8E
+private static final String F11F-1
+private static final String F2A-1
+private static final String F2A-3
+private static final String F2G-1
+private static final String F2H-2
+private static final String F3D-1
+private static final String F3F-2
+private static final String F3H-2
+private static final String F4D-1
+private static final String F4F-3
+private static final String F4F-4
+private static final String F4U-1A
+private static final String F4U-1A (USMC)
+private static final String F4U-1C
+private static final String F4U-1D
+private static final String F4U-4
+private static final String F4U-4B
+private static final String F4U-4B VMF-214
+private static final String F6F-5
+private static final String F6F-5N
+private static final String F7F-1
+private static final String F7F-3
+private static final String F8F-1
+private static final String F8F-1B
+private static final String F8U-2
+private static final String F9F-2
+private static final String F9F-5
+private static final String F9F-8
+private static final String FJ-4B
+private static final String FJ-4B VMF-232
+private static final String Fw 190 A-8 (USA)
+private static final String 
+private static final String G
+private static final String 
+private static final String Galer's F3F-2
+private static final String 
+private static final String K
+private static final String 
+private static final String Ki-43-II (USA)
+private static final String Ki-61-Ib (USA)
+private static final String Kingcobra (USA)
+private static final String 
+private static final String L
+private static final String 
+private static final String Lanovski's P-47M-1-RE
+private static final String 
+private static final String M
+private static final String 
+private static final String MQ-1
+private static final String 
+private static final String O
+private static final String 
+private static final String OS2U-1
+private static final String OS2U-3
+private static final String 
+private static final String P
+private static final String 
+private static final String P-26A-33
+private static final String P-26A-34
+private static final String P-26A-34 M2
+private static final String P-26B-35
+private static final String P-36A
+private static final String P-36C
+private static final String P-36G
+private static final String P-38E
+private static final String P-38G-1
+private static final String P-38J-15
+private static final String P-38K
+private static final String P-38L-5-LO
+private static final String P-39N-0
+private static final String P-39Q-5
+private static final String P-400
+private static final String P-40C
+private static final String P-40E-1
+private static final String P-40E-1 TD
+private static final String P-40F-10
+private static final String P-43A-1
+private static final String P-47D-22-RE
+private static final String P-47D-25
+private static final String P-47D-28
+private static final String P-47N-15
+private static final String P-51
+private static final String P-51A
+private static final String P-51C-10
+private static final String P-51D-10
+private static final String P-51D-20-NA
+private static final String P-51D-30
+private static final String P-51D-5
+private static final String P-51H-5-NA
+private static final String P-59A
+private static final String P-61A-11
+private static final String P-61C-1
+private static final String P-63A-10
+private static final String P-63A-5
+private static final String P-63C-5
+private static final String PB4Y-2
+private static final String PBJ-1H
+private static final String PBJ-1J
+private static final String PBM-1 "Mariner"
+private static final String PBM-3 "Mariner"
+private static final String PBY-5 Catalina
+private static final String PBY-5A Catalina
+private static final String PV-2D
+private static final String 
+private static final String R
+private static final String 
+private static final String Rasmussen's P-36A
+private static final String 
+private static final String S
+private static final String 
+private static final String SB2C-1C
+private static final String SB2C-4
+private static final String SB2U-2
+private static final String SB2U-3
+private static final String SBD-3
+private static final String SOC-1
+private static final String Spitfire LF Mk IXc (USA)
+private static final String 
+private static final String T
+private static final String 
+private static final String TBD-1
+private static final String TBF-1C
+private static final String Thach's F2A-1
+private static final String 
+private static final String X
+private static final String 
+private static final String XA-38
+private static final String XF5F
+private static final String XP-38G
+private static final String XP-50
+private static final String XP-55
+private static final String 
+private static final String Y
+private static final String 
+private static final String YP-38

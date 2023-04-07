@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">WT App</string>
+    <string name="mland_original">MLand (Original)</string>
+    <string name="mland_modified">MLand (Modified)</string>
+    <string name="home">Home</string>
+    <string name="about">About</string>
+
+    <string name="anim_even_longer" translatable="false">5000</string>
+
+    <string name="more_info">More info</string>
+
+    <!-- Name of the easter egg. DO NOT TRANSLATE -->
+    <string name="mland">Marshmallow Land</string>
+</resources>

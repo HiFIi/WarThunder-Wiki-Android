@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/wt_website_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/plane_page_text"
+            android:layout_width="fill_parent"
+            android:layout_height="185.0dip"
+            android:layout_gravity="center"
+            android:adjustViewBounds="false"
+            android:clipToOutline="true"
+            android:cropToPadding="false"
+            fresco:actualImageScaleType="centerInside"
+            fresco:placeholderImage="@drawable/bubbles" />
+
+        <View
+            android:id="@+id/darken_view"
+            android:layout_width="fill_parent"
+            android:layout_height="185.0dip"
+            android:background="#85000000" />
+
+        <com.kyler.mland.egg.ui.MLandTextView
+            android:id="@+id/light_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/darken_view"
+            android:layout_gravity="center|center_vertical|top"
+            android:layout_marginTop="24.0dip"
+            android:background="@color/wt_website_background"
+            android:gravity="center|top"
+            android:text="F-4E Phantom II"
+            android:textColor="@color/cloud_white"
+            android:textSize="30.0sp"
+            customfontdemo:fontName="LyftPro-Bold.ttf" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="260dp"
+        android:background="#dddddd">
+
+        <ImageView
+            android:id="@+id/mpi"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/animated_jet" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

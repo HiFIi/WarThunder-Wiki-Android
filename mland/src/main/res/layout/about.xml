@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#112B38">
+
+    <com.google.samples.apps.iosched.ui.widget.ObservableScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <FrameLayout
+            android:id="@+id/scroll_view_child"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:id="@+id/details_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginRight="20dp"
+                android:background="#112B38"
+                android:orientation="vertical"
+                android:paddingBottom="8dp">
+
+                <com.kyler.mland.egg.ui.MLandTextView
+                    android:id="@+id/currentBranch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="0dp"
+                    android:text="AIDE branch"
+                    android:textColor="@color/navdrawer_item_text_color"
+                    android:textSize="10.0sp"
+                    customfontdemo:fontName="Roboto-Regular.ttf" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginTop="2000dp"
+                    android:text="Medium Text"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/session_photo_container"
+                android:layout_width="fill_parent"
+                android:layout_height="900dp">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/session_photo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    fresco:actualImageScaleType="centerCrop"
+                    fresco:placeholderImage="@drawable/bubbles" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/header_session"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:orientation="vertical" />
+
+            <include layout="@layout/include_add_schedule_fab" />
+
+
+        </FrameLayout>
+
+
+    </com.google.samples.apps.iosched.ui.widget.ObservableScrollView>
+
+    <RelativeLayout
+        android:id="@+id/md_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false">
+
+        <include layout="@layout/toolbar_actionbar_transparent" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/mland_base" />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

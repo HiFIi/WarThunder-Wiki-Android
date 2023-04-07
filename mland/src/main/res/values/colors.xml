@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Hex transparency cheatsheet. -->
+    <!--
+    100% — FF
+    95% — F2
+    90% — E6
+    85% — D9
+    80% — CC
+    75% — BF
+    70% — B3
+    65% — A6
+    60% — 99
+    55% — 8C
+    50% — 80
+    45% — 73
+    40% — 66
+    35% — 59
+    30% — 4D
+    25% — 40
+    20% — 33
+    15% — 26
+    10% — 1A
+    5% — 0D
+    0% — 00
+    -->
+    <color name="colorPrimary">#FF1c1f23</color>
+    <color name="octo_bg_default_start_color">#FF205090</color>
+    <color name="octo_bg_default_end_color">#FF001040</color>
+    <color name="colorPrimaryDark">#FF16181c</color>
+    <color name="navdrawer_item_text_color">#FFfafafa</color>
+    <color name="navdrawer_item_icon_color">#FFe5e5e5</color>
+    <color name="black__10_percent">#1A000000</color>
+    <color name="scorefield__lightish_grey">#FFAAAAAA</color>
+    <color name="navdrawer_separator">#40000000</color>
+    <color name="google_blue__80_percent_opaque">#CC4285F4</color>
+
+    <!-- Cacti colors -->
+    <color name="cactus_green_1">#FF0D904F</color>
+    <color name="cactus_green_2">#FF097138</color>
+    <color name="cactus_green_3">#FF055524</color>
+    <color name="cactus_purple_1">#FFAB47BC</color>
+    <color name="cactus_purple_2">#FFBA68C8</color>
+    <color name="cactus_orange">#FFFFA726</color>
+
+    <!-- Cloud color(s) -->
+    <color name="cloud_white">#B3FFFFFF</color>
+
+    <!-- icon colors -->
+    <color name="icon_off_white_2">#FFDDDDDD</color>
+
+    <!-- icon (modified) colors -->
+    <color name="mountain_off_white_1">#FFCCCCCC</color>
+
+    <color name="minus_white">#CCFFFFFF</color>
+    <color name="mm_head_black">#33000000</color>
+    <color name="moon">#FFF2F2FF</color>
+    <color name="scorecard">#E6FFFFFF</color>
+
+    <!-- mountain colors -->
+    <color name="mountain_green_1">#FF4DB6AC</color>
+    <color name="mountain_green_2">#FF00897B</color>
+
+    <!-- sun colors -->
+    <color name="sun_yellow_1">#FFFFFFCC</color>
+    <color name="sun_yellow_2">#CCFFFF40</color>
+
+    <color name="off_white">#FFFAFBFC</color>
+
+    <!-- Not technically a 20% transparent black :P -->
+
+    <color name="transparent">#00000000</color>
+    <color name="status_bar_overlay">#1A000000</color>
+
+    <color name="real_black_20">#33000000</color>
+
+    <color name="dark_ui_bg__dark">#FF111213</color>
+    <color name="black_40">#66000000</color>
+
+    <color name="quantum_googblue500">#ff4285f4</color>
+
+    <!-- War Thunder colors -->
+    <color name="wt_grey">#ffdbe0e2</color>
+    <color name="wt_grey_darker">#ffcfd8dc</color>
+    <color name="wt_website_text_color">#ff263238</color>
+    <color name="wt_website_background">#fff6f6f6</color>
+
+
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="GradleDependency" severity="informational" />
+    <issue id="IconDensities" severity="ignore" />
+    <issue id="IconLauncherShape">
+        <ignore path="src/main/res/drawable-hdpi/mland_ic_one.png" />
+        <ignore path="src/main/res/drawable-xhdpi/mland_ic_one.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/mland_ic_one.png" />
+        <ignore path="src/main/res/drawable-xxxhdpi/mland_ic_one.png" />
+        <ignore path="src/main/res/drawable-xxxhdpi/mland_ic_one.webp" />
+    </issue>
+    <issue id="IconLocation">
+        <ignore path="src/main/res/drawable/ic_email.png" />
+    </issue>
+    <issue id="IconMissingDensityFolder" severity="ignore" />
+    <issue id="OldTargetApi" severity="informational" />
+</lint>

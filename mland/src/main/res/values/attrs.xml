@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="BaseTheme">
+        <attr name="photoItemForeground" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MLandTextView">
+        <attr name="fontName" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ScrimInsetsView">
+        <attr name="appInsetForeground" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="ThemeIOSched">
+        <attr name="isFloatingWindow" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="AspectRatioView">
+        <attr name="aspectRatio" format="float" />
+        <attr name="maxHeight" format="dimension" />
+    </declare-styleable>
+
+</resources>

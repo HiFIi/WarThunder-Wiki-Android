@@ -68,7 +68,7 @@
                             android:text="test"
                             android:textColor="#10101c"
                             android:textSize="16sp"
-                            customfontdemo:fontName="ProductSans-Regular.ttf" />
+                            customfontdemo:fontName="symbols_skyquake.ttf" />
 
                         <com.kyler.mland.egg.ui.MLandTextView
                             android:id="@+id/countryRank"
@@ -80,7 +80,7 @@
                             android:text="test"
                             android:textColor="#10101c"
                             android:textSize="16sp"
-                            customfontdemo:fontName="ProductSans-Regular.ttf" />
+                            customfontdemo:fontName="symbols_skyquake.ttf" />
 
                     </RelativeLayout>
 
@@ -98,7 +98,7 @@
                             android:text="Description"
                             android:textColor="#070707"
                             android:textSize="30sp"
-                            customfontdemo:fontName="GoogleSansText-Medium.ttf" />
+                            customfontdemo:fontName="symbols_skyquake.ttf" />
 
                         <com.kyler.mland.egg.ui.MLandTextView
                             android:id="@+id/descriptionText"
@@ -110,7 +110,7 @@
                             android:text="Description Text"
                             android:textColor="#10101c"
                             android:textSize="16sp"
-                            customfontdemo:fontName="Roboto-Regular.ttf" />
+                            customfontdemo:fontName="symbols_skyquake.ttf" />
 
                         <com.kyler.mland.egg.ui.MLandTextView
                             android:id="@+id/planeText"
@@ -123,7 +123,7 @@
                             android:text="test"
                             android:textColor="#10101c"
                             android:textSize="16sp"
-                            customfontdemo:fontName="ProductSans-Regular.ttf" />
+                            customfontdemo:fontName="symbols_skyquake.ttf" />
 
                         <com.kyler.mland.egg.ui.MLandTextView
                             android:id="@+id/planeTextTwo"
@@ -136,7 +136,7 @@
                             android:text="tes2t"
                             android:textColor="#10101c"
                             android:textSize="16sp"
-                            customfontdemo:fontName="ProductSans-Regular.ttf" />
+                            customfontdemo:fontName="symbols_skyquake.ttf" />
 
                     </RelativeLayout>
                 </LinearLayout>

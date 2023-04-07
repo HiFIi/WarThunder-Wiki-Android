@@ -2,6 +2,8 @@
 /local.properties
 .DS_Store
 local.properties
+.androidide
+.androidide/
 /build
 /mland/build
 keystore.properties

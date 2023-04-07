@@ -7,7 +7,7 @@ android {
     compileSdk 33
     defaultConfig {
         applicationId "com.kyler.mland.egg"
-        minSdkVersion 31
+        minSdkVersion 30
         targetSdkVersion 33
         versionCode 200
         versionName "2.0.0-wip"
@@ -97,8 +97,6 @@ dependencies {
     implementation "androidx.core:core-splashscreen:1.0.0"
 
     implementation 'se.bjurr.gitchangelog:git-changelog-lib:+'
-
-    implementation 'com.google.googlejavaformat:google-java-format:+'
 
     implementation group: 'net.sourceforge.htmlunit', name: 'htmlunit-android', version: '+'
 

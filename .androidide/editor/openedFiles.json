@@ -1,0 +1,20 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/WarThunder-Wiki-Android/mland/build.gradle",
+      "selection": {
+        "end": {
+          "column": 41,
+          "index": -1,
+          "line": 104
+        },
+        "start": {
+          "column": 41,
+          "index": -1,
+          "line": 104
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/WarThunder-Wiki-Android/mland/build.gradle"
+}

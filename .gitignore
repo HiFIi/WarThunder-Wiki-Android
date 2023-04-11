@@ -7,3 +7,5 @@ local.properties
 /build
 /mland/build
 keystore.properties
+.idea
+/.idea

@@ -162,7 +162,7 @@ public class PlanesTest extends MLandBase {
 
                             // Get Country title //
                             Elements hrefs = doc.select("a[href][title]");
-                            Elements div = doc.select("div.general_info_nation");
+                            Elements div = doc.select("div.Usage_in_battles");
                             String linkText = div.text();
                             // end get Country title //
 

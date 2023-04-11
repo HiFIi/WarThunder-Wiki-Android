@@ -20,17 +20,17 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="200.0dip"
-            android:fitsSystemWindows="false"
-            android:background="@drawable/sky_gradient_day_one">
+            android:background="@drawable/sky_gradient_day_one"
+            android:fitsSystemWindows="false">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="120dp"
-                android:scaleType="centerCrop"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/sun"
                 android:clipToOutline="false"
-                android:background="@drawable/sun"/>
+                android:scaleType="centerCrop" />
 
         </RelativeLayout>
 

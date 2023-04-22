@@ -7,7 +7,7 @@ android {
     compileSdk 33
     defaultConfig {
         applicationId "com.kyler.mland.egg"
-        minSdkVersion 30
+        minSdkVersion 21
         targetSdkVersion 33
         versionCode 200
         versionName "2.0.0-wip"
@@ -50,12 +50,18 @@ android {
 
         debug {
             minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+         // ** OUTDATED: 
+         //    crunchPngs true 
             proguardFiles "proguard-android-optimize.txt", "proguard.pro", "proguard-rules.pro"
         }
         release {
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
+         // ** OUTDATED: 
+         //    crunchPngs true 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

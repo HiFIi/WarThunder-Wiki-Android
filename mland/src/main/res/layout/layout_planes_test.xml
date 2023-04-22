@@ -77,7 +77,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="8dp"
-                            android:text="test"
+                            android:text="Country Rank"
                             android:textColor="#10101c"
                             android:textSize="16sp"
                             customfontdemo:fontName="symbols_skyquake.ttf" />

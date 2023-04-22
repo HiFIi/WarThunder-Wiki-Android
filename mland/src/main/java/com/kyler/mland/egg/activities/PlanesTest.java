@@ -73,7 +73,6 @@ public class PlanesTest extends MLandBase {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        //  setTheme(R.style.Theme_MLand_Home);
         super.onCreate(savedInstanceState);
         Fresco.initialize(
                 getApplicationContext(),
@@ -90,27 +89,31 @@ public class PlanesTest extends MLandBase {
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         setContentView(R.layout.layout_planes_test);
 
-        // getBodyText();
         getHtmlFromWeb();
 
         setupDrawerForPlanes();
 
-        // scrapeWTWallpapers();
-
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
-        executor.execute(() -> {
-            //Background work here
-            SimpleDraweeView countryIV = (SimpleDraweeView) findViewById(R.id.countryImage);
-            handler.post(() -> {
-                //UI Thread work here
-                countryIV.setImageURI(countryImageURL);
-                countryIV.setVisibility(View.VISIBLE);
-            });
-        });
+        executor.execute(
+                () -> {
+                    // Background work here
+                    SimpleDraweeView countryIV = (SimpleDraweeView) findViewById(R.id.countryImage);
+                    handler.post(
+                            () -> {
+                                // UI Thread work here
+                                countryIV.setImageURI(countryImageURL);
+                                countryIV.setVisibility(View.VISIBLE);
+                            });
+                });
 
         SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.planeDrawee);
+
+        draweeView
+                .getHierarchy()
+                .setPlaceholderImage(
+                        getContext().getResources().getDrawable(R.drawable.loading_image_drawee));
 
         mHandler = new Handler();
 
@@ -132,123 +135,123 @@ public class PlanesTest extends MLandBase {
 
     private void getHtmlFromWeb() {
         new Thread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        final StringBuilder stringBuilder = new StringBuilder();
-                        final StringBuilder countryTextStringBuilder = new StringBuilder();
-                        final StringBuilder planeNameStringBuilder = new StringBuilder();
-                        final StringBuilder countryRankStringBuilder = new StringBuilder();
-                        final StringBuilder descriptionTextStringBuilder =
-                                new StringBuilder();
-                        MLandTextView resultTwo =
-                                (MLandTextView) findViewById(R.id.planeText);
-                        MLandTextView resultThree =
-                                (MLandTextView) findViewById(R.id.planeTextTwo);
-                        MLandTextView countryText =
-                                (MLandTextView) findViewById(R.id.countryText);
-                        MLandTextView descriptionText =
-                                (MLandTextView) findViewById(R.id.descriptionText);
-                        MLandTextView countryRank =
-                                (MLandTextView) findViewById(R.id.countryRank);
-                        SimpleDraweeView planeImage =
-                                (SimpleDraweeView) findViewById(R.id.planeDrawee);
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                final StringBuilder stringBuilder = new StringBuilder();
+                                final StringBuilder countryTextStringBuilder = new StringBuilder();
+                                final StringBuilder planeNameStringBuilder = new StringBuilder();
+                                final StringBuilder countryRankStringBuilder = new StringBuilder();
+                                final StringBuilder descriptionTextStringBuilder =
+                                        new StringBuilder();
+                                MLandTextView resultTwo =
+                                        (MLandTextView) findViewById(R.id.planeText);
+                                MLandTextView resultThree =
+                                        (MLandTextView) findViewById(R.id.planeTextTwo);
+                                MLandTextView countryText =
+                                        (MLandTextView) findViewById(R.id.countryText);
+                                MLandTextView descriptionText =
+                                        (MLandTextView) findViewById(R.id.descriptionText);
+                                MLandTextView countryRank =
+                                        (MLandTextView) findViewById(R.id.countryRank);
+                                SimpleDraweeView planeImage =
+                                        (SimpleDraweeView) findViewById(R.id.planeDrawee);
 
-                        try {
-                            Document doc = Jsoup.connect(wt).get();
-                            //   String title = doc.title();
-                            Element links = doc.select("div.mw-headline").first();
-                            Elements test = doc.select("Description");
+                                try {
+                                    Document doc = Jsoup.connect(wt).get();
+                                    // String title = doc.title();
+                                    Element links = doc.select("div.mw-headline").first();
+                                    Elements test = doc.select("Description");
 
-                            // Get Country title //
-                            Elements hrefs = doc.select("a[href][title]");
-                            Elements div = doc.select("div.Usage_in_battles");
-                            String linkText = div.text();
-                            // end get Country title //
+                                    //      -- Get Country title --
+                                    Elements hrefs = doc.select("a[href][title]");
+                                    Elements div = doc.select("div.Usage_in_battles");
+                                    String linkText = div.text();
+                                    //    -- end get Country title --
 
-                            // Get Country rank //
-                            Elements divCountryRank = doc.select("div.general_info_rank");
-                            String countryRankTextString = divCountryRank.text();
-                            // end get Country rank //
+                                    //      -- Get Country rank --
+                                    Elements divCountryRank = doc.select("div.general_info_rank");
+                                    String countryRankTextString = divCountryRank.text();
+                                    //     -- end get Country rank --
 
-                            // Get plane name //
-                            Element divTwo = doc.select("div.general_info_name").first();
-                            String linkTextTwo = divTwo.text();
-                            // end get plane name //
+                                    //      -- Get plane name --
+                                    Element divTwo = doc.select("div.general_info_name").first();
+                                    String linkTextTwo = divTwo.text();
+                                    //    -- end get plane name --
 
-                            // get plane image
-                            Element planeImageElement = doc.select("img[src$=.jpg]").last();
-                            String absoluteUrl =
-                                    planeImageElement.absUrl("src"); // absolute URL on src
-                            String srcValue = planeImageElement.attr("src");
-                            planeImage.setImageURI(absoluteUrl);
-                            planeImage.setVisibility(View.VISIBLE);
-                            // end get plane image //
+                                    //      -- Get plane image --
+                                    Element planeImageElement = doc.select("img[src$=.jpg]").last();
+                                    String absoluteUrl =
+                                            planeImageElement.absUrl("src"); // absolute URL on src
+                                    String srcValue = planeImageElement.attr("src");
+                                    planeImage.setImageURI(absoluteUrl);
+                                    planeImage.setVisibility(View.VISIBLE);
+                                    //    -- end get plane image --
 
-                            // Get usage in battles text //
-                            Elements divUsage = doc.select("div.usage_in_battles");
-                            String usageTextString = divUsage.text();
-                            // end usage in battles text  //
+                                    //      -- Get usage in battles text --
+                                    Elements divUsage = doc.select("div.usage_in_battles");
+                                    String usageTextString = divUsage.text();
+                                    //     -- end get usage in battles text --
 
-                            Element testt =
-                                    doc.select("p:contains(The Yak-23)")
-                                            .first()
-                                            .nextElementSibling();
-                            Element testtTwo = doc.select("p:contains(The Yak-23)").first();
-                            String ddd = testt.text();
-                            String dddd = testtTwo.text();
-                            Elements linksTwo = doc.select("div.general_info_nation");
-                            String linkHref =
-                                    linksTwo.attr("title"); // "http://example.com/"
-                            Elements elementsTwo =
-                                    doc.getElementsByClass("general_info_nation");
-                            Element countryId = doc.getElementById("title");
-                            //  links.text().replace("<span class=", "")
+                                    // *************      -- CONTINUE --      *************
+                                    Element testt =
+                                            doc.select("p:contains(The Yak-23)")
+                                                    .first()
+                                                    .nextElementSibling();
+                                    Element testtTwo = doc.select("p:contains(The Yak-23)").first();
+                                    String ddd = testt.text();
+                                    String dddd = testtTwo.text();
+                                    Elements linksTwo = doc.select("div.general_info_nation");
+                                    String linkHref =
+                                            linksTwo.attr("title"); // "http://example.com/"
+                                    Elements elementsTwo =
+                                            doc.getElementsByClass("general_info_nation");
+                                    Element countryId = doc.getElementById("title");
+                                    //  links.text().replace("<span class=", "")
 
-                            Elements textElements = doc.select("h1, p");
-                            String lu = textElements.text();
-                            Elements elements = doc.getElementsByClass("mw-headline");
-                            for (int i = 0; i < elements.size(); i++) {
-                                Element para = elements.get(i);
-                                // doc.add(para.nextSibling().toString());
-                            }
-
-                            String textTwo = doc.body().text();
-
-                            Elements table = doc.select("table");
-                            // stringBuilder.append(lu);
-                            countryTextStringBuilder.append(linkText);
-                            planeNameStringBuilder.append(linkTextTwo);
-                            countryRankStringBuilder.append(countryRankTextString);
-                            descriptionTextStringBuilder
-                                    .append(dddd)
-                                    .append("\n")
-                                    .append("\n")
-                                    .append(ddd);
-
-                        } catch (IOException e) {
-                            stringBuilder
-                                    .append("Error : ")
-                                    .append(e.getMessage())
-                                    .append(" ");
-                        }
-                        runOnUiThread(
-                                new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        resultTwo.setText(stringBuilder.toString());
-                                        countryText.setText(
-                                                countryTextStringBuilder.toString());
-                                        resultThree.setText(
-                                                planeNameStringBuilder.toString());
-                                        countryRank.setText(
-                                                countryRankStringBuilder.toString());
-                                        descriptionText.setText(
-                                                descriptionTextStringBuilder.toString());
+                                    Elements textElements = doc.select("h1, p");
+                                    String lu = textElements.text();
+                                    Elements elements = doc.getElementsByClass("mw-headline");
+                                    for (int i = 0; i < elements.size(); i++) {
+                                        Element para = elements.get(i);
+                                        // doc.add(para.nextSibling().toString());
                                     }
-                                });
-                    }
-                })
+
+                                    String textTwo = doc.body().text();
+
+                                    Elements table = doc.select("table");
+                                    countryTextStringBuilder.append(linkText);
+                                    planeNameStringBuilder.append(linkTextTwo);
+                                    countryRankStringBuilder.append(countryRankTextString);
+                                    descriptionTextStringBuilder
+                                            .append(dddd)
+                                            .append("\n")
+                                            .append("\n")
+                                            .append(ddd);
+
+                                } catch (IOException e) {
+                                    stringBuilder
+                                            .append("Error : ")
+                                            .append(e.getMessage())
+                                            .append(" ");
+                                }
+                                runOnUiThread(
+                                        new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                resultTwo.setText(stringBuilder.toString());
+                                                countryText.setText(
+                                                        countryTextStringBuilder.toString());
+                                                resultThree.setText(
+                                                        planeNameStringBuilder.toString());
+                                                countryRank.setText(
+                                                        countryRankStringBuilder.toString());
+                                                descriptionText.setText(
+                                                        descriptionTextStringBuilder.toString());
+                                            }
+                                        });
+                            }
+                        })
                 .start();
     }
 }

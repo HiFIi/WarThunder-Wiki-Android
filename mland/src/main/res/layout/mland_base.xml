@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navdrawer"
@@ -15,19 +16,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/mlandBaseLL"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="200.0dip"
+            android:id="@+id/mlandBaseRL"
             android:background="@drawable/sky_gradient_day_one"
             android:fitsSystemWindows="false">
 
             <ImageView
+                android:id="@+id/ivCloudOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/cloud"
+                android:clipToOutline="false"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/ivCloudTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/cloud"
+                android:clipToOutline="false"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/ivSun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="145dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/sun"
                 android:clipToOutline="false"
                 android:scaleType="centerCrop" />

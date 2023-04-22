@@ -171,10 +171,6 @@ public class Home extends MLandBase {
 
         Home.cc = getApplication().getApplicationContext();
 
-        // I should perhaps do some research to see whether or not
-        // setting the SupportActionBars title to an empty string is
-        // more efficient than *.setTitle(null);
-
         Objects.requireNonNull(getSupportActionBar()).setTitle(null);
 
         runGitScript();

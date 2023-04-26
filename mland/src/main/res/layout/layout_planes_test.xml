@@ -139,6 +139,37 @@
                             customfontdemo:fontName="symbols_skyquake.ttf" />
 
                     </RelativeLayout>
+                    
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent">
+
+                        <com.kyler.mland.egg.ui.MLandTextView
+                            android:id="@+id/generalInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:text="General Info"
+                            android:textColor="#070707"
+                            android:textSize="30sp"
+                            android:layout_marginTop="-6dp"
+                            customfontdemo:fontName="symbols_skyquake.ttf" />
+
+                        <com.kyler.mland.egg.ui.MLandTextView
+                            android:id="@+id/generalInfoText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/generalInfo"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:text="general info Text"
+                            android:textColor="#10101c"
+                            android:textSize="16sp"
+                            customfontdemo:fontName="symbols_skyquake.ttf" />
+
+                    </RelativeLayout>
                 </LinearLayout>
             </FrameLayout>
 

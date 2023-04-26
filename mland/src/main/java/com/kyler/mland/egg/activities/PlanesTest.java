@@ -173,6 +173,12 @@ public class PlanesTest extends MLandBase {
                                     Elements divCountryRank = doc.select("div.general_info_rank");
                                     String countryRankTextString = divCountryRank.text();
                                     //     -- end get Country rank --
+                                    
+                                    
+                                    //      -- Get General Info --
+                                    Elements divGeneralInfo= doc.select("div.general_info");
+                                    String generalInfoTextString = divGeneralInfo.text();
+                                    //     -- end get general info --
 
                                     //      -- Get plane name --
                                     Element divTwo = doc.select("div.general_info_name").first();

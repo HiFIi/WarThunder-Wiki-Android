@@ -52,16 +52,16 @@ android {
             minifyEnabled false
             shrinkResources false
             zipAlignEnabled false
-         // ** OUTDATED: 
-         //    crunchPngs true 
+            // ** OUTDATED:
+            //    crunchPngs true
             proguardFiles "proguard-android-optimize.txt", "proguard.pro", "proguard-rules.pro"
         }
         release {
             minifyEnabled true
             shrinkResources true
             zipAlignEnabled true
-         // ** OUTDATED: 
-         //    crunchPngs true 
+            // ** OUTDATED:
+            //    crunchPngs true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

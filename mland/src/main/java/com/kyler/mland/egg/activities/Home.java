@@ -128,7 +128,7 @@ public class Home extends MLandBase {
         // activateLightNavigationBar();
         // activateLightStatusBar();
 
-        final ListView list = findViewById(R.id.list);
+       /** final ListView list = findViewById(R.id.list);
         ArrayList<SubjectData> arrayList = new ArrayList<SubjectData>();
         arrayList.add(new SubjectData("USA", "https://www.tutorialspoint.com/java/", mUSAFlagLink));
         arrayList.add(
@@ -160,7 +160,7 @@ public class Home extends MLandBase {
                         "Israel", "https://www.tutorialspoint.com/cprogramming/", mIsraelFlagLink));
 
         CustomAdapter customAdapter = new CustomAdapter(this, arrayList);
-        list.setAdapter(customAdapter);
+        list.setAdapter(customAdapter); **/
 
         AsyncTaskRunner runner = new AsyncTaskRunner();
         // String sleepTime = "20000";

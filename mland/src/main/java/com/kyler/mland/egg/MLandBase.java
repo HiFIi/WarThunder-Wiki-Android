@@ -66,16 +66,16 @@ public abstract class MLandBase extends AppCompatActivity {
 
     // titles for navdrawer items (indices must correspond to the above)
     private static final int[] NAVDRAWER_TITLE_RES_ID =
-            new int[] {
-                R.string.home, R.string.mland_original, R.string.mland_modified, R.string.about
+            new int[]{
+                    R.string.home, R.string.mland_original, R.string.mland_modified, R.string.about
             };
     // icons for navdrawer items (indices must correspond to above array)
     private static final int[] NAVDRAWER_ICON_RES_ID =
-            new int[] {
-                R.drawable.ic_home,
-                R.drawable.ic_landscape__mland_original,
-                R.drawable.ic_landscape__mland_modified,
-                0
+            new int[]{
+                    R.drawable.ic_home,
+                    R.drawable.ic_landscape__mland_original,
+                    R.drawable.ic_landscape__mland_modified,
+                    0
             };
     // list of navdrawer items that were actually added to the navdrawer, in order
     private final ArrayList<Integer> mNavDrawerItems = new ArrayList<>();
@@ -115,7 +115,8 @@ public abstract class MLandBase extends AppCompatActivity {
 
         if (!first.getBoolean("firstTimeRan", false)) {
 
-            new Handler().post(() -> {});
+            new Handler().post(() -> {
+            });
 
             SharedPreferences.Editor editor = first.edit();
 
@@ -252,9 +253,11 @@ public abstract class MLandBase extends AppCompatActivity {
     }
 
     // Subclasses can override this for custom behavior
-    private void onNavDrawerStateChanged(boolean isOpen, boolean isAnimating) {}
+    private void onNavDrawerStateChanged(boolean isOpen, boolean isAnimating) {
+    }
 
-    private void onNavDrawerSlide(float offset) {}
+    private void onNavDrawerSlide(float offset) {
+    }
 
     private boolean isNavDrawerOpen() {
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(GravityCompat.START);
@@ -266,7 +269,9 @@ public abstract class MLandBase extends AppCompatActivity {
         }
     }
 
-    /** Populates the navigation drawer with the appropriate items. */
+    /**
+     * Populates the navigation drawer with the appropriate items.
+     */
     private void populateNavDrawer() {
         mNavDrawerItems.clear();
         mNavDrawerItems.add(NAVDRAWER_ITEM_HOME);

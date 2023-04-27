@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navdrawer"
@@ -14,15 +13,15 @@
     customfontdemo:appInsetForeground="@android:color/transparent">
 
     <LinearLayout
+        android:id="@+id/mlandBaseLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/mlandBaseLL"
         android:orientation="vertical">
 
         <RelativeLayout
+            android:id="@+id/mlandBaseRL"
             android:layout_width="fill_parent"
             android:layout_height="200.0dip"
-            android:id="@+id/mlandBaseRL"
             android:background="@drawable/sky_gradient_day_one"
             android:fitsSystemWindows="false">
 

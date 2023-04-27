@@ -11,4 +11,15 @@
 
     <!-- Name of the easter egg. DO NOT TRANSLATE -->
     <string name="mland">Marshmallow Land</string>
+    
+    <string name="country_usa">USA</string>
+    <string name="country_germany">Germany</string>
+    <string name="country_ussr">USSR</string>
+    <string name="country_britain">Britain</string>
+    <string name="country_japan">Japan</string>
+    <string name="country_china">China</string>
+    <string name="country_italy">Italy</string>
+    <string name="country_france">France</string>
+    <string name="country_sweden">Sweden</string>
+    <string name="country_israel">Israel</string>
 </resources>

@@ -7,7 +7,7 @@ android {
     compileSdk 33
     defaultConfig {
         applicationId "com.kyler.mland.egg"
-        minSdkVersion 21
+        minSdkVersion 29
         targetSdkVersion 33
         versionCode 200
         versionName "2.0.0-wip"
@@ -24,10 +24,7 @@ android {
             enable true
 
             // Specifies a list of screen densities you don't want Gradle to create multiple APKs for.
-            exclude "ldpi", "hdpi"
-
-            // Specifies a list of compatible screen size settings for the manifest.
-            // compatibleScreens 'small', 'normal', 'large', 'xlarge'
+            exclude "ldpi", "mdpi"
         }
     }
 

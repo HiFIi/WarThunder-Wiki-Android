@@ -1,2 +1,0 @@
-- min sdk 21-29
-- currently WIP but i am creating a real home activity for the app

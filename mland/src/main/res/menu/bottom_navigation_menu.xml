@@ -3,19 +3,19 @@
     <item
         android:id="@+id/bb_usa"
         android:icon="@drawable/usa_flag"
-        android:title="USA"/>
+        android:title="USA" />
     <item
         android:id="@+id/bb_germany"
         android:icon="@drawable/germany_flag"
-        android:title="Germany"/>
+        android:title="Germany" />
     <item
         android:id="@+id/bb_ussr"
         android:enabled="true"
         android:icon="@drawable/ussr_flag"
-        android:title="USSR"/>
+        android:title="USSR" />
     <item
         android:id="@+id/bb_britain"
         android:enabled="true"
         android:icon="@drawable/britain_flag"
-        android:title="Britain"/>
+        android:title="Britain" />
 </menu>

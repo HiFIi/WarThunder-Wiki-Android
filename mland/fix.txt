@@ -1,0 +1,100 @@
+C:\Users\Hifii\StudioProjects\warthunder-wiki-androidd\mland\src\main\res\menu\bottom_navigation_menu.xml
+Warning:(6, 9) Hardcoded string "USA", should use `@string` resource
+Warning:(10, 9) Hardcoded string "Germany", should use `@string` resource
+Warning:(15, 9) Hardcoded string "USSR", should use `@string` resource
+Warning:(20, 9) Hardcoded string "Britain", should use `@string` resource
+C:\Users\Hifii\StudioProjects\warthunder-wiki-androidd\mland\src\main\res\menu\bottom_navigation_menu_two.xml
+Warning:(6, 9) Hardcoded string "USA", should use `@string` resource
+Warning:(10, 9) Hardcoded string "Germany", should use `@string` resource
+Warning:(15, 9) Hardcoded string "USSR", should use `@string` resource
+Warning:(20, 9) Hardcoded string "Britain", should use `@string` resource
+C:\Users\Hifii\StudioProjects\warthunder-wiki-androidd\mland\src\main\res\layout\home.xml
+Error:(8, 5) `@android:color/system_neutral1_600` requires API level 31 (current min is 29)
+Warning:(16, 10) Missing `contentDescription` attribute on image
+Warning:(34, 18) Missing `contentDescription` attribute on image
+Error:(37, 21) `@id/main_content_ll` is not a sibling in the same `RelativeLayout`
+Warning:(42, 18) This `RelativeLayout` view is unnecessary (no children, no `background`, no `id`, no `style`)
+C:\Users\Hifii\StudioProjects\warthunder-wiki-androidd\mland\src\main\AndroidManifest.xml
+Warning:(10, 36) The attribute `android:fullBackupContent` is deprecated from Android 12 and higher and may be removed in future versions. Consider adding the attribute `android:dataExtractionRules` specifying an `@xml` resource which configures cloud backups and device transfers on Android 12 and higher.
+Warning:(21, 13) Redundant label can be removed
+Warning:(37, 13) Redundant label can be removed
+Warning:(54, 13) Redundant label can be removed
+C:\Users\Hifii\StudioProjects\warthunder-wiki-androidd\mland\src\main\java\com\kyler\mland\egg\activities\Home.java
+Warning:(46, 33) Private field 'mUSAFlagLink' is never used
+Warning:(48, 33) Private field 'mGermanyFlagLink' is never used
+Warning:(50, 33) Private field 'mUSSRFlagLink' is never used
+Warning:(52, 33) Private field 'mBritainFlagLink' is never used
+Warning:(54, 33) Private field 'mJapanFlagLink' is never used
+Warning:(56, 33) Private field 'mChinaFlagLink' is never used
+Warning:(58, 33) Private field 'mItalyFlagLink' is never used
+Warning:(60, 33) Private field 'mFranceFlagLink' is never used
+Warning:(62, 33) Private field 'mSwedenFlagLink' is never used
+Warning:(64, 33) Private field 'mIsraelFlagLink' is never used
+Warning:(69, 27) Private field 'window' is never used
+Warning:(70, 13) Do not place Android context classes in static fields; this is a memory leak
+Warning:(71, 26) Private field 'mPlaneCategories' is never used
+Warning:(72, 28) Private field 'title' is never used
+Warning:(86, 13) Raw use of parameterized class 'DraweeView'
+Warning:(86, 24) Private field 'dv' is never used
+Warning:(87, 21) Private field 'webView' is never used
+Warning:(88, 20) Private field 'submit' is never used
+Warning:(90, 27) Method 'getAppContext()' is never used
+Warning:(126, 9) Dangling Javadoc comment
+Warning:(162, 16) 'execute(Params...)' is deprecated
+Warning:(175, 48) 'getColor(int)' is deprecated as of API 23 ("Marshmallow"; Android 6.0)
+Warning:(183, 21) 'TaskDescription(java.lang.String, android.graphics.Bitmap, int)' is deprecated as of API 28 ("Pie"; Android 9.0)
+Warning:(203, 5) Unnecessary; SDK_INT is always >= 26
+Warning:(204, 18) Private method 'activateLightNavigationBar()' is never used
+Warning:(208, 58) 'getColor(int)' is deprecated as of API 23 ("Marshmallow"; Android 6.0)
+Warning:(220, 17) Anonymous new Runnable() can be replaced with lambda
+Warning:(223, 39) Variable 'result' is never used
+Warning:(223, 49) Casting 'findViewById(...)' to 'MLandTextView' is redundant
+Warning:(235, 36) Variable 'text' is never used
+Warning:(239, 54) Method invocation 'getElementsByTag' may produce 'NullPointerException'
+Warning:(240, 38) Variable 'masthead' is never used
+Warning:(242, 38) Variable 'test' is never used
+Warning:(244, 40) Variable 'linkHref' is never used
+Warning:(245, 40) Variable 'linkText' is never used
+Warning:(256, 27) Empty 'catch' block
+Warning:(260, 33) Anonymous new Runnable() can be replaced with lambda
+Error:(263, 41) Cannot resolve symbol 'draweeView'
+Error:(264, 41) Cannot resolve symbol 'draweeView'
+Warning:(273, 18) Private method 'activateLightStatusBar()' is never used
+Warning:(276, 13) Unnecessary; SDK_INT is always >= 29
+Warning:(292, 19) Private inner class 'MyBrowser' is never used
+Warning:(292, 19) Inner class 'MyBrowser' may be 'static'
+Warning:(294, 24) Overrides deprecated method in 'android.webkit.WebViewClient' as of API 24 ("Nougat"; Android 7.0)
+Warning:(300, 19) This `AsyncTask` class should be static or leaks might occur (com.kyler.mland.egg.activities.Home.AsyncTaskRunner)
+Warning:(300, 19) Default constructor in android.os.AsyncTask is deprecated
+Warning:(302, 24) Field can be converted to a local variable
+Warning:(305, 26) Overrides deprecated method in 'android.os.AsyncTask'
+Warning:(306, 13) 'publishProgress(Progress...)' is deprecated
+Warning:(316, 15) 'catch' branch identical to 'InterruptedException' branch
+Warning:(324, 24) Overrides deprecated method in 'android.os.AsyncTask'
+Warning:(338, 24) Overrides deprecated method in 'android.os.AsyncTask'
+Warning:(345, 24) Overrides deprecated method in 'android.os.AsyncTask'
+C:\Users\Hifii\StudioProjects\warthunder-wiki-androidd\mland\src\main\assets\html\04-07-2023\category__aviation.html
+Warning:(203, 22) Element p is not allowed here
+Warning:(203, 34) Element p is not allowed here
+Warning:(220, 22) Element p is not allowed here
+Warning:(220, 35) Element p is not allowed here
+Warning:(243, 22) Element p is not allowed here
+Warning:(243, 36) Element p is not allowed here
+Warning:(266, 22) Element p is not allowed here
+Warning:(266, 31) Element p is not allowed here
+C:\Users\Hifii\StudioProjects\warthunder-wiki-androidd\mland\src\main\assets\html\04-07-2023\yak-23-html-source.html
+Warning:(205, 22) Element p is not allowed here
+Warning:(205, 34) Element p is not allowed here
+Warning:(222, 22) Element p is not allowed here
+Warning:(222, 35) Element p is not allowed here
+Warning:(245, 22) Element p is not allowed here
+Warning:(245, 36) Element p is not allowed here
+Warning:(268, 22) Element p is not allowed here
+Warning:(268, 31) Element p is not allowed here
+Warning:(303, 22) Element p is not allowed here
+Warning:(303, 44) Element p is not allowed here
+Warning:(1615, 66) Wrong attribute value
+Warning:(1629, 66) Wrong attribute value
+Warning:(1645, 66) Wrong attribute value
+Warning:(1679, 61) The tag is marked as deprecated
+Warning:(1860, 61) The tag is marked as deprecated

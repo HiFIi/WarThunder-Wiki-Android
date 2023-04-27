@@ -17,21 +17,17 @@ import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.DraweeView;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.core.ImageTranscoderType;
 import com.facebook.imagepipeline.core.MemoryChunkType;
-import com.kyler.mland.egg.CustomAdapter;
 import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
-import com.kyler.mland.egg.SubjectData;
 import com.kyler.mland.egg.ui.MLandTextView;
 
 import org.jsoup.Jsoup;
@@ -40,7 +36,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -128,39 +123,39 @@ public class Home extends MLandBase {
         // activateLightNavigationBar();
         // activateLightStatusBar();
 
-       /** final ListView list = findViewById(R.id.list);
-        ArrayList<SubjectData> arrayList = new ArrayList<SubjectData>();
-        arrayList.add(new SubjectData("USA", "https://www.tutorialspoint.com/java/", mUSAFlagLink));
-        arrayList.add(
-                new SubjectData(
-                        "Germany", "https://www.tutorialspoint.com/python/", mGermanyFlagLink));
-        arrayList.add(
-                new SubjectData(
-                        "USSR", "https://www.tutorialspoint.com/javascript/", mUSSRFlagLink));
-        arrayList.add(
-                new SubjectData(
-                        "Britain",
-                        "https://www.tutorialspoint.com/cprogramming/",
-                        mBritainFlagLink));
-        arrayList.add(
-                new SubjectData("Japan", "https://www.tutorialspoint.com/java/", mJapanFlagLink));
-        arrayList.add(
-                new SubjectData("China", "https://www.tutorialspoint.com/python/", mChinaFlagLink));
-        arrayList.add(
-                new SubjectData(
-                        "Italy", "https://www.tutorialspoint.com/javascript/", mItalyFlagLink));
-        arrayList.add(
-                new SubjectData(
-                        "France", "https://www.tutorialspoint.com/cprogramming/", mFranceFlagLink));
-        arrayList.add(
-                new SubjectData(
-                        "Sweden", "https://www.tutorialspoint.com/javascript/", mSwedenFlagLink));
-        arrayList.add(
-                new SubjectData(
-                        "Israel", "https://www.tutorialspoint.com/cprogramming/", mIsraelFlagLink));
+        /** final ListView list = findViewById(R.id.list);
+         ArrayList<SubjectData> arrayList = new ArrayList<SubjectData>();
+         arrayList.add(new SubjectData("USA", "https://www.tutorialspoint.com/java/", mUSAFlagLink));
+         arrayList.add(
+         new SubjectData(
+         "Germany", "https://www.tutorialspoint.com/python/", mGermanyFlagLink));
+         arrayList.add(
+         new SubjectData(
+         "USSR", "https://www.tutorialspoint.com/javascript/", mUSSRFlagLink));
+         arrayList.add(
+         new SubjectData(
+         "Britain",
+         "https://www.tutorialspoint.com/cprogramming/",
+         mBritainFlagLink));
+         arrayList.add(
+         new SubjectData("Japan", "https://www.tutorialspoint.com/java/", mJapanFlagLink));
+         arrayList.add(
+         new SubjectData("China", "https://www.tutorialspoint.com/python/", mChinaFlagLink));
+         arrayList.add(
+         new SubjectData(
+         "Italy", "https://www.tutorialspoint.com/javascript/", mItalyFlagLink));
+         arrayList.add(
+         new SubjectData(
+         "France", "https://www.tutorialspoint.com/cprogramming/", mFranceFlagLink));
+         arrayList.add(
+         new SubjectData(
+         "Sweden", "https://www.tutorialspoint.com/javascript/", mSwedenFlagLink));
+         arrayList.add(
+         new SubjectData(
+         "Israel", "https://www.tutorialspoint.com/cprogramming/", mIsraelFlagLink));
 
-        CustomAdapter customAdapter = new CustomAdapter(this, arrayList);
-        list.setAdapter(customAdapter); **/
+         CustomAdapter customAdapter = new CustomAdapter(this, arrayList);
+         list.setAdapter(customAdapter); **/
 
         AsyncTaskRunner runner = new AsyncTaskRunner();
         // String sleepTime = "20000";
@@ -222,56 +217,56 @@ public class Home extends MLandBase {
         final StringBuilder builder = new StringBuilder();
 
         new Thread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        MLandTextView result = (MLandTextView) findViewById(R.id.result);
-                        // binding.getRoot().findViewById(R.id.iv);
-                        SimpleDraweeView draweeView =
-                                (SimpleDraweeView) findViewById(R.id.home_pic);
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                MLandTextView result = (MLandTextView) findViewById(R.id.result);
+                                // binding.getRoot().findViewById(R.id.iv);
+                                // SimpleDraweeView draweeView =
+                                //        (SimpleDraweeView) findViewById(R.id.home_pic);
 
-                        try {
-                            Document doc = Jsoup.connect(wt).get();
+                                try {
+                                    Document doc = Jsoup.connect(wt).get();
 
-                            draweeView.setImageURI(uri);
-                            draweeView.setVisibility(View.VISIBLE);
+                                    // draweeView.setImageURI(uri);
+                                    //  draweeView.setVisibility(View.VISIBLE);
 
-                            String title = doc.title();
-                            String text = doc.body().text(); // "An example link"
-                            Element content = doc.getElementById("content");
-                            Elements table = doc.select("table");
-                            Elements myin = doc.getElementsByClass("wt-class-table");
-                            Elements links = content.getElementsByTag("a");
-                            Elements masthead = doc.select("p:contains(Aviation ):");
+                                    String title = doc.title();
+                                    String text = doc.body().text(); // "An example link"
+                                    Element content = doc.getElementById("content");
+                                    Elements table = doc.select("table");
+                                    Elements myin = doc.getElementsByClass("wt-class-table");
+                                    Elements links = content.getElementsByTag("a");
+                                    Elements masthead = doc.select("p:contains(Aviation ):");
 
-                            Elements test = doc.select("img[src$=.png]");
-                            for (Element link : links) {
-                                String linkHref = link.attr("href");
-                                String linkText = link.text();
-                            }
-                            // Elements links = doc.select("h3.r > a");
-                            for (Element link : links) {
-                                builder.append(title)
-                                        .append(myin)
-                                        .append(table)
-                                        .append("")
-                                        .append(link.text());
-                            }
-
-                        } catch (Exception e) {
-
-                        }
-                        mHandler.post(
-                                new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        draweeView.setImageURI(uri);
-                                        draweeView.setVisibility(View.VISIBLE);
-                                        // result.setText(builder.toString());
+                                    Elements test = doc.select("img[src$=.png]");
+                                    for (Element link : links) {
+                                        String linkHref = link.attr("href");
+                                        String linkText = link.text();
                                     }
-                                });
-                    }
-                })
+                                    // Elements links = doc.select("h3.r > a");
+                                    for (Element link : links) {
+                                        builder.append(title)
+                                                .append(myin)
+                                                .append(table)
+                                                .append("")
+                                                .append(link.text());
+                                    }
+
+                                } catch (Exception e) {
+
+                                }
+                                mHandler.post(
+                                        new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                // draweeView.setImageURI(uri);
+                                                // draweeView.setVisibility(View.VISIBLE);
+                                                // result.setText(builder.toString());
+                                            }
+                                        });
+                            }
+                        })
                 .start();
     }
 

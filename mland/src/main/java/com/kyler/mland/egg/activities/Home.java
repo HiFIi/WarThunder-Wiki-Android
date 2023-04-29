@@ -217,56 +217,54 @@ public class Home extends MLandBase {
         final StringBuilder builder = new StringBuilder();
 
         new Thread(
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                MLandTextView result = (MLandTextView) findViewById(R.id.result);
-                                // binding.getRoot().findViewById(R.id.iv);
-                                // SimpleDraweeView draweeView =
-                                //        (SimpleDraweeView) findViewById(R.id.home_pic);
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        MLandTextView result = (MLandTextView) findViewById(R.id.result);
+                        // binding.getRoot().findViewById(R.id.iv);
+                        //SimpleDraweeView draweeView =
+                        //       (SimpleDraweeView) findViewById(R.id.home_pic);
 
-                                try {
-                                    Document doc = Jsoup.connect(wt).get();
+                        try {
+                            Document doc = Jsoup.connect(wt).get();
 
-                                    // draweeView.setImageURI(uri);
-                                    //  draweeView.setVisibility(View.VISIBLE);
+                            //draweeView.setImageURI(uri);
+                            //draweeView.setVisibility(View.VISIBLE);
 
-                                    String title = doc.title();
-                                    String text = doc.body().text(); // "An example link"
-                                    Element content = doc.getElementById("content");
-                                    Elements table = doc.select("table");
-                                    Elements myin = doc.getElementsByClass("wt-class-table");
-                                    Elements links = content.getElementsByTag("a");
-                                    Elements masthead = doc.select("p:contains(Aviation ):");
+                            String title = doc.title();
+                            String text = doc.body().text(); // "An example link"
+                            Element content = doc.getElementById("content");
+                            Elements table = doc.select("table");
+                            Elements myin = doc.getElementsByClass("wt-class-table");
+                            Elements links = content.getElementsByTag("a");
+                            Elements masthead = doc.select("p:contains(Aviation ):");
 
-                                    Elements test = doc.select("img[src$=.png]");
-                                    for (Element link : links) {
-                                        String linkHref = link.attr("href");
-                                        String linkText = link.text();
-                                    }
-                                    // Elements links = doc.select("h3.r > a");
-                                    for (Element link : links) {
-                                        builder.append(title)
-                                                .append(myin)
-                                                .append(table)
-                                                .append("")
-                                                .append(link.text());
-                                    }
-
-                                } catch (Exception e) {
-
-                                }
-                                mHandler.post(
-                                        new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                // draweeView.setImageURI(uri);
-                                                // draweeView.setVisibility(View.VISIBLE);
-                                                // result.setText(builder.toString());
-                                            }
-                                        });
+                            Elements test = doc.select("img[src$=.png]");
+                            for (Element link : links) {
+                                String linkHref = link.attr("href");
+                                String linkText = link.text();
                             }
-                        })
+                            // Elements links = doc.select("h3.r > a");
+                            for (Element link : links) {
+                                builder.append(title)
+                                        .append(myin)
+                                        .append(table)
+                                        .append("")
+                                        .append(link.text());
+                            }
+
+                        } catch (Exception e) {
+
+                        }
+                        mHandler.post(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // result.setText(builder.toString());
+                                    }
+                                });
+                    }
+                })
                 .start();
     }
 

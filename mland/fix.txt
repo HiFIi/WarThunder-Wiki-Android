@@ -3,11 +3,13 @@ Warning:(6, 9) Hardcoded string "USA", should use `@string` resource
 Warning:(10, 9) Hardcoded string "Germany", should use `@string` resource
 Warning:(15, 9) Hardcoded string "USSR", should use `@string` resource
 Warning:(20, 9) Hardcoded string "Britain", should use `@string` resource
+
 C:\Users\Hifii\StudioProjects\warthunder-wiki-androidd\mland\src\main\res\menu\bottom_navigation_menu_two.xml
 Warning:(6, 9) Hardcoded string "USA", should use `@string` resource
 Warning:(10, 9) Hardcoded string "Germany", should use `@string` resource
 Warning:(15, 9) Hardcoded string "USSR", should use `@string` resource
 Warning:(20, 9) Hardcoded string "Britain", should use `@string` resource
+
 C:\Users\Hifii\StudioProjects\warthunder-wiki-androidd\mland\src\main\res\layout\home.xml
 Error:(8, 5) `@android:color/system_neutral1_600` requires API level 31 (current min is 29)
 Warning:(16, 10) Missing `contentDescription` attribute on image

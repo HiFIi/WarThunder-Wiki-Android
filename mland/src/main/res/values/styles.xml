@@ -178,7 +178,7 @@
     <style name="AppBottomNavigation2" parent="Widget.Design.BottomNavigationView">
         <item name="backgroundTint">@null</item>
         <item name="itemIconTint">@null</item>
-        <item name="itemTextColor">#10101c</item>
+        <item name="itemTextColor">@color/bottom_navigation_item_color</item>
         <item name="itemRippleColor">@color/bottom_navigation_item_ripple_color</item>
         <item name="itemTextAppearanceActive">?attr/textAppearanceCaption</item>
         <item name="itemTextAppearanceInactive">?attr/textAppearanceCaption</item>

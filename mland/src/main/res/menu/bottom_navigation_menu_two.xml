@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bb_usaTwo"
-        android:icon="@drawable/usa_flag"
+        android:icon="@drawable/usa"
         android:title="USA" />
     <item
         android:id="@+id/bb_germanyTwo"
-        android:icon="@drawable/germany_flag"
+        android:icon="@drawable/usa"
         android:title="Germany" />
     <item
         android:id="@+id/bb_ussrTwo"

@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bb_usa"
-        android:icon="@drawable/usa_flag"
+        android:icon="@drawable/usa"
         android:title="USA" />
     <item
         android:id="@+id/bb_germany"
-        android:icon="@drawable/germany_flag"
+        android:icon="@drawable/germany"
         android:title="Germany" />
     <item
         android:id="@+id/bb_ussr"
         android:enabled="true"
-        android:icon="@drawable/ussr_flag"
+        android:icon="@drawable/italy"
         android:title="USSR" />
     <item
         android:id="@+id/bb_britain"

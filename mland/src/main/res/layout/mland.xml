@@ -11,6 +11,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -61,7 +62,7 @@ limitations under the License.
                         android:layout_gravity="center"
                         android:scaleType="fitCenter"
                         android:src="@drawable/play"
-                        android:tint="@android:color/black"
+                        app:tint="@android:color/black"
                         tools:ignore="ContentDescription" />
 
                     <TextView

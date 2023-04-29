@@ -4,13 +4,12 @@ plugins {
 
 
 android {
-    compileSdk 33
     defaultConfig {
         applicationId "com.kyler.mland.egg"
         minSdkVersion 29
         targetSdkVersion 33
-        versionCode 200
-        versionName "2.0.0-wip"
+        versionCode 1
+        versionName "0.0.1"
         multiDexEnabled true
 
     }
@@ -38,6 +37,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -48,18 +48,18 @@ android {
         debug {
             minifyEnabled false
             shrinkResources false
-            zipAlignEnabled false
             // ** OUTDATED:
             //    crunchPngs true
             proguardFiles "proguard-android-optimize.txt", "proguard.pro", "proguard-rules.pro"
+            multiDexEnabled true
         }
         release {
             minifyEnabled true
             shrinkResources true
-            zipAlignEnabled true
             // ** OUTDATED:
             //    crunchPngs true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            multiDexEnabled true
         }
     }
     namespace 'com.kyler.mland.egg'
@@ -70,6 +70,7 @@ android {
         htmlReport true
         xmlReport true
     }
+    compileSdk 33
 }
 
 ext {
@@ -77,36 +78,27 @@ ext {
 }
 
 dependencies {
-    //noinspection GradleDynamicVersion
-    implementation 'androidx.appcompat:appcompat:+'
-    implementation 'androidx.constraintlayout:constraintlayout:+'
-    implementation 'com.google.android.material:material:1.9.0-beta01'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:+'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:+'
-    implementation 'androidx.navigation:navigation-fragment:+'
-    implementation 'androidx.navigation:navigation-ui:+'
-    implementation 'androidx.drawerlayout:drawerlayout:+'
-    implementation 'com.facebook.fresco:fresco:+'
-    implementation 'org.jsoup:jsoup:+'
-    implementation 'androidx.cardview:cardview:+'
-    implementation 'com.squareup.okhttp3:okhttp:+'
-    implementation 'com.squareup.picasso:picasso:+'
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
-    implementation 'com.android.volley:volley:+'
-    implementation 'androidx.recyclerview:recyclerview:+'
-    implementation 'com.facebook.fresco:animated-webp:+'
-    implementation 'com.facebook.fresco:webpsupport:+'
-    implementation 'com.facebook.fresco:fresco:+'
-    implementation "androidx.core:core-splashscreen:1.0.0"
+    implementation 'androidx.appcompat:appcompat:1.7.0-alpha02'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha09'
+    implementation 'com.google.android.material:material:1.9.0-rc01'
+    implementation 'androidx.navigation:navigation-ui:2.6.0-beta01'
+    implementation 'com.facebook.fresco:fresco:3.0.0'
+    implementation 'org.jsoup:jsoup:1.15.4'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation 'com.facebook.fresco:animated-webp:3.0.0'
+    implementation 'com.facebook.fresco:webpsupport:3.0.0'
+    implementation 'com.facebook.fresco:fresco:3.0.0'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
 
-    implementation 'se.bjurr.gitchangelog:git-changelog-lib:+'
+    implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.169.0'
 
-    implementation group: 'net.sourceforge.htmlunit', name: 'htmlunit-android', version: '+'
-
-    implementation group: 'androidx.palette', name: 'palette', version: '+'
-    testImplementation 'junit:junit:+'
+    implementation group: 'androidx.palette', name: 'palette', version: '1.0.0'
+    testImplementation 'junit:junit:4.13.2'
     // To use constraintlayout in compose
-    implementation "androidx.constraintlayout:constraintlayout-compose:+"
-    androidTestImplementation 'androidx.test.ext:junit:+'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:+'
+    implementation 'androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha09'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.0-alpha01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.0-alpha01'
 }

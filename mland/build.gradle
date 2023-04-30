@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "0.0.1"
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
 
     }
 
@@ -71,10 +72,7 @@ android {
         xmlReport true
     }
     compileSdk 33
-}
-
-ext {
-    supportLibsVersion = '33.0.3'
+    buildToolsVersion '34.0.0 rc3'
 }
 
 dependencies {
@@ -83,7 +81,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0-rc01'
     implementation 'androidx.navigation:navigation-ui:2.6.0-beta01'
     implementation 'com.facebook.fresco:fresco:3.0.0'
-    implementation 'org.jsoup:jsoup:1.15.4'
+    implementation 'org.jsoup:jsoup:1.16.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
     implementation 'com.squareup.picasso:picasso:2.71828'

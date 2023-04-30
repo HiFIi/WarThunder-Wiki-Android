@@ -117,11 +117,11 @@
 
         <activity
             android:name=".activities.PlanesTest"
-            android:exported="false"
+            android:exported="true"
             android:hardwareAccelerated="true"
             android:icon="@drawable/mland_ic_one"
             android:label="@string/about"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.MLand.About"
             tools:ignore="AppLinkUrlError">
             <intent-filter>

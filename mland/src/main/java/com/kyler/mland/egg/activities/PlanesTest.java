@@ -196,7 +196,7 @@ public class PlanesTest extends MLandBase {
                             //    -- end get plane image --
 
                             //      -- Get usage in battles text --
-                            Elements divUsage = doc.select("div.usage_in_battles");
+                            Elements divUsage = doc.select("div.mw-category-generated");
                             String usageTextString = divUsage.text();
                             //     -- end get usage in battles text --
 

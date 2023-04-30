@@ -72,9 +72,9 @@ public abstract class MLandBase extends AppCompatActivity {
     // icons for navdrawer items (indices must correspond to above array)
     private static final int[] NAVDRAWER_ICON_RES_ID =
             new int[]{
-                    R.drawable.ic_home,
-                    R.drawable.ic_landscape__mland_original,
-                    R.drawable.ic_landscape__mland_modified,
+                    R.drawable.drawer_plane,
+                    R.drawable.ship_drawer,
+                    R.drawable.drawer_tank,
                     0
             };
     // list of navdrawer items that were actually added to the navdrawer, in order
@@ -177,6 +177,8 @@ public abstract class MLandBase extends AppCompatActivity {
         if (mDrawerLayout == null) {
             return;
         }
+        boolean isDarkThemeOn = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)  == Configuration.UI_MODE_NIGHT_YES;
+
 
         mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.transparent));
         ScrimInsetsScrollView navDrawer = mDrawerLayout.findViewById(R.id.navdrawer);
@@ -197,6 +199,8 @@ public abstract class MLandBase extends AppCompatActivity {
             return;
         }
 
+
+
         if (mActionBarToolbar != null) {
             mActionBarToolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_drawer));
             mActionBarToolbar.setNavigationOnClickListener(
@@ -207,7 +211,7 @@ public abstract class MLandBase extends AppCompatActivity {
             }
             if (selfItem == NAVDRAWER_ITEM_HOME) {
                 mActionBarToolbar.setNavigationIcon(
-                        getResources().getDrawable(R.drawable.ic_drawer_white));
+                        getResources().getDrawable(R.drawable.ic_drawer));
             }
         }
 

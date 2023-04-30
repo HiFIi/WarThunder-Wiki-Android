@@ -3,7 +3,6 @@ package com.kyler.mland.egg.activities;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,7 +12,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
@@ -28,7 +26,6 @@ import com.facebook.drawee.view.DraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.core.ImageTranscoderType;
 import com.facebook.imagepipeline.core.MemoryChunkType;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.ui.MLandTextView;
@@ -39,7 +36,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -86,12 +82,14 @@ public class Home extends MLandBase {
             "Sweden_aircraft",
             "Israel_aircraft"
     };
+    //   private static final int MAX_BOTTOM_NAV_CHILDREN = 5;
+    //   private int numVisibleChildren = 3;
     private final String wt = "https://wiki.warthunder.com/Aviation";
-    private final ArrayList<Integer> mNavDrawerItems = new ArrayList<>();
     private Handler mHandler;
     private DraweeView dv;
     private WebView webView;
     private Button submit;
+    // public BottomNavigationView bottomNavigationView;
 
     public static Context getAppContext() {
         return Home.cc;
@@ -126,7 +124,14 @@ public class Home extends MLandBase {
                 .setSystemUiVisibility(
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
+        //   BottomNavigationView bottomNavigationViewTwo = (BottomNavigationView)findViewById(R.id.bottom_navigation_two);
+
+        //  bottomNavigationViewTwo.getMenu().findItem(R.id.bb_china).setChecked(false);
+        // bottomNavigationViewTwo.getMenu().getItem(R.id.bb_china).setChecked(false);
+
+
         // activateLightNavigationBar();
+
         // activateLightStatusBar();
 
         /** final ListView list = findViewById(R.id.list);
@@ -171,7 +176,10 @@ public class Home extends MLandBase {
 
         mHandler = new Handler();
 
-        mActionBarToolbar.setNavigationIcon(R.drawable.ic_drawer);
+        View decorView = getWindow().getDecorView();
+// Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
 
         Home.cc = getApplication().getApplicationContext();
 
@@ -179,26 +187,21 @@ public class Home extends MLandBase {
 
         runGitScript();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        // Set Home selected
-        bottomNavigationView.setSelectedItemId(R.id.bb_usa);
+        //  BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Perform item selected listener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                Intent intent;
-                int itemId = item.getItemId();
-                if (itemId == R.id.bb_usa) {
-                    intent = new Intent(getApplicationContext(), PlanesTest.class);
-                    startActivity(intent);
-                    overridePendingTransition(0, 0);
-                }
-                return true;
-            }
-        });
-
+        /**    bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override public boolean onNavigationItemSelected(MenuItem item) {
+        Intent intent;
+        int itemId = item.getItemId();
+        if (itemId == R.id.bb_usa) {
+        intent = new Intent(getApplicationContext(), PlanesTest.class);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+        }
+        return true;
+        }
+        }); **/
 
         Resources resources = this.getResources();
         String label = resources.getString(this.getApplicationInfo().labelRes);
@@ -227,6 +230,16 @@ public class Home extends MLandBase {
         }
     }
 
+    /**  private void initAddNavItemButton(Button addNavItemButton) {
+     addNavItemButton.setOnClickListener(
+     v -> {
+     if (numVisibleChildren < MAX_BOTTOM_NAV_CHILDREN) {
+     addNavItemsToBottomNavs();
+     numVisibleChildren++;
+     }
+     });
+     } **/
+
 
     /**
      * Sets the status bar to be light or not. Light status bar means dark icons.
@@ -242,6 +255,17 @@ public class Home extends MLandBase {
             runOnUiThread(() -> getWindow().getDecorView().setSystemUiVisibility(systemUiFlags));
         }
     }
+    //  private void addNavItemsToBottomNavs() {
+    //   adjustAllBottomNavItemsVisibilities(true);
+    // }
+
+//  private void adjustAllBottomNavItemsVisibilities(boolean visibility) {
+    //     adjustBottomNavItemsVisibility(bottomNavigationView, visibility);
+//    }
+
+//    private void adjustBottomNavItemsVisibility(BottomNavigationView bn, boolean visibility) {
+//    bottomNavigationView.getMenu().getItem(numVisibleChildren).setVisible(visibility);
+    // }  **/
 
     private void getBodyText() {
 
@@ -269,6 +293,11 @@ public class Home extends MLandBase {
                             Elements myin = doc.getElementsByClass("wt-class-table");
                             Elements links = content.getElementsByTag("a");
                             Elements masthead = doc.select("p:contains(Aviation ):");
+
+                            //      -- Get Country rank --
+                            Elements planeList = doc.select("div.mw-category-generated");
+                          //  String countryRankTextString = divCountryRank.text();
+                            //     -- end get Country rank --
 
                             Elements test = doc.select("img[src$=.png]");
                             for (Element link : links) {
@@ -325,7 +354,7 @@ public class Home extends MLandBase {
 
     public void onPause() {
         super.onPause();
-        overridePendingTransition(0, 0);
+        //      overridePendingTransition(0, 0);
     }
 
     // Remove inter-activity transition to avoid screen tossing on tapping bottom navigation items

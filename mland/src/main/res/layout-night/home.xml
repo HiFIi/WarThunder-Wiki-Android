@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d9d9d9">
+    android:background="#112B38">
 
     <LinearLayout
         android:id="@+id/main_content"
@@ -39,7 +39,7 @@
                 android:src="@drawable/usa_f16"
                 android:clipToOutline="true"
                 android:cropToPadding="false"
-                android:elevation="20.0dip"
+                android:elevation="10.0dip"
                 android:scaleType="centerCrop" />
             </FrameLayout>
 
@@ -48,19 +48,19 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/home_pic"
                 android:layout_alignParentStart="true"
-                android:background="#f9f9f9"
-                android:elevation="10.0dip"
+                android:background="#112B38"
+                android:elevation="20.0dip"
                 android:clipChildren="false"
                 app:tabContentStart="24dp"
                 app:tabGravity="start"
                 android:layout_marginTop="-16dp"
-                app:tabIconTint="#505050"
+                app:tabIconTint="#fafafa"
                 app:tabMode="scrollable"
                 app:tabPaddingEnd="16dp"
                 app:tabPaddingStart="16dp"
                 app:tabRippleColor="@color/black_40"
                 app:tabSelectedTextAppearance="?attr/textAppearanceCaption"
-                app:tabTextColor="#505050">
+                app:tabTextColor="#fafafa">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:icon="@drawable/germany"
                     android:text="Germany"
-                    app:tabIconTint="#505050" />
+                    app:tabIconTint="#fafafa" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"

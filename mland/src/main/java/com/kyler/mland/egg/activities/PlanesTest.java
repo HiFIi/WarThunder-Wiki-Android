@@ -61,6 +61,7 @@ public class PlanesTest extends MLandBase {
     public String textSource;
     private Handler mHandler;
 
+
     @Override
     protected int getSelfNavDrawerItem() {
         return NAVDRAWER_ITEM_HOME;

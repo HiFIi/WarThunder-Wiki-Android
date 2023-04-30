@@ -174,14 +174,12 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/colorPrimaryDark</item>
     </style>
-    
+
     <style name="AppBottomNavigation2" parent="Widget.Design.BottomNavigationView">
-        <item name="backgroundTint">@null</item>
-        <item name="itemIconTint">@null</item>
-        <item name="itemTextColor">#10101c</item>
-        <item name="itemRippleColor">@color/bottom_navigation_item_ripple_color</item>
-        <item name="itemTextAppearanceActive">?attr/textAppearanceCaption</item>
-        <item name="itemTextAppearanceInactive">?attr/textAppearanceCaption</item>
+        <item name="backgroundTint">#fafafa</item>
+        <item name="itemIconTint">#fafafa</item>
+        <item name="height">50dp</item>
+        <item name="itemTextColor">#fafafa</item>
     </style>
 
 </resources>

@@ -3,6 +3,7 @@ package com.kyler.mland.egg.activities;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
@@ -26,6 +28,7 @@ import com.facebook.drawee.view.DraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.core.ImageTranscoderType;
 import com.facebook.imagepipeline.core.MemoryChunkType;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.ui.MLandTextView;
@@ -36,6 +39,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -43,6 +47,7 @@ import java.util.Objects;
  */
 @SuppressWarnings("DefaultFileTemplate")
 public class Home extends MLandBase {
+    protected static final int NAVDRAWER_ITEM_USA = 0;
     private static final String mUSAFlagLink =
             "https://wiki.warthunder.com/images/9/9f/USA_flag.png";
     private static final String mGermanyFlagLink =
@@ -82,6 +87,7 @@ public class Home extends MLandBase {
             "Israel_aircraft"
     };
     private final String wt = "https://wiki.warthunder.com/Aviation";
+    private final ArrayList<Integer> mNavDrawerItems = new ArrayList<>();
     private Handler mHandler;
     private DraweeView dv;
     private WebView webView;
@@ -162,13 +168,37 @@ public class Home extends MLandBase {
         runner.execute("10");
         Log.d("tag", "GANESH LOGO: AsyncTaskRunner ... ");
 
+
         mHandler = new Handler();
+
+        mActionBarToolbar.setNavigationIcon(R.drawable.ic_drawer);
 
         Home.cc = getApplication().getApplicationContext();
 
         Objects.requireNonNull(getSupportActionBar()).setTitle(null);
 
         runGitScript();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.bb_usa);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                Intent intent;
+                int itemId = item.getItemId();
+                if (itemId == R.id.bb_usa) {
+                    intent = new Intent(getApplicationContext(), PlanesTest.class);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+                }
+                return true;
+            }
+        });
+
 
         Resources resources = this.getResources();
         String label = resources.getString(this.getApplicationInfo().labelRes);
@@ -197,6 +227,7 @@ public class Home extends MLandBase {
         }
     }
 
+
     /**
      * Sets the status bar to be light or not. Light status bar means dark icons.
      */
@@ -220,7 +251,7 @@ public class Home extends MLandBase {
                 new Runnable() {
                     @Override
                     public void run() {
-                        MLandTextView result = (MLandTextView) findViewById(R.id.result);
+                        MLandTextView result = findViewById(R.id.result);
                         // binding.getRoot().findViewById(R.id.iv);
                         //SimpleDraweeView draweeView =
                         //       (SimpleDraweeView) findViewById(R.id.home_pic);
@@ -286,6 +317,18 @@ public class Home extends MLandBase {
                     });
         }
     }
+
+    public void onStart() {
+        super.onStart();
+//        updateNavigationBarState();
+    }
+
+    public void onPause() {
+        super.onPause();
+        overridePendingTransition(0, 0);
+    }
+
+    // Remove inter-activity transition to avoid screen tossing on tapping bottom navigation items
 
     private class MyBrowser extends WebViewClient {
         @Override

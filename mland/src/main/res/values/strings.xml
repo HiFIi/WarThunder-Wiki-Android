@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">WT App</string>
-    <string name="mland_original">MLand (Original)</string>
-    <string name="mland_modified">MLand (Modified)</string>
-    <string name="home">Home</string>
+    <string name="mland_original">Ships</string>
+    <string name="mland_modified">Tanks</string>
+    <string name="home">Planes / Jets</string>
     <string name="about">About</string>
 
     <string name="anim_even_longer" translatable="false">5000</string>

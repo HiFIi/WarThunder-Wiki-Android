@@ -2,127 +2,31 @@
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
-    android:background="#e5e5e5"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#fafafa">
 
     <LinearLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#fafafa"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/home_pic"
             android:layout_width="fill_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/war_thunder_home_image_one" />
+            android:layout_height="175dp"
+            android:background="@drawable/wt_plane"
+            android:clipChildren="false"
+            android:elevation="24.0dip" />
 
         <RelativeLayout
             android:id="@+id/main_content_ll"
             android:layout_width="fill_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="150.0dip"
-                android:clipToPadding="false"
-                android:elevation="8.0dip"
-                android:fitsSystemWindows="true">
-
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:background="@drawable/fighter_jet_top_view"
-                    android:scaleType="centerInside"
-                    android:visibility="invisible" />
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent">
-
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent">
-
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/bottom_navigation"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    style="@style/AppBottomNavigation2"
-                    app:backgroundTint="#ededed"
-                    app:itemIconTint="#10101c"
-                    android:elevation="8.0dip"
-                    app:menu="@menu/bottom_navigation_menu" />
-
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/bottom_navigation_two"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:elevation="8.0dip"
-                    app:elevation="8.0dip"
-                    style="@style/AppBottomNavigation2"
-                    android:layout_below="@id/bottom_navigation"
-                    android:layout_alignBaseline="@id/bottom_navigation"
-                    android:layout_marginTop="10dp"
-                    app:backgroundTint="#fafafa"
-                    app:menu="@menu/bottom_navigation_menu_two" />
-
-                <androidx.constraintlayout.motion.widget.MotionLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layoutDescription="@xml/home_scene"
-                    tools:ignore="MotionLayoutInvalidSceneFileReference">
-
-                    <ImageView
-                        android:id="@+id/imageView0"
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:background="@drawable/fighter_jet_top_view"
-                        android:scaleType="centerInside"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/imageView1"
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:background="@drawable/fighter_jet_top_view"
-                        android:scaleType="centerInside"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:background="@drawable/fighter_jet_top_view"
-                        android:scaleType="centerInside"
-                        android:visibility="invisible" />
-
-                    <androidx.constraintlayout.helper.widget.Carousel
-                        android:id="@+id/carousel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        app:carousel_backwardTransition="@+id/backward"
-                        app:carousel_firstView="@+id/imageView2"
-                        app:carousel_forwardTransition="@+id/forward"
-                        app:carousel_infinite="true"
-                        app:carousel_nextState="@+id/next"
-                        app:carousel_previousState="@+id/previous"
-                        app:constraint_referenced_ids="imageView0,imageView1,imageView2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.motion.widget.MotionLayout>
-
-            </RelativeLayout>
 
             <!-- <ListView android:id="@+id/list" android:layout_width="fill_parent" android:layout_height="800dp" android:background="#fafafa" android:clickable="true" android:dividerHeight="1dp" android:footerDividersEnabled="false" android:headerDividersEnabled="false"> </ListView> -->
 
@@ -139,7 +43,44 @@
                 android:textSize="16sp"
                 customfontdemo:fontName="ProductSans-Regular.ttf" />
 
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation"
+                    style="@style/AppBottomNavigation2"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:layout_alignBottom="@id/bottom_navigation"
+                    app:backgroundTint="#112B38"
+                    app:itemIconTint="#fafafa"
+                    app:itemTextAppearanceActive="?attr/textAppearanceListItemSecondary"
+                    app:itemTextAppearanceInactive="?attr/itemTextColor"
+                    app:itemTextColor="#fafafa"
+                    app:labelVisibilityMode="labeled"
+                    app:menu="@menu/bottom_navigation_menu" />
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation_two"
+                    style="@style/AppBottomNavigation2"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:layout_below="@id/bottom_navigation"
+                    android:layout_alignBaseline="@id/bottom_navigation"
+                    android:layout_marginBottom="8.0dip"
+                    app:backgroundTint="#112B38"
+                    app:itemIconTint="#fafafa"
+                    app:itemTextAppearanceActive="?attr/textAppearanceListItemSecondary"
+                    app:labelVisibilityMode="labeled"
+                    app:menu="@menu/bottom_navigation_menu_two" />
+
+            </RelativeLayout>
+
         </RelativeLayout>
+
+
     </LinearLayout>
 
     <RelativeLayout

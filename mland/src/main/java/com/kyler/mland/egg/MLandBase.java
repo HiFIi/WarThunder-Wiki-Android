@@ -83,7 +83,6 @@ public abstract class MLandBase extends AppCompatActivity {
     public Toolbar mActionBarToolbar;
     public Context context;
     SharedPreferences pref;
-
     private EditText editText;
     private DrawerLayout mDrawerLayout;
     // A Runnable that we should execute when the navigation drawer finishes its closing animation

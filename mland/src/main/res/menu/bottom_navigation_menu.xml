@@ -2,20 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bb_usa"
-        android:icon="@drawable/usa"
-        android:title="USA" />
+        android:title="@string/country_usa" />
     <item
         android:id="@+id/bb_germany"
-        android:icon="@drawable/germany"
-        android:title="Germany" />
+        android:title="@string/country_germany" />
     <item
         android:id="@+id/bb_ussr"
-        android:enabled="true"
-        android:icon="@drawable/italy"
-        android:title="USSR" />
+        android:title="@string/country_ussr" />
     <item
         android:id="@+id/bb_britain"
-        android:enabled="true"
-        android:icon="@drawable/britain_flag"
-        android:title="Britain" />
+        android:title="@string/country_britain" />
+    <item
+        android:id="@+id/bb_japan"
+        android:title="@string/country_japan" />
+
+
 </menu>

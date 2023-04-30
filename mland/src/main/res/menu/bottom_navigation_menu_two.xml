@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/bb_usaTwo"
-        android:icon="@drawable/usa"
-        android:title="USA" />
+        android:id="@+id/bb_china"
+        android:checked="false"
+        android:title="@string/country_china" />
     <item
-        android:id="@+id/bb_germanyTwo"
-        android:icon="@drawable/usa"
-        android:title="Germany" />
+        android:id="@+id/bb_italy"
+        android:title="@string/country_italy" />
     <item
-        android:id="@+id/bb_ussrTwo"
-        android:enabled="true"
-        android:icon="@drawable/ussr_flag"
-        android:title="USSR" />
+        android:id="@+id/bb_france"
+        android:title="@string/country_france" />
     <item
-        android:id="@+id/bb_britainTwo"
-        android:enabled="true"
-        android:icon="@drawable/britain_flag"
-        android:title="Britain" />
+        android:id="@+id/bb_sweden"
+        android:title="@string/country_sweden" />
+    <item
+        android:id="@+id/bb_israel"
+        android:title="@string/country_israel" />
 </menu>

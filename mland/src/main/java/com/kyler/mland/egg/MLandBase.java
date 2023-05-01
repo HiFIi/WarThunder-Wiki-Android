@@ -72,9 +72,9 @@ public abstract class MLandBase extends AppCompatActivity {
     // icons for navdrawer items (indices must correspond to above array)
     private static final int[] NAVDRAWER_ICON_RES_ID =
             new int[]{
-                    R.drawable.drawer_plane,
-                    R.drawable.ship_drawer,
-                    R.drawable.drawer_tank,
+                    R.drawable.temp_drawer_plane,
+                    R.drawable.temp_drawer_naval,
+                    R.drawable.temp_drawer_tank,
                     0
             };
     // list of navdrawer items that were actually added to the navdrawer, in order
@@ -211,7 +211,7 @@ public abstract class MLandBase extends AppCompatActivity {
             }
             if (selfItem == NAVDRAWER_ITEM_HOME) {
                 mActionBarToolbar.setNavigationIcon(
-                        getResources().getDrawable(R.drawable.ic_drawer));
+                        getResources().getDrawable(R.drawable.ic_drawer_white));
             }
         }
 

@@ -8,14 +8,14 @@
 
     <com.google.samples.apps.iosched.ui.widget.ObservableScrollView
         android:id="@+id/scroll_view"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never">
 
         <FrameLayout
             android:id="@+id/scroll_view_child"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/details_container"
@@ -27,7 +27,6 @@
                 android:background="#112B38"
                 android:orientation="vertical"
                 android:paddingBottom="8dp">
-
 
                 <TextView
                     android:id="@+id/textView"
@@ -43,13 +42,13 @@
 
             <FrameLayout
                 android:id="@+id/session_photo_container"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="900dp">
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/session_photo"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     fresco:actualImageScaleType="centerCrop"
                     fresco:placeholderImage="@drawable/bubbles" />
@@ -57,7 +56,7 @@
 
             <LinearLayout
                 android:id="@+id/header_session"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
                 android:orientation="vertical" />

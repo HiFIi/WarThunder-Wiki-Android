@@ -23,6 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="false"
+                android:alpha="0.3"
+                android:background="@drawable/usa_behind_photo"
                 android:clipChildren="false">
 
             <ImageView
@@ -34,7 +36,7 @@
                 android:layout_marginRight="24.0dip"
                 android:layout_marginBottom="36.0dip"
                 android:adjustViewBounds="false"
-                android:alpha="0.8"
+                android:alpha="0.9"
                 android:clipChildren="false"
                 android:src="@drawable/usa_f16"
                 android:clipToOutline="true"

@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
+import androidx.core.view.ViewCompat;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.DraweeView;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -119,6 +120,9 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private DraweeView dv;
     private WebView webView;
     private Button submit;
+    private static int planeTabsHeight;
+    private static int toolBarHeight;
+    private static int toolBarPlusPlaneTabsHeight;
 
     public static Context getAppContext() {
         return Home.cc;
@@ -284,13 +288,13 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
 
         // get the height of the planetabs and toolbar, divide both by 2
         // this is done to anchor it to the tabs layout on parallax scrolling
-        int y = planeTabs.getMeasuredHeight() / 2;
-        int t = mActionBarToolbar.getMeasuredHeight() / 2;
+        planeTabsHeight = planeTabs.getMeasuredHeight() / 2;
+        toolBarHeight = mActionBarToolbar.getMeasuredHeight() / 2;
 
         // get both above values and then quarter it
         // this is done to put the drawer icon in the correct place
-        int yt = y + t / 4;
-        mActionBarToolbar.setPadding(0, yt, 0, 0);
+        toolBarPlusPlaneTabsHeight = planeTabsHeight + toolBarHeight / 4;
+        mActionBarToolbar.setPadding(0, toolBarPlusPlaneTabsHeight, 0, 0);
 
         // display the drawee image, etc
         displayData();

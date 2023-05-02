@@ -1,152 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.google.samples.apps.iosched.ui.widget.ObservableScrollView
         android:id="@+id/scroll_viewTwo"
-        android:background="#112B38"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#112B38"
         android:overScrollMode="never">
 
         <FrameLayout
             android:id="@+id/scroll_view_childTwo"
-            android:background="#112B38"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#112B38">
 
             <LinearLayout
                 android:id="@+id/details_containerTwo"
                 android:layout_width="match_parent"
-                android:paddingBottom="8dp"
                 android:layout_height="2500dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="8dp">
 
                 <!-- <ListView android:id="@+id/list" android:layout_width="fill_parent" android:layout_height="800dp" android:background="#fafafa" android:clickable="true" android:dividerHeight="1dp" android:footerDividersEnabled="false" android:headerDividersEnabled="false"> </ListView> -->
             </LinearLayout>
 
             <FrameLayout
-                android:layout_height="wrap_content"
+                android:id="@+id/session_photo_containerTwo"
                 android:layout_width="match_parent"
-                android:elevation="16.0dip"
-                android:outlineProvider="paddedBounds"
-                android:background="#112B38"
+                android:layout_height="wrap_content"
                 android:layout_gravity="top"
-                android:id="@+id/session_photo_containerTwo">
+                android:background="#112B38"
+                android:elevation="16.0dip"
+                android:outlineProvider="paddedBounds">
+
                 <com.facebook.drawee.view.SimpleDraweeView
-                    android:layout_height="wrap_content"
+                    android:id="@+id/session_photoTwo"
                     android:layout_width="match_parent"
-                    fresco:actualImageScaleType="centerCrop"
-                    android:scaleType="centerCrop"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
                     android:background="@drawable/cool_jet_pic"
                     android:elevation="16.0dip"
-                    app:viewAspectRatio="1.33"
-                    fresco:placeholderImage="@drawable/bubbles"
                     android:outlineProvider="paddedBounds"
-                    android:id="@+id/session_photoTwo" />
+                    android:scaleType="centerCrop"
+                    app:viewAspectRatio="1.33"
+                    fresco:actualImageScaleType="centerCrop"
+                    fresco:placeholderImage="@drawable/bubbles" />
             </FrameLayout>
+
             <LinearLayout
                 android:id="@+id/header_sessionTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#112B38"
                 android:elevation="16.0dip"
-                android:outlineProvider="paddedBounds"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:outlineProvider="paddedBounds">
+
                 <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:background="#112B38"
                     android:elevation="16.0dip"
-                    android:outlineProvider="paddedBounds"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:outlineProvider="paddedBounds">
+
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/plane_tabs"
-                        android:layout_height="100.0dip"
                         android:layout_width="match_parent"
-                        app:tabMode="scrollable"
-                        android:elevation="16.0dip"
+                        android:layout_height="100.0dip"
                         android:layout_marginLeft="?attr/actionBarSize"
-                        android:clickable="true"
-                        app:tabTextColor="#fff"
-                        app:tabSelectedTextAppearance="?attr/textAppearanceCaption"
-                        app:tabIconTintMode="multiply"
-                        android:background="#112B38"
-                        app:tabIconTint="#fafafa"
                         android:layout_marginTop="?attr/actionBarSize"
+                        android:background="#112B38"
+                        android:clickable="true"
+                        android:elevation="16.0dip"
                         android:outlineProvider="paddedBounds"
-                        app:tabRippleColor="@color/black_40">
+                        app:tabIconTint="#fafafa"
+                        app:tabIconTintMode="multiply"
+                        app:tabMode="scrollable"
+                        app:tabRippleColor="@color/black_40"
+                        app:tabSelectedTextAppearance="?attr/textAppearanceCaption"
+                        app:tabTextColor="#fff">
 
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fff"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/usa_flag"
-                            android:text="USA" />
+                            android:text="USA"
+                            customfontdemo:tabIconTint="#fff" />
+
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fafafa"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/germany_flag"
-                            android:text="Germany" />
+                            android:text="Germany"
+                            customfontdemo:tabIconTint="#fafafa" />
+
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fff"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/ussr_flag"
-                            android:text="USSR" />
+                            android:text="USSR"
+                            customfontdemo:tabIconTint="#fff" />
+
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fff"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/britain_flag"
-                            android:text="Britain" />
+                            android:text="Britain"
+                            customfontdemo:tabIconTint="#fff" />
+
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fff"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/japan_flag"
-                            android:text="Japan" />
+                            android:text="Japan"
+                            customfontdemo:tabIconTint="#fff" />
+
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fff"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/china_flag"
-                            android:text="China" />
+                            android:text="China"
+                            customfontdemo:tabIconTint="#fff" />
+
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fff"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/italy_flag"
-                            android:text="Italy" />
+                            android:text="Italy"
+                            customfontdemo:tabIconTint="#fff" />
+
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fff"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/france_flag"
-                            android:text="France" />
+                            android:text="France"
+                            customfontdemo:tabIconTint="#fff" />
+
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fff"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/sweden_flag"
-                            android:text="Sweden" />
+                            android:text="Sweden"
+                            customfontdemo:tabIconTint="#fff" />
+
                         <com.google.android.material.tabs.TabItem
-                            android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            customfontdemo:tabIconTint="#fff"
+                            android:layout_height="wrap_content"
                             android:icon="@drawable/israel_flag"
-                            android:text="Israel" />
+                            android:text="Israel"
+                            customfontdemo:tabIconTint="#fff" />
                     </com.google.android.material.tabs.TabLayout>
                 </FrameLayout>
             </LinearLayout>
         </FrameLayout>
     </com.google.samples.apps.iosched.ui.widget.ObservableScrollView>
+
     <RelativeLayout
         android:id="@+id/md_container"
         android:layout_width="match_parent"

@@ -92,7 +92,7 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.1'
 
     implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.169.0'
-    
+
     implementation 'com.github.jitpack:android-example:+'
 
     implementation group: 'androidx.palette', name: 'palette', version: '1.0.0'

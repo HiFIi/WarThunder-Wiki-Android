@@ -1,6 +1,5 @@
 package com.kyler.mland.egg.activities;
 
-import android.util.DisplayMetrics;
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 import android.annotation.TargetApi;
@@ -26,7 +25,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
-import androidx.core.view.ViewCompat;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.DraweeView;
@@ -49,7 +47,9 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.Objects;
 
-/** Created by kyler on 10/26/15. */
+/**
+ * Created by kyler on 10/26/15.
+ */
 @SuppressWarnings("DefaultFileTemplate")
 public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     protected static final int NAVDRAWER_ITEM_USA = 0;
@@ -73,13 +73,29 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
             "https://wiki.warthunder.com/images/c/ca/Sweden_flag.png";
     private static final String mIsraelFlagLink =
             "https://wiki.warthunder.com/images/f/f9/Israel_flag.png";
+    private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
+    private static final float DRAWEE_PHOTO_ASPECT_RATIO = 1.33f;
     public static Uri uri =
             Uri.parse("https://wiki.warthunder.com/images/4/4c/GarageImage_P-36G.jpg");
     private static Bitmap sIcon = null;
     private static Window window;
     private static Context cc;
-    private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
-    private static final float DRAWEE_PHOTO_ASPECT_RATIO = 1.33f;
+    private final String mPlaneCategories = "https://wiki.warthunder.com/Category:";
+    private final String[] title = {
+            "USA_aircraft",
+            "Germany",
+            "USSR_aircraft",
+            "Britain_aircraft",
+            "Japan_aircraft",
+            "Britain_aircraft",
+            "Italy_aircraft",
+            "France_aircraft",
+            "Sweden_aircraft",
+            "Israel_aircraft"
+    };
+    //   private static final int MAX_BOTTOM_NAV_CHILDREN = 5;
+    //   private int numVisibleChildren = 3;
+    private final String wt = "https://wiki.warthunder.com/Aviation";
     public SimpleDraweeView draweeView;
     private int mPhotoHeightPixels;
     private View mScrollViewChild;
@@ -90,29 +106,6 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private boolean mHasPhoto;
     private float mMaxHeaderElevation;
     private View mHeaderBox;
-    private Handler mHandler;
-    private TabLayout planeTabs;
-    private Handler mHandlerr;
-    private final String mPlaneCategories = "https://wiki.warthunder.com/Category:";
-    private final String[] title = {
-        "USA_aircraft",
-        "Germany",
-        "USSR_aircraft",
-        "Britain_aircraft",
-        "Japan_aircraft",
-        "Britain_aircraft",
-        "Italy_aircraft",
-        "France_aircraft",
-        "Sweden_aircraft",
-        "Israel_aircraft"
-    };
-    //   private static final int MAX_BOTTOM_NAV_CHILDREN = 5;
-    //   private int numVisibleChildren = 3;
-    private final String wt = "https://wiki.warthunder.com/Aviation";
-    private Handler mHandlerTwo;
-    private DraweeView dv;
-    private WebView webView;
-    private Button submit;
     //  private static String draweeUrlString;
     private final OnGlobalLayoutListener mGlobalLayoutListener =
             new OnGlobalLayoutListener() {
@@ -121,6 +114,13 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                     recomputePhotoAndScrollingMetrics();
                 }
             };
+    private Handler mHandler;
+    private TabLayout planeTabs;
+    private Handler mHandlerr;
+    private Handler mHandlerTwo;
+    private DraweeView dv;
+    private WebView webView;
+    private Button submit;
 
     public static Context getAppContext() {
         return Home.cc;
@@ -226,7 +226,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
 
         mHandler = new Handler();
         mHandlerr = new Handler();
-        
+
         initViews();
     }
 
@@ -282,10 +282,10 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         // draweeView.setAspectRatio(DRAWEE_PHOTO_ASPECT_RATIO);
         draweeView.setImageURI(mDraweeUri);
         int y = planeTabs.getHeight();
-                    int t = mActionBarToolbar.getHeight();
-                    mActionBarToolbar.setPadding(0, y + t, 0, 0);
-        
-        
+        int t = mActionBarToolbar.getHeight();
+        mActionBarToolbar.setPadding(0, y + t, 0, 0);
+
+
         displayData();
     }
 
@@ -340,7 +340,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         int scrollY = mScrollView.getScrollY();
 
         float newTop = Math.max(mPhotoHeightPixels, scrollY);
-        
+
         mHeaderBox.setTranslationY(newTop);
 
         float gapFillProgress = 1;
@@ -359,16 +359,16 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
             }
 
-           /** ViewCompat.setElevation(draweeView, gapFillProgress * mMaxHeaderElevation / 2);
-            ViewCompat.setElevation(mDetailsContainer, gapFillProgress * mMaxHeaderElevation / 4);
-            ViewCompat.setElevation(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 4);
+            /** ViewCompat.setElevation(draweeView, gapFillProgress * mMaxHeaderElevation / 2);
+             ViewCompat.setElevation(mDetailsContainer, gapFillProgress * mMaxHeaderElevation / 4);
+             ViewCompat.setElevation(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 4);
 
-            ViewCompat.setTranslationZ(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 2);
+             ViewCompat.setTranslationZ(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 2);
 
-            // testing
-            ViewCompat.setTranslationZ(draweeView, gapFillProgress * mMaxHeaderElevation / 2);
-            ViewCompat.setTranslationZ(
-                    mDetailsContainer, gapFillProgress * mMaxHeaderElevation / 2); **/
+             // testing
+             ViewCompat.setTranslationZ(draweeView, gapFillProgress * mMaxHeaderElevation / 2);
+             ViewCompat.setTranslationZ(
+             mDetailsContainer, gapFillProgress * mMaxHeaderElevation / 2); **/
 
             // Move background photo (parallax effect)
             mPhotoViewContainer.setTranslationY(scrollY * 0.5f);
@@ -381,7 +381,9 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
      * { addNavItemsToBottomNavs(); numVisibleChildren++; } }); } *
      */
 
-    /** Sets the status bar to be light or not. Light status bar means dark icons. */
+    /**
+     * Sets the status bar to be light or not. Light status bar means dark icons.
+     */
     @TargetApi(Build.VERSION_CODES.O)
     private void activateLightNavigationBar() {
         int oldSystemUiFlags = getWindow().getDecorView().getSystemUiVisibility();
@@ -410,59 +412,59 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         final StringBuilder builder = new StringBuilder();
 
         new Thread(
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                MLandTextView result = findViewById(R.id.result);
-                                // binding.getRoot().findViewById(R.id.iv);
-                                // SimpleDraweeView draweeView =
-                                //       (SimpleDraweeView) findViewById(R.id.home_pic);
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        MLandTextView result = findViewById(R.id.result);
+                        // binding.getRoot().findViewById(R.id.iv);
+                        // SimpleDraweeView draweeView =
+                        //       (SimpleDraweeView) findViewById(R.id.home_pic);
 
-                                try {
-                                    Document doc = Jsoup.connect(wt).get();
+                        try {
+                            Document doc = Jsoup.connect(wt).get();
 
-                                    // draweeView.setImageURI(uri);
-                                    // draweeView.setVisibility(View.VISIBLE);
+                            // draweeView.setImageURI(uri);
+                            // draweeView.setVisibility(View.VISIBLE);
 
-                                    String title = doc.title();
-                                    String text = doc.body().text(); // "An example link"
-                                    Element content = doc.getElementById("content");
-                                    Elements table = doc.select("table");
-                                    Elements myin = doc.getElementsByClass("wt-class-table");
-                                    Elements links = content.getElementsByTag("a");
-                                    Elements masthead = doc.select("p:contains(Aviation ):");
+                            String title = doc.title();
+                            String text = doc.body().text(); // "An example link"
+                            Element content = doc.getElementById("content");
+                            Elements table = doc.select("table");
+                            Elements myin = doc.getElementsByClass("wt-class-table");
+                            Elements links = content.getElementsByTag("a");
+                            Elements masthead = doc.select("p:contains(Aviation ):");
 
-                                    //      -- Get Country rank --
-                                    Elements planeList = doc.select("div.mw-category-generated");
-                                    //  String countryRankTextString = divCountryRank.text();
-                                    //     -- end get Country rank --
+                            //      -- Get Country rank --
+                            Elements planeList = doc.select("div.mw-category-generated");
+                            //  String countryRankTextString = divCountryRank.text();
+                            //     -- end get Country rank --
 
-                                    Elements test = doc.select("img[src$=.png]");
-                                    for (Element link : links) {
-                                        String linkHref = link.attr("href");
-                                        String linkText = link.text();
-                                    }
-                                    // Elements links = doc.select("h3.r > a");
-                                    for (Element link : links) {
-                                        builder.append(title)
-                                                .append(myin)
-                                                .append(table)
-                                                .append("")
-                                                .append(link.text());
-                                    }
-
-                                } catch (Exception e) {
-
-                                }
-                                mHandlerr.post(
-                                        new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                // result.setText(builder.toString());
-                                            }
-                                        });
+                            Elements test = doc.select("img[src$=.png]");
+                            for (Element link : links) {
+                                String linkHref = link.attr("href");
+                                String linkText = link.text();
                             }
-                        })
+                            // Elements links = doc.select("h3.r > a");
+                            for (Element link : links) {
+                                builder.append(title)
+                                        .append(myin)
+                                        .append(table)
+                                        .append("")
+                                        .append(link.text());
+                            }
+
+                        } catch (Exception e) {
+
+                        }
+                        mHandlerr.post(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // result.setText(builder.toString());
+                                    }
+                                });
+                    }
+                })
                 .start();
     }
 

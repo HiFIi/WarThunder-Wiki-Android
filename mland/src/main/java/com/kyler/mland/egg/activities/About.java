@@ -92,7 +92,7 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
         mHasPhoto = true;
 
         mHandler = new Handler();
-        
+
         initViews();
     }
 

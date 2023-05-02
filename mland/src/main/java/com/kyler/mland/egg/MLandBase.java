@@ -177,7 +177,7 @@ public abstract class MLandBase extends AppCompatActivity {
         if (mDrawerLayout == null) {
             return;
         }
-        boolean isDarkThemeOn = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)  == Configuration.UI_MODE_NIGHT_YES;
+        boolean isDarkThemeOn = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
 
 
         mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.transparent));
@@ -198,7 +198,6 @@ public abstract class MLandBase extends AppCompatActivity {
             mDrawerLayout = null;
             return;
         }
-
 
 
         if (mActionBarToolbar != null) {

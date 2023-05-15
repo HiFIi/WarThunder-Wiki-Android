@@ -26,7 +26,6 @@ import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
-import androidx.core.view.ViewCompat;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.DraweeView;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -48,7 +47,9 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.Objects;
 
-/** Created by kyler on 10/26/15. */
+/**
+ * Created by kyler on 10/26/15.
+ */
 @SuppressWarnings("DefaultFileTemplate")
 public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     protected static final int NAVDRAWER_ITEM_USA = 0;
@@ -81,16 +82,16 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private static Context cc;
     private final String mPlaneCategories = "https://wiki.warthunder.com/Category:";
     private final String[] title = {
-        "USA_aircraft",
-        "Germany",
-        "USSR_aircraft",
-        "Britain_aircraft",
-        "Japan_aircraft",
-        "Britain_aircraft",
-        "Italy_aircraft",
-        "France_aircraft",
-        "Sweden_aircraft",
-        "Israel_aircraft"
+            "USA_aircraft",
+            "Germany",
+            "USSR_aircraft",
+            "Britain_aircraft",
+            "Japan_aircraft",
+            "Britain_aircraft",
+            "Italy_aircraft",
+            "France_aircraft",
+            "Sweden_aircraft",
+            "Israel_aircraft"
     };
     //   private static final int MAX_BOTTOM_NAV_CHILDREN = 5;
     //   private int numVisibleChildren = 3;
@@ -120,9 +121,6 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private DraweeView dv;
     private WebView webView;
     private Button submit;
-    private static int planeTabsHeight;
-    private static int toolBarHeight;
-    private static int toolBarPlusPlaneTabsHeight;
 
     public static Context getAppContext() {
         return Home.cc;
@@ -282,21 +280,12 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                         "https://static.warthunder.com/upload/image//wallpapers/3840x2160_logo_drone_age_battlecruiser_alaska_eng_f08dcc6737f71a993755c2946b529f9c.jpg");
         draweeView = (SimpleDraweeView) findViewById(R.id.session_photoTwo);
         // draweeView.setAspectRatio(DRAWEE_PHOTO_ASPECT_RATIO);
-        planeTabs.measure(0, 0);
-        mActionBarToolbar.measure(0, 0);
         draweeView.setImageURI(mDraweeUri);
+        int y = planeTabs.getHeight();
+        int t = mActionBarToolbar.getHeight();
+        mActionBarToolbar.setPadding(0, y + t, 0, 0);
 
-        // get the height of the planetabs and toolbar, divide both by 2
-        // this is done to anchor it to the tabs layout on parallax scrolling
-        planeTabsHeight = planeTabs.getMeasuredHeight() / 2;
-        toolBarHeight = mActionBarToolbar.getMeasuredHeight() / 2;
 
-        // get both above values and then quarter it
-        // this is done to put the drawer icon in the correct place
-        toolBarPlusPlaneTabsHeight = planeTabsHeight + toolBarHeight / 4;
-        mActionBarToolbar.setPadding(0, toolBarPlusPlaneTabsHeight, 0, 0);
-
-        // display the drawee image, etc
         displayData();
     }
 
@@ -370,17 +359,16 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
             }
 
-            /**
-             * ViewCompat.setElevation(draweeView, gapFillProgress * mMaxHeaderElevation / 2);
-             * ViewCompat.setElevation(mDetailsContainer, gapFillProgress * mMaxHeaderElevation /
-             * 4); ViewCompat.setElevation(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 4);
-             *
-             * <p>ViewCompat.setTranslationZ(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 2);
-             *
-             * <p>// testing ViewCompat.setTranslationZ(draweeView, gapFillProgress *
-             * mMaxHeaderElevation / 2); ViewCompat.setTranslationZ( mDetailsContainer,
-             * gapFillProgress * mMaxHeaderElevation / 2); *
-             */
+            /** ViewCompat.setElevation(draweeView, gapFillProgress * mMaxHeaderElevation / 2);
+             ViewCompat.setElevation(mDetailsContainer, gapFillProgress * mMaxHeaderElevation / 4);
+             ViewCompat.setElevation(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 4);
+
+             ViewCompat.setTranslationZ(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 2);
+
+             // testing
+             ViewCompat.setTranslationZ(draweeView, gapFillProgress * mMaxHeaderElevation / 2);
+             ViewCompat.setTranslationZ(
+             mDetailsContainer, gapFillProgress * mMaxHeaderElevation / 2); **/
 
             // Move background photo (parallax effect)
             mPhotoViewContainer.setTranslationY(scrollY * 0.5f);
@@ -393,7 +381,9 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
      * { addNavItemsToBottomNavs(); numVisibleChildren++; } }); } *
      */
 
-    /** Sets the status bar to be light or not. Light status bar means dark icons. */
+    /**
+     * Sets the status bar to be light or not. Light status bar means dark icons.
+     */
     @TargetApi(Build.VERSION_CODES.O)
     private void activateLightNavigationBar() {
         int oldSystemUiFlags = getWindow().getDecorView().getSystemUiVisibility();
@@ -422,59 +412,59 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         final StringBuilder builder = new StringBuilder();
 
         new Thread(
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                MLandTextView result = findViewById(R.id.result);
-                                // binding.getRoot().findViewById(R.id.iv);
-                                // SimpleDraweeView draweeView =
-                                //       (SimpleDraweeView) findViewById(R.id.home_pic);
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        MLandTextView result = findViewById(R.id.result);
+                        // binding.getRoot().findViewById(R.id.iv);
+                        // SimpleDraweeView draweeView =
+                        //       (SimpleDraweeView) findViewById(R.id.home_pic);
 
-                                try {
-                                    Document doc = Jsoup.connect(wt).get();
+                        try {
+                            Document doc = Jsoup.connect(wt).get();
 
-                                    // draweeView.setImageURI(uri);
-                                    // draweeView.setVisibility(View.VISIBLE);
+                            // draweeView.setImageURI(uri);
+                            // draweeView.setVisibility(View.VISIBLE);
 
-                                    String title = doc.title();
-                                    String text = doc.body().text(); // "An example link"
-                                    Element content = doc.getElementById("content");
-                                    Elements table = doc.select("table");
-                                    Elements myin = doc.getElementsByClass("wt-class-table");
-                                    Elements links = content.getElementsByTag("a");
-                                    Elements masthead = doc.select("p:contains(Aviation ):");
+                            String title = doc.title();
+                            String text = doc.body().text(); // "An example link"
+                            Element content = doc.getElementById("content");
+                            Elements table = doc.select("table");
+                            Elements myin = doc.getElementsByClass("wt-class-table");
+                            Elements links = content.getElementsByTag("a");
+                            Elements masthead = doc.select("p:contains(Aviation ):");
 
-                                    //      -- Get Country rank --
-                                    Elements planeList = doc.select("div.mw-category-generated");
-                                    //  String countryRankTextString = divCountryRank.text();
-                                    //     -- end get Country rank --
+                            //      -- Get Country rank --
+                            Elements planeList = doc.select("div.mw-category-generated");
+                            //  String countryRankTextString = divCountryRank.text();
+                            //     -- end get Country rank --
 
-                                    Elements test = doc.select("img[src$=.png]");
-                                    for (Element link : links) {
-                                        String linkHref = link.attr("href");
-                                        String linkText = link.text();
-                                    }
-                                    // Elements links = doc.select("h3.r > a");
-                                    for (Element link : links) {
-                                        builder.append(title)
-                                                .append(myin)
-                                                .append(table)
-                                                .append("")
-                                                .append(link.text());
-                                    }
-
-                                } catch (Exception e) {
-
-                                }
-                                mHandlerr.post(
-                                        new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                // result.setText(builder.toString());
-                                            }
-                                        });
+                            Elements test = doc.select("img[src$=.png]");
+                            for (Element link : links) {
+                                String linkHref = link.attr("href");
+                                String linkText = link.text();
                             }
-                        })
+                            // Elements links = doc.select("h3.r > a");
+                            for (Element link : links) {
+                                builder.append(title)
+                                        .append(myin)
+                                        .append(table)
+                                        .append("")
+                                        .append(link.text());
+                            }
+
+                        } catch (Exception e) {
+
+                        }
+                        mHandlerr.post(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        // result.setText(builder.toString());
+                                    }
+                                });
+                    }
+                })
                 .start();
     }
 

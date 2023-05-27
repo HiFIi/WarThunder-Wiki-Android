@@ -85,6 +85,7 @@
     <color name="wt_grey_darker">#ffcfd8dc</color>
     <color name="wt_website_text_color">#ff263238</color>
     <color name="wt_website_background">#fff6f6f6</color>
+    <color name="wt_blue">#112B38</color>
 
 
 </resources>

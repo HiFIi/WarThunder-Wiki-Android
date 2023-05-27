@@ -76,27 +76,30 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.7.0-alpha02'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha09'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.navigation:navigation-ui:2.6.0-rc01'
-    implementation 'com.facebook.fresco:fresco:3.0.0'
-    implementation 'org.jsoup:jsoup:1.16.1'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
-    implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'androidx.recyclerview:recyclerview:1.3.0'
-    implementation 'com.facebook.fresco:animated-webp:3.0.0'
-    implementation 'com.facebook.fresco:webpsupport:3.0.0'
-    implementation 'com.facebook.fresco:fresco:+'
-    implementation 'androidx.core:core-splashscreen:1.1.0-alpha01'
 
-    implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.169.0'
+    // --- im going to be lazy for now and set everything to '+' --- //
+    
+    implementation 'androidx.appcompat:appcompat:+'
+    implementation 'androidx.constraintlayout:constraintlayout:+'
+    implementation 'com.google.android.material:material:1.9.0-rc01'
+    implementation 'androidx.navigation:navigation-ui:+'
+    implementation 'com.facebook.fresco:fresco:+'
+    implementation 'org.jsoup:jsoup:+'
+    implementation 'androidx.cardview:cardview:+'
+    implementation 'com.squareup.okhttp3:okhttp:+'
+    implementation 'com.squareup.picasso:picasso:+'
+    implementation 'androidx.recyclerview:recyclerview:+'
+    implementation 'com.facebook.fresco:animated-webp:+'
+    implementation 'com.facebook.fresco:webpsupport:+'
+    implementation 'com.facebook.fresco:fresco:+'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+
+    implementation 'se.bjurr.gitchangelog:git-changelog-lib:+'
 
     implementation 'com.github.jitpack:android-example:+'
 
     implementation group: 'androidx.palette', name: 'palette', version: '1.0.0'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.2.0-alpha01'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.0-alpha01'
+    androidTestImplementation 'androidx.test.ext:junit:+'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:+'
 }

@@ -38,28 +38,6 @@ public class MockPlanePage extends AppCompatActivity {
                         .build());
 
         setContentView(R.layout.layout_mock_plane_page);
-
-        SimpleDraweeView dv = (SimpleDraweeView) findViewById(R.id.plane_page_text);
-
-        Uri mDraweeUri =
-                Uri.parse(
-                        "https://static.warthunder.com/upload/image//wallpapers/3840x2160_logo_drone_age_battlecruiser_alaska_eng_f08dcc6737f71a993755c2946b529f9c.jpg");
-        dv.setAspectRatio(DRAWEE_PHOTO_ASPECT_RATIO);
-        dv.setImageURI(mDraweeUri);
-        dv.setVisibility(View.VISIBLE);
-
-
-        ImageView img_animation = (ImageView) findViewById(R.id.mpi);
-        Display display = getWindowManager().getDefaultDisplay();
-        float width = display.getWidth();
-        TranslateAnimation animation =
-                new TranslateAnimation(
-                        12, 80, 15, 30); // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-        animation.setDuration(4300); // animation duration
-        animation.setRepeatCount(Animation.INFINITE); // animation repeat count
-        animation.setRepeatMode(ValueAnimator.REVERSE);
-
-        img_animation.startAnimation(animation);
     }
 
     public int darkenColor(int color) {

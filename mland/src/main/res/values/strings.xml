@@ -22,4 +22,16 @@
     <string name="country_france">France</string>
     <string name="country_sweden">Sweden</string>
     <string name="country_israel">Israel</string>
+    <string name="test">test</string>
+    <string name="country_rank">Country Rank</string>
+    <string name="description">Description</string>
+    <string name="description_text">Description Text</string>
+    <string name="test_two">test2</string>
+    <string name="general_info">General Info</string>
+    <string name="general_info_text">general info Text</string>
+    <string name="country_caps">COUNTRY</string>
+    <string name="country">Country</string>
+    <string name="plane_name">Plane name</string>
+    <string name="usage_in_battle">Usage in battle</string>
+    <string name="usage_in_battle_text">Usage in battle text</string>
 </resources>

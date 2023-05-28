@@ -1,5 +1,7 @@
 package com.kyler.mland.egg.activities;
 
+import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -9,7 +11,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-
+import android.view.animation.Animation;
+import androidx.annotation.NonNull;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
@@ -18,16 +21,14 @@ import com.facebook.imagepipeline.core.MemoryChunkType;
 import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.ui.MLandTextView;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class PlanesTest extends MLandBase {
     private static final String mUSAFlagLink =
@@ -56,10 +57,22 @@ public class PlanesTest extends MLandBase {
             Uri.parse(
                     "https://wiki.warthunder.com/images/thumb/f/f9/USSR_flag.png/45px-USSR_flag.png");
     private static Bitmap sIcon = null;
-    private final int RESULT_LOAD_IMAGE = 00023;
     private final String wt = "https://wiki.warthunder.com/Yak-23";
     public String textSource;
-    private Handler mHandler;
+    public static final float oneF = 1f;
+    public static final float onePointOhFive = 1.05f;
+    public static final int two = 2;
+    public static final int four = 4;
+    public static final int zero = 0;
+    public static final int fiftyFiveHundred = 5500;
+    
+    private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
+private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
+private final ExecutorService service = Executors.newFixedThreadPool(MAXIMUM_POOL_SIZE);
+
+    private static final char[] LowerCaseAlphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+
+    private static final char[] UpperCaseAlphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
 
     @Override
@@ -72,6 +85,7 @@ public class PlanesTest extends MLandBase {
         return PlanesTest.this;
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,14 +104,43 @@ public class PlanesTest extends MLandBase {
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         setContentView(R.layout.layout_planes_test);
 
-        getHtmlFromWeb();
+      //  setupDrawerForPlanes();
 
-        setupDrawerForPlanes();
+        SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.planeDrawee);
 
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+        draweeView
+                .getHierarchy()
+                .setPlaceholderImage(
+                        getApplicationContext().getDrawable(R.drawable.bubbles));
+
+        Resources resources = this.getResources();
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle(null);
+        mActionBarToolbar.setNavigationIcon(R.drawable.ic_drawer_white);
+
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(oneF, onePointOhFive);
+        valueAnimator.setDuration(fiftyFiveHundred);
+        valueAnimator.addUpdateListener(
+                new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(@NonNull ValueAnimator animation) {
+                        draweeView.setScaleX((Float) animation.getAnimatedValue());
+                        draweeView.setScaleY((Float) animation.getAnimatedValue());
+                    }
+                });
+        valueAnimator.setRepeatCount(Animation.INFINITE);
+        valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        valueAnimator.start();
+        valueAnimator.start();
+
+        if (sIcon == null) {
+            // Cache to avoid decoding the same bitmap on every Activity change
+            sIcon = BitmapFactory.decodeResource(resources, R.drawable.icon_mland_home);
+        }
+        
         Handler handler = new Handler(Looper.getMainLooper());
 
-        executor.execute(
+        service.execute(
                 () -> {
                     // Background work here
                     SimpleDraweeView countryIV = (SimpleDraweeView) findViewById(R.id.countryImage);
@@ -106,27 +149,9 @@ public class PlanesTest extends MLandBase {
                                 // UI Thread work here
                                 countryIV.setImageURI(countryImageURL);
                                 countryIV.setVisibility(View.VISIBLE);
+                                getHtmlFromWeb();
                             });
                 });
-
-        SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.planeDrawee);
-
-        draweeView
-                .getHierarchy()
-                .setPlaceholderImage(
-                        getContext().getResources().getDrawable(R.drawable.loading_image_drawee));
-
-        mHandler = new Handler();
-
-        Resources resources = this.getResources();
-
-        Objects.requireNonNull(getSupportActionBar()).setTitle(null);
-        mActionBarToolbar.setNavigationIcon(R.drawable.ic_drawer_white);
-
-        if (sIcon == null) {
-            // Cache to avoid decoding the same bitmap on every Activity change
-            sIcon = BitmapFactory.decodeResource(resources, R.drawable.icon_mland_home);
-        }
     }
 
     private void setupDrawerForPlanes() {
@@ -143,20 +168,20 @@ public class PlanesTest extends MLandBase {
                         final StringBuilder countryTextStringBuilder = new StringBuilder();
                         final StringBuilder planeNameStringBuilder = new StringBuilder();
                         final StringBuilder countryRankStringBuilder = new StringBuilder();
-                        final StringBuilder descriptionTextStringBuilder =
-                                new StringBuilder();
-                        MLandTextView resultTwo =
-                                (MLandTextView) findViewById(R.id.planeText);
-                        MLandTextView resultThree =
-                                (MLandTextView) findViewById(R.id.planeTextTwo);
+                        final StringBuilder getUsageInBattleStringBuilder = new StringBuilder();
+                        final StringBuilder descriptionTextStringBuilder = new StringBuilder();
                         MLandTextView countryText =
                                 (MLandTextView) findViewById(R.id.countryText);
                         MLandTextView descriptionText =
                                 (MLandTextView) findViewById(R.id.descriptionText);
+                        MLandTextView getUsageInBattleText =
+                                (MLandTextView) findViewById(R.id.usageInBattlesText);
                         MLandTextView countryRank =
                                 (MLandTextView) findViewById(R.id.countryRank);
                         SimpleDraweeView planeImage =
                                 (SimpleDraweeView) findViewById(R.id.planeDrawee);
+                        MLandTextView planeName =
+                                (MLandTextView) findViewById(R.id.planeName);
 
                         try {
                             Document doc = Jsoup.connect(wt).get();
@@ -175,15 +200,14 @@ public class PlanesTest extends MLandBase {
                             String countryRankTextString = divCountryRank.text();
                             //     -- end get Country rank --
 
-
                             //      -- Get General Info --
                             Elements divGeneralInfo = doc.select("div.general_info");
                             String generalInfoTextString = divGeneralInfo.text();
                             //     -- end get general info --
 
                             //      -- Get plane name --
-                            Element divTwo = doc.select("div.general_info_name").first();
-                            String linkTextTwo = divTwo.text();
+                            Elements getPlaneName = doc.select("h1");
+                            String getPlaneNameText = getPlaneName.text();
                             //    -- end get plane name --
 
                             //      -- Get plane image --
@@ -198,26 +222,27 @@ public class PlanesTest extends MLandBase {
                             //      -- Get usage in battles text --
                             Elements divUsage = doc.select("div.mw-category-generated");
                             String usageTextString = divUsage.text();
+                            //     -- end get A-Z list of american planes --
+
+                            //      -- Get A-Z list of american planes --
+                            Elements AtoZPlanes = doc.select("h3");
+                            String AtoZPlanesText = AtoZPlanes.text();
                             //     -- end get usage in battles text --
 
                             // *************      -- CONTINUE --      *************
-                            Element testt =
+                            Element description =
                                     doc.select("p:contains(The Yak-23)")
                                             .first()
                                             .nextElementSibling();
-                            Element testtTwo = doc.select("p:contains(The Yak-23)").first();
-                            String ddd = testt.text();
-                            String dddd = testtTwo.text();
+                            Element descriptionTwo = doc.select("p:contains(The Yak-23)").first();
+                            String ddd = description.text();
+                            String dddd = descriptionTwo.text();
                             Elements linksTwo = doc.select("div.general_info_nation");
-                            String linkHref =
-                                    linksTwo.attr("title"); // "http://example.com/"
                             Elements elementsTwo =
                                     doc.getElementsByClass("general_info_nation");
                             Element countryId = doc.getElementById("title");
                             //  links.text().replace("<span class=", "")
 
-                            Elements textElements = doc.select("h1, p");
-                            String lu = textElements.text();
                             Elements elements = doc.getElementsByClass("mw-headline");
                             for (int i = 0; i < elements.size(); i++) {
                                 Element para = elements.get(i);
@@ -228,13 +253,14 @@ public class PlanesTest extends MLandBase {
 
                             Elements table = doc.select("table");
                             countryTextStringBuilder.append(linkText);
-                            planeNameStringBuilder.append(linkTextTwo);
                             countryRankStringBuilder.append(countryRankTextString);
+                            getUsageInBattleStringBuilder.append(usageTextString);
+                            planeNameStringBuilder.append(getPlaneNameText);
                             descriptionTextStringBuilder
                                     .append(dddd)
                                     .append("\n")
                                     .append("\n")
-                                    .append(ddd);
+                                    .append(AtoZPlanesText);
 
                         } catch (IOException e) {
                             stringBuilder
@@ -242,14 +268,14 @@ public class PlanesTest extends MLandBase {
                                     .append(e.getMessage())
                                     .append(" ");
                         }
-                        runOnUiThread(
+                                runOnUiThread(
                                 new Runnable() {
                                     @Override
                                     public void run() {
-                                        resultTwo.setText(stringBuilder.toString());
+                                       // resultTwo.setText(stringBuilder.toString());
                                         countryText.setText(
                                                 countryTextStringBuilder.toString());
-                                        resultThree.setText(
+                                        planeName.setText(
                                                 planeNameStringBuilder.toString());
                                         countryRank.setText(
                                                 countryRankStringBuilder.toString());

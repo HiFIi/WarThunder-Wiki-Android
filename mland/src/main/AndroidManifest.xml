@@ -109,7 +109,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MoreInfo"
+            android:name=".activities.USAPlanes"
             android:hardwareAccelerated="true"
             android:icon="@drawable/mland_ic_one"
             android:label="@string/more_info"

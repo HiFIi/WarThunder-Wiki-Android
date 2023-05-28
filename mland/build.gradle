@@ -6,6 +6,8 @@ plugins {
 android {
     defaultConfig {
         applicationId "com.kyler.mland.egg"
+        compileSdk 33
+        buildToolsVersion '34.0.0 rc4'
         minSdkVersion 29
         targetSdkVersion 33
         versionCode 1
@@ -13,19 +15,6 @@ android {
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
-    }
-
-    splits {
-
-        // Configures multiple APKs based on screen density.
-        density {
-
-            // Configures multiple APKs based on screen density.
-            enable true
-
-            // Specifies a list of screen densities you don't want Gradle to create multiple APKs for.
-            exclude "ldpi", "mdpi"
-        }
     }
 
     dependenciesInfo {
@@ -71,14 +60,12 @@ android {
         htmlReport true
         xmlReport true
     }
-    compileSdk 33
-    buildToolsVersion '34.0.0 rc3'
 }
 
 dependencies {
 
     // --- im going to be lazy for now and set everything to '+' --- //
-    
+
     implementation 'androidx.appcompat:appcompat:+'
     implementation 'androidx.constraintlayout:constraintlayout:+'
     implementation 'com.google.android.material:material:1.9.0-rc01'
@@ -93,13 +80,14 @@ dependencies {
     implementation 'com.facebook.fresco:webpsupport:+'
     implementation 'com.facebook.fresco:fresco:+'
     implementation 'androidx.core:core-splashscreen:1.0.1'
+    implementation 'androidx.percentlayout:percentlayout:+'
 
     implementation 'se.bjurr.gitchangelog:git-changelog-lib:+'
 
     implementation 'com.github.jitpack:android-example:+'
 
-    implementation group: 'androidx.palette', name: 'palette', version: '1.0.0'
-    testImplementation 'junit:junit:4.13.2'
+    implementation group: 'androidx.palette', name: 'palette', version: '+'
+    testImplementation 'junit:junit:+'
     androidTestImplementation 'androidx.test.ext:junit:+'
     androidTestImplementation 'androidx.test.espresso:espresso-core:+'
 }

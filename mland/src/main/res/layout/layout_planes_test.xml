@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--suppress DeprecatedClassUsageInspection -->
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/tools"
@@ -8,18 +8,19 @@
     android:fitsSystemWindows="false">
 
     <LinearLayout
-        android:id="@+id/main_content"
+        android:id="@+id/main_contenttt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/off_white"
         android:orientation="vertical">
 
         <com.google.samples.apps.iosched.ui.widget.ObservableScrollView
-            android:id="@+id/scroll_view"
+            android:id="@+id/USAPlanesScrollview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_below="@id/main_content_ll"
-            android:background="#fff"
-            android:overScrollMode="never">
+            android:layout_below="@id/main_contenttt"
+            android:overScrollMode="never"
+            fresco:ignore="ObsoleteLayoutParam">
 
             <FrameLayout
                 android:id="@+id/scroll_view_child"
@@ -29,74 +30,68 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical">
-
-                    <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/planeDrawee"
-                        android:layout_width="fill_parent"
-                        android:layout_height="200dp"
-                        android:layout_gravity="top"
-                        android:layout_marginTop="-48.0dip"
-                        fresco:actualImageScaleType="centerCrop"
-                        fresco:placeholderImage="@drawable/bubbles"
-                        fresco:viewAspectRatio="1.33" />
-
-                    <RelativeLayout
-                        android:layout_width="380dp"
-                        android:layout_height="140dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="-4.0dip"
-                        android:background="@color/wt_grey"
-                        android:paddingTop="-16.0dp">
+                    android:orientation="vertical"
+                    fresco:ignore="UselessParent">
 
                         <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/countryImage"
-                            android:layout_width="30dp"
-                            android:layout_height="20dp"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginTop="8dp"
+                            android:id="@+id/planeDrawee"
+                            android:layout_width="fill_parent"
+                            android:layout_height="235dp"
+                            android:layout_gravity="top"
+                            android:layout_marginTop="-24.0dip"
+                            android:elevation="12.0dip"
                             fresco:actualImageScaleType="centerCrop"
-                            fresco:placeholderImage="@drawable/fighter_jet_top_view" />
+                            fresco:placeholderImage="@drawable/bubbles" />
 
-                        <com.kyler.mland.egg.ui.MLandTextView
-                            android:id="@+id/countryText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_toRightOf="@id/countryImage"
-                            android:paddingLeft="8dp"
-                            android:text="test"
-                            android:textColor="#10101c"
-                            android:textSize="16sp"
-                            customfontdemo:fontName="symbols_skyquake.ttf" />
-
-                        <com.kyler.mland.egg.ui.MLandTextView
-                            android:id="@+id/countryRank"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginRight="8dp"
-                            android:text="Country Rank"
-                            android:textColor="#10101c"
-                            android:textSize="16sp"
-                            customfontdemo:fontName="symbols_skyquake.ttf" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/planeName"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/plane_name"
+                        android:textColor="#10101c"
+                        android:textSize="40sp"
+                        customfontdemo:fontName="LyftPro-Bold.ttf" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/countryImage"
+                        android:layout_width="45dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="center"
+                        fresco:viewAspectRatio="1.33" />
+
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/countryText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="30dp"
+                        android:text="@string/country"
+                        android:textColor="#10101c"
+                        android:textSize="16sp"
+                        customfontdemo:fontName="symbols_skyquake.ttf"
+                        fresco:ignore="RtlSymmetry" />
+
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/countryRank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/country_rank"
+                        android:textColor="#10101c"
+                        android:textSize="16sp"
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
 
                         <com.kyler.mland.egg.ui.MLandTextView
                             android:id="@+id/description"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
+                            android:layout_marginTop="35dp"
                             android:paddingLeft="16dp"
                             android:paddingRight="16dp"
-                            android:text="Description"
-                            android:textColor="#070707"
+                            android:text="@string/description"
+                            android:textColor="#30301c"
                             android:textSize="30sp"
                             customfontdemo:fontName="symbols_skyquake.ttf" />
 
@@ -105,76 +100,68 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/description"
+                            android:layout_marginTop="4dp"
                             android:paddingLeft="16dp"
                             android:paddingRight="16dp"
-                            android:text="Description Text"
-                            android:textColor="#10101c"
-                            android:textSize="16sp"
+                            android:text="@string/description_text"
+                            android:textColor="#30301c"
+                            android:textSize="18sp"
                             customfontdemo:fontName="symbols_skyquake.ttf" />
 
-                        <com.kyler.mland.egg.ui.MLandTextView
-                            android:id="@+id/planeText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/descriptionText"
-                            android:layout_marginTop="6dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:text="test"
-                            android:textColor="#10101c"
-                            android:textSize="16sp"
-                            customfontdemo:fontName="symbols_skyquake.ttf" />
-
-                        <com.kyler.mland.egg.ui.MLandTextView
-                            android:id="@+id/planeTextTwo"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_below="@id/planeText"
-                            android:layout_marginTop="6dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:text="tes2t"
-                            android:textColor="#10101c"
-                            android:textSize="16sp"
-                            customfontdemo:fontName="symbols_skyquake.ttf" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/generalInfo"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent">
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="12dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/general_info"
+                        android:textColor="#30301c"
+                        android:textSize="30sp"
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
 
-                        <com.kyler.mland.egg.ui.MLandTextView
-                            android:id="@+id/generalInfo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginTop="-6dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:text="General Info"
-                            android:textColor="#070707"
-                            android:textSize="30sp"
-                            customfontdemo:fontName="symbols_skyquake.ttf" />
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/generalInfoText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/generalInfo"
+                        android:layout_marginTop="4dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/general_info_text"
+                        android:textColor="#10101c"
+                        android:textSize="18sp"
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
 
-                        <com.kyler.mland.egg.ui.MLandTextView
-                            android:id="@+id/generalInfoText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/generalInfo"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:text="general info Text"
-                            android:textColor="#10101c"
-                            android:textSize="16sp"
-                            customfontdemo:fontName="symbols_skyquake.ttf" />
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/usageInBattles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="12dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/usage_in_battle"
+                        android:textColor="#30301c"
+                        android:textSize="30sp"
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
 
-                    </RelativeLayout>
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/usageInBattlesText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/generalInfo"
+                        android:layout_marginTop="4dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/usage_in_battle_text"
+                        android:textColor="#10101c"
+                        android:textSize="18sp"
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
                 </LinearLayout>
             </FrameLayout>
-
         </com.google.samples.apps.iosched.ui.widget.ObservableScrollView>
-
     </LinearLayout>
 
     <RelativeLayout
@@ -183,11 +170,17 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="false">
 
-        <include layout="@layout/toolbar_actionbar_transparent" />
+        <ImageView
+            android:id="@+id/circle_2"
+            android:layout_width="36.0dip"
+            android:layout_height="36.0dip"
+            android:src="@drawable/circle"
+            android:visibility="invisible"
+            fresco:ignore="ContentDescription" />
 
+        <include layout="@layout/toolbar_actionbar_transparent" />
 
     </RelativeLayout>
 
     <include layout="@layout/mland_base" />
-
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -12,7 +12,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.view.animation.Animation;
+
 import androidx.annotation.NonNull;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
@@ -21,16 +23,24 @@ import com.facebook.imagepipeline.core.MemoryChunkType;
 import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.ui.MLandTextView;
-import java.io.IOException;
-import java.util.Objects;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.IOException;
+import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class PlanesTest extends MLandBase {
+    public static final float oneF = 1f;
+    public static final float onePointOhSeven = 1.07f;
+    public static final int two = 2;
+    public static final int four = 4;
+    public static final int zero = 0;
+    public static final int fiftyFiveHundred = 5500;
     private static final String mUSAFlagLink =
             "https://wiki.warthunder.com/images/9/9f/USA_flag.png";
     private static final String mGermanyFlagLink =
@@ -53,27 +63,17 @@ public class PlanesTest extends MLandBase {
             "https://wiki.warthunder.com/images/f/f9/Israel_flag.png";
     private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
     private static final float DRAWEE_PHOTO_ASPECT_RATIO = 1.33f;
+    private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
+    private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
+    private static final char[] LowerCaseAlphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    private static final char[] UpperCaseAlphabet = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
     public static Uri countryImageURL =
             Uri.parse(
                     "https://wiki.warthunder.com/images/thumb/f/f9/USSR_flag.png/45px-USSR_flag.png");
     private static Bitmap sIcon = null;
     private final String wt = "https://wiki.warthunder.com/Yak-23";
+    private final ExecutorService service = Executors.newFixedThreadPool(MAXIMUM_POOL_SIZE);
     public String textSource;
-    public static final float oneF = 1f;
-    public static final float onePointOhFive = 1.05f;
-    public static final int two = 2;
-    public static final int four = 4;
-    public static final int zero = 0;
-    public static final int fiftyFiveHundred = 5500;
-    
-    private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
-private static final int MAXIMUM_POOL_SIZE = CPU_COUNT * 2 + 1;
-private final ExecutorService service = Executors.newFixedThreadPool(MAXIMUM_POOL_SIZE);
-
-    private static final char[] LowerCaseAlphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-
-    private static final char[] UpperCaseAlphabet = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-
 
     @Override
     protected int getSelfNavDrawerItem() {
@@ -104,7 +104,7 @@ private final ExecutorService service = Executors.newFixedThreadPool(MAXIMUM_POO
                         View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         setContentView(R.layout.layout_planes_test);
 
-      //  setupDrawerForPlanes();
+        //  setupDrawerForPlanes();
 
         SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.planeDrawee);
 
@@ -118,7 +118,7 @@ private final ExecutorService service = Executors.newFixedThreadPool(MAXIMUM_POO
         Objects.requireNonNull(getSupportActionBar()).setTitle(null);
         mActionBarToolbar.setNavigationIcon(R.drawable.ic_drawer_white);
 
-        ValueAnimator valueAnimator = ValueAnimator.ofFloat(oneF, onePointOhFive);
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(oneF, onePointOhSeven);
         valueAnimator.setDuration(fiftyFiveHundred);
         valueAnimator.addUpdateListener(
                 new ValueAnimator.AnimatorUpdateListener() {
@@ -137,7 +137,7 @@ private final ExecutorService service = Executors.newFixedThreadPool(MAXIMUM_POO
             // Cache to avoid decoding the same bitmap on every Activity change
             sIcon = BitmapFactory.decodeResource(resources, R.drawable.icon_mland_home);
         }
-        
+
         Handler handler = new Handler(Looper.getMainLooper());
 
         service.execute(
@@ -224,10 +224,11 @@ private final ExecutorService service = Executors.newFixedThreadPool(MAXIMUM_POO
                             String usageTextString = divUsage.text();
                             //     -- end get A-Z list of american planes --
 
-                            //      -- Get A-Z list of american planes --
-                            Elements AtoZPlanes = doc.select("h3");
-                            String AtoZPlanesText = AtoZPlanes.text();
-                            //     -- end get usage in battles text --
+                            //      -- Get USA Plane list alphabetically --
+                            Elements usaPlanesList = doc.body().select("li");
+                            String usaPlanesListText = usaPlanesList.text();
+
+                            //     -- end Get USA Plane list alphabetically --
 
                             // *************      -- CONTINUE --      *************
                             Element description =
@@ -257,10 +258,10 @@ private final ExecutorService service = Executors.newFixedThreadPool(MAXIMUM_POO
                             getUsageInBattleStringBuilder.append(usageTextString);
                             planeNameStringBuilder.append(getPlaneNameText);
                             descriptionTextStringBuilder
-                                    .append(dddd)
+                                    .append(usaPlanesListText)
                                     .append("\n")
                                     .append("\n")
-                                    .append(AtoZPlanesText);
+                                    .append(dddd);
 
                         } catch (IOException e) {
                             stringBuilder
@@ -268,11 +269,11 @@ private final ExecutorService service = Executors.newFixedThreadPool(MAXIMUM_POO
                                     .append(e.getMessage())
                                     .append(" ");
                         }
-                                runOnUiThread(
+                        runOnUiThread(
                                 new Runnable() {
                                     @Override
                                     public void run() {
-                                       // resultTwo.setText(stringBuilder.toString());
+                                        // resultTwo.setText(stringBuilder.toString());
                                         countryText.setText(
                                                 countryTextStringBuilder.toString());
                                         planeName.setText(

@@ -1,61 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fll"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/wt_blue"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context="com.kyler.mland.egg.activities.planes.USAPlanes">
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#ededed"
+        android:clickable="true"
+        android:dividerHeight="1dp"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false">
+
+    </ListView>
+
+    <com.kyler.mland.egg.ui.MLandTextView
+        android:id="@+id/listedPlanesTest"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center"
+        android:text="planes"
+        android:textAlignment="center"
+        android:textColor="#304040"
+        android:textSize="48sp"
+        customfontdemo:fontName="ProductSans-Regular.ttf" />
 
-        <ImageButton
-            android:id="@+id/butt"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_centerInParent="true"
-            android:background="#40000000"
-            android:scaleType="centerCrop"
-            android:elevation="16.0dip"
-            android:tintMode="src_atop"
-            app:tint="#75101010"
-            android:src="@drawable/a_ten_mockup"
-            app:layout_heightPercent="20%"
-            app:layout_marginPercent="3%"
-            app:layout_widthPercent="100%" />
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_below="@id/butt"
-            android:layout_centerInParent="true"
-            app:tint="#70101010"
-            android:tintMode="src_atop"
-            android:adjustViewBounds="true"
-            android:background="#60000000"
-            android:scaleType="centerCrop"
-            android:src="@drawable/cool_jet_pic"
-            app:layout_heightPercent="25%"
-            app:layout_marginPercent="3%"
-            app:layout_widthPercent="100%" />
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_above="@id/butt"
-            android:layout_centerInParent="true"
-            app:tint="#70000000"
-            android:tintMode="src_atop"
-            android:adjustViewBounds="true"
-            android:background="#40ffffff"
-            android:scaleType="centerCrop"
-            android:src="@drawable/animated_jet"
-            app:layout_heightPercent="20%"
-            app:layout_marginPercent="3%"
-            app:layout_widthPercent="100%" />
-
-    </androidx.percentlayout.widget.PercentRelativeLayout>
-
-  
-</RelativeLayout>
+</FrameLayout>

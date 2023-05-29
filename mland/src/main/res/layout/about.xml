@@ -4,7 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#112B38">
+    android:background="#095699">
 
     <com.google.samples.apps.iosched.ui.widget.ObservableScrollView
         android:id="@+id/scroll_view"
@@ -17,14 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/details_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="-110dp"
                 android:layout_marginRight="20dp"
-                android:background="#112B38"
+                android:fitsSystemWindows="false"
+                android:background="#fafafa"
                 android:orientation="vertical"
                 android:paddingBottom="8dp">
 
@@ -38,7 +39,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <FrameLayout
                 android:id="@+id/session_photo_container"
@@ -50,8 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    fresco:actualImageScaleType="centerCrop"
-                    fresco:placeholderImage="@drawable/bubbles" />
+                    fresco:actualImageScaleType="centerCrop" />
             </FrameLayout>
 
             <LinearLayout

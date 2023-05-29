@@ -1,13 +1,7 @@
 package com.kyler.mland.egg.activities;
 
-import android.animation.ValueAnimator;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.Display;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,18 +1,16 @@
 package com.kyler.mland.egg.activities;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
-
 import static com.kyler.mland.egg.activities.PlanesTest.fiftyFiveHundred;
 import static com.kyler.mland.egg.activities.PlanesTest.four;
 import static com.kyler.mland.egg.activities.PlanesTest.oneF;
-import static com.kyler.mland.egg.activities.PlanesTest.onePointOhFive;
+import static com.kyler.mland.egg.activities.PlanesTest.onePointOhSeven;
 import static com.kyler.mland.egg.activities.PlanesTest.two;
 import static com.kyler.mland.egg.activities.PlanesTest.zero;
 
 import android.animation.ValueAnimator;
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,24 +27,22 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.view.DraweeView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.core.ImageTranscoderType;
 import com.facebook.imagepipeline.core.MemoryChunkType;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.samples.apps.iosched.ui.widget.ObservableScrollView;
+import com.kyler.mland.egg.HomeAdapter;
 import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
-import com.kyler.mland.egg.activities.planes.USAPlanes;
-import com.kyler.mland.egg.ui.MLandTextView;
 import com.kyler.mland.egg.utils.UIUtils;
 
 import org.jsoup.Jsoup;
@@ -106,9 +102,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private TabLayout planeTabs;
     private Handler mHandlerr;
     private Handler mHandlerTwo;
-    private DraweeView dv;
-    private WebView webView;
-    private Button submit;
+
 
     public static Context getAppContext() {
         return Home.cc;
@@ -210,6 +204,8 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         if (vto.isAlive()) {
             vto.addOnGlobalLayoutListener(mGlobalLayoutListener);
         }
+        ViewPager2 viewPager = (ViewPager2) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new HomeAdapter(this));
         mScrollViewChild = findViewById(R.id.scroll_view_childTwo);
         mScrollViewChild.setVisibility(View.VISIBLE);
         mDetailsContainer = findViewById(R.id.details_containerTwo);
@@ -217,7 +213,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         mHeaderBox = findViewById(R.id.header_sessionTwo);
         mActionBarToolbar.setVisibility(View.VISIBLE);
         mPhotoViewContainer = findViewById(R.id.session_photo_containerTwo);
-        TabLayout planeTabs = (TabLayout) findViewById(R.id.plane_tabs);
+        planeTabs = (TabLayout) findViewById(R.id.plane_tabs);
         planeTabs = findViewById(R.id.plane_tabs);
 
         Uri mDraweeUri =
@@ -227,41 +223,6 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         planeTabs.measure(zero, zero);
         mActionBarToolbar.measure(zero, zero);
         draweeView.setImageURI(mDraweeUri);
-        planeTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            Intent intent;
-
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0:
-                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                        ft.add(R.id.your_placeholder, new USAPlanes());
-                        ft.commit();
-                        break;
-                    case 1:
-                        intent = new Intent(getApplicationContext(), MockPlanePage.class);
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
-                        break;
-                    case 2:
-//                        codes related to the third tab
-                        break;
-                    case 3:
-//                        codes related to the fourth tab
-                        break;
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
 
         // get the height of the planetabs and toolbar, divide both by 2
         // this is done to anchor it to the tabs layout on parallax scrolling
@@ -273,7 +234,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         toolBarPlusPlaneTabsHeight = planeTabsHeight + toolBarHeight / four;
         mActionBarToolbar.setPadding(zero, toolBarPlusPlaneTabsHeight, zero, zero);
 
-        ValueAnimator valueAnimator = ValueAnimator.ofFloat(oneF, onePointOhFive);
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(oneF, onePointOhSeven);
         valueAnimator.setDuration(fiftyFiveHundred);
         valueAnimator.addUpdateListener(
                 new ValueAnimator.AnimatorUpdateListener() {
@@ -287,6 +248,71 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
         valueAnimator.start();
         valueAnimator.start();
+
+        new TabLayoutMediator(planeTabs, viewPager,
+                new TabLayoutMediator.TabConfigurationStrategy() {
+                    @Override
+                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        if (position == 0) {
+                            tab.setText(R.string.country_usa);
+                            tab.setIcon(R.drawable.usa_flag);
+                        }
+                        if (position == 1) {
+                            tab.setText(R.string.country_germany);
+                            tab.setIcon(R.drawable.germany_flag);
+                        }
+                        if (position == 2) {
+                            tab.setText(R.string.country_ussr);
+                            tab.setIcon(R.drawable.ussr_flag);
+                        }
+                        if (position == 3) {
+                            tab.setText(R.string.country_britain);
+                            tab.setIcon(R.drawable.britain_flag);
+                        }
+                        if (position == 4) {
+                            tab.setText(R.string.country_japan);
+                            tab.setIcon(R.drawable.japan_flag);
+                        }
+                        if (position == 5) {
+                            tab.setText(R.string.country_germany);
+                            tab.setIcon(R.drawable.germany_flag);
+                        }
+                        if (position == 6) {
+                            tab.setText(R.string.country_italy);
+                            tab.setIcon(R.drawable.italy_flag);
+                        }
+                        if (position == 7) {
+                            tab.setText(R.string.country_france);
+                            tab.setIcon(R.drawable.france_flag);
+                        }
+                        if (position == 8) {
+                            tab.setText(R.string.country_sweden);
+                            tab.setIcon(R.drawable.sweden_flag);
+                        }
+                        if (position == 9) {
+                            tab.setText(R.string.country_israel);
+                            tab.setIcon(R.drawable.israel_flag);
+                        }
+                    }
+                }).attach();
+
+        planeTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                // tab.view.setBackgroundColor(Color.TRANSPARENT);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         // display the drawee image, etc
         displayData();
@@ -375,7 +401,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                 new Runnable() {
                     @Override
                     public void run() {
-                        MLandTextView result = findViewById(R.id.result);
+                        //    MLandTextView result = findViewById(R.id.result);
 
                         try {
                             Document doc = Jsoup.connect(wt).get();
@@ -418,21 +444,6 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                 .start();
     }
 
-    private void activateLightStatusBar() {
-        int oldSystemUiFlags = getWindow().getDecorView().getSystemUiVisibility();
-        int newSystemUiFlags = oldSystemUiFlags;
-        newSystemUiFlags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-        getWindow().setStatusBarColor(ContextCompat.getColor(Home.this, R.color.black__10_percent));
-        if (newSystemUiFlags != oldSystemUiFlags) {
-            final int systemUiFlags = newSystemUiFlags;
-            runOnUiThread(
-                    () -> {
-                        getWindow().getDecorView().setSystemUiVisibility(systemUiFlags);
-                        activateLightStatusBar();
-                    });
-        }
-    }
-
     public void onStart() {
         super.onStart();
         //        updateNavigationBarState();
@@ -445,7 +456,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
 
     // Remove inter-activity transition to avoid screen tossing on tapping bottom navigation items
 
-    private class MyBrowser extends WebViewClient {
+    private static class MyBrowser extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             view.loadUrl(url);

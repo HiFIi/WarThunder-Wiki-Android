@@ -33,15 +33,15 @@
                     android:orientation="vertical"
                     fresco:ignore="UselessParent">
 
-                        <com.facebook.drawee.view.SimpleDraweeView
-                            android:id="@+id/planeDrawee"
-                            android:layout_width="fill_parent"
-                            android:layout_height="235dp"
-                            android:layout_gravity="top"
-                            android:layout_marginTop="-24.0dip"
-                            android:elevation="12.0dip"
-                            fresco:actualImageScaleType="centerCrop"
-                            fresco:placeholderImage="@drawable/bubbles" />
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/planeDrawee"
+                        android:layout_width="fill_parent"
+                        android:layout_height="235dp"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="-24.0dip"
+                        android:elevation="12.0dip"
+                        fresco:actualImageScaleType="centerCrop"
+                        fresco:placeholderImage="@drawable/bubbles" />
 
                     <com.kyler.mland.egg.ui.MLandTextView
                         android:id="@+id/planeName"
@@ -55,10 +55,10 @@
 
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/countryImage"
-                        android:layout_width="45dp"
+                        android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
-                        fresco:viewAspectRatio="1.33" />
+                        fresco:actualImageScaleType="centerCrop" />
 
                     <com.kyler.mland.egg.ui.MLandTextView
                         android:id="@+id/countryText"
@@ -82,31 +82,31 @@
                         android:textSize="16sp"
                         customfontdemo:fontName="symbols_skyquake.ttf" />
 
-                        <com.kyler.mland.egg.ui.MLandTextView
-                            android:id="@+id/description"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginTop="35dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:text="@string/description"
-                            android:textColor="#30301c"
-                            android:textSize="30sp"
-                            customfontdemo:fontName="symbols_skyquake.ttf" />
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="35dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/description"
+                        android:textColor="#30301c"
+                        android:textSize="30sp"
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
 
-                        <com.kyler.mland.egg.ui.MLandTextView
-                            android:id="@+id/descriptionText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/description"
-                            android:layout_marginTop="4dp"
-                            android:paddingLeft="16dp"
-                            android:paddingRight="16dp"
-                            android:text="@string/description_text"
-                            android:textColor="#30301c"
-                            android:textSize="18sp"
-                            customfontdemo:fontName="symbols_skyquake.ttf" />
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/descriptionText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/description"
+                        android:layout_marginTop="4dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:text="@string/description_text"
+                        android:textColor="#30301c"
+                        android:textSize="18sp"
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
 
                     <com.kyler.mland.egg.ui.MLandTextView
                         android:id="@+id/generalInfo"

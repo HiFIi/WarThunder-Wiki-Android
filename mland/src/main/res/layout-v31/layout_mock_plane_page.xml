@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/deep_red"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/deep_red">
 
     <androidx.percentlayout.widget.PercentRelativeLayout
         android:layout_width="wrap_content"
@@ -16,29 +16,29 @@
             android:layout_height="0dp"
             android:layout_centerInParent="true"
             android:background="#40000000"
-            android:scaleType="centerCrop"
             android:elevation="16.0dip"
-            android:tintMode="src_atop"
-            app:tint="#50000000"
-            app:layout_widthPercent="90%"
+            android:scaleType="centerCrop"
             android:src="@drawable/a_ten_mockup"
+            android:tintMode="src_atop"
             app:layout_heightPercent="10%"
-            app:layout_marginPercent="3%"/>
+            app:layout_marginPercent="3%"
+            app:layout_widthPercent="90%"
+            app:tint="#50000000" />
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_below="@id/butt"
             android:layout_centerInParent="true"
-            app:tint="#70000000"
-            android:tintMode="src_atop"
             android:adjustViewBounds="true"
             android:background="#40000000"
             android:scaleType="centerCrop"
             android:src="@drawable/cool_jet_pic"
+            android:tintMode="src_atop"
             app:layout_heightPercent="10%"
             app:layout_marginPercent="3%"
-            app:layout_widthPercent="90%" />
+            app:layout_widthPercent="90%"
+            app:tint="#70000000" />
 
     </androidx.percentlayout.widget.PercentRelativeLayout>
 
@@ -49,9 +49,9 @@
         <com.kyler.mland.egg.ui.MLandTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="@string/plane_name"
             android:textColor="#fafafa"
-            android:layout_centerInParent="true"
             android:textSize="24sp"
             customfontdemo:fontName="GoogleSansText-Medium.ttf" />
 

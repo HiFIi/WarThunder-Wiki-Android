@@ -129,7 +129,7 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
 
         Uri mDraweeUri =
                 Uri.parse(
-                        "https://static.warthunder.com/upload/image//wallpapers/3840x2160_logo_drone_age_battlecruiser_alaska_eng_f08dcc6737f71a993755c2946b529f9c.jpg");
+                        "https://static.warthunder.com/upload/image//0_Wallpaper_Renders/1920x1080_f_4ej_adtw_logo_a5a3edca668beca2a6ac85db8e86d019.jpg");
         draweeView = (SimpleDraweeView) findViewById(R.id.session_photo);
         // draweeView.setAspectRatio(DRAWEE_PHOTO_ASPECT_RATIO);
         draweeView.setImageURI(mDraweeUri);
@@ -246,7 +246,7 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
                     public void run() {
                         Uri mDraweeUri =
                                 Uri.parse(
-                                        "https://static.warthunder.com/upload/image//wallpapers/3840x2160_logo_drone_age_battlecruiser_alaska_eng_f08dcc6737f71a993755c2946b529f9c.jpg");
+                                        "https://static.warthunder.com/upload/image//0_Wallpaper_Renders/1920x1080_f_4ej_adtw_logo_a5a3edca668beca2a6ac85db8e86d019.jpg");
 
                         draweeView = (SimpleDraweeView) findViewById(R.id.session_photo);
                         //     draweeView.setAspectRatio(DRAWEE_PHOTO_ASPECT_RATIO);

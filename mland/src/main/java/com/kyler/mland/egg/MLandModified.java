@@ -1177,7 +1177,7 @@ public class MLandModified extends FrameLayout {
         }
     }
 
-    private class Obstacle extends View implements GameView {
+    private static class Obstacle extends View implements GameView {
         final Rect hitRect = new Rect();
         final float h;
 
@@ -1210,6 +1210,22 @@ public class MLandModified extends FrameLayout {
         public void step(long t_ms, long dt_ms, float t, float dt) {
             setTranslationX(getTranslationX() - PARAMS.TRANSLATION_PER_SEC * dt);
             getHitRect(hitRect);
+        }
+    }
+
+    private static class Scenery extends FrameLayout implements GameView {
+        float z;
+        float v;
+        int h;
+        int w;
+
+        public Scenery(Context context) {
+            super(context);
+        }
+
+        @Override
+        public void step(long t_ms, long dt_ms, float t, float dt) {
+            setTranslationX(getTranslationX() - PARAMS.TRANSLATION_PER_SEC * dt * v);
         }
     }
 
@@ -1354,22 +1370,6 @@ public class MLandModified extends FrameLayout {
             mShadow.lineTo(0, PARAMS.OBSTACLE_WIDTH * 0.8f);
             mShadow.close();
             c.drawPath(mShadow, mPaint);
-        }
-    }
-
-    private class Scenery extends FrameLayout implements GameView {
-        float z;
-        float v;
-        int h;
-        int w;
-
-        public Scenery(Context context) {
-            super(context);
-        }
-
-        @Override
-        public void step(long t_ms, long dt_ms, float t, float dt) {
-            setTranslationX(getTranslationX() - PARAMS.TRANSLATION_PER_SEC * dt * v);
         }
     }
 

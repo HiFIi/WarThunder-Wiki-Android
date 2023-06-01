@@ -30,7 +30,7 @@
     <color name="octo_bg_default_end_color">#FF001040</color>
     <color name="colorPrimaryDark">#FF16181c</color>
     <color name="navdrawer_item_text_color">#FFfafafa</color>
-    <color name="navdrawer_item_icon_color">#FFe5e5e5</color>
+    <color name="navdrawer_item_icon_color">#FFf5f5f5</color>
     <color name="black__10_percent">#1A000000</color>
     <color name="scorefield__lightish_grey">#FFAAAAAA</color>
     <color name="navdrawer_separator">#40000000</color>
@@ -86,6 +86,9 @@
     <color name="wt_website_text_color">#ff263238</color>
     <color name="wt_website_background">#fff6f6f6</color>
     <color name="wt_blue">#112B38</color>
+    <color name="wt_blue_transparent">#92112B38</color>
+    <color name="wt_alternate">#FF40555F</color>
+    <color name="wt_blue_darker_transparent">#8008131A</color>
 
     <color name="pretty_indigo">#5C6BC0</color>
     <color name="deep_red">#B71C1C</color>

@@ -10,10 +10,7 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
-import com.kyler.mland.egg.activities.MockPlanePage;
-import com.kyler.mland.egg.activities.PlanesTest;
 import com.kyler.mland.egg.ui.MLandTextView;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -77,15 +74,9 @@ public class CustomAdapter implements ListAdapter {
                     if (position == 0) {
                         Intent intent;
                         Toast.makeText(context.getApplicationContext(), "1", Toast.LENGTH_LONG).show();
-
-                        intent = new Intent(context.getApplicationContext(), PlanesTest.class);
-                        context.startActivity(intent);
                     }
 
                     if (position == 1) {
-                        Intent intentt;
-                        intentt = new Intent(context.getApplicationContext(), MockPlanePage.class);
-                        context.startActivity(intentt);
                     }
                     if (position == 2) {
                     }
@@ -97,9 +88,9 @@ public class CustomAdapter implements ListAdapter {
             MLandTextView tittle = convertView.findViewById(R.id.title);
             ImageView imag = convertView.findViewById(R.id.icon);
             tittle.setText(subjectData.SubjectName);
-            Picasso.get()
-                    .load(subjectData.Image)
-                    .into(imag);
+            /** Picasso.get()
+             .load(subjectData.Image)
+             .into(imag); **/
         }
         return convertView;
     }

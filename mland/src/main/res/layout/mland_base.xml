@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="?@attr/colorOnSecondary"
+    android:background="#101720"
     android:choiceMode="singleChoice"
     android:elevation="16dp"
     android:fitsSystemWindows="true"
@@ -21,39 +21,21 @@
         <RelativeLayout
             android:id="@+id/mlandBaseRL"
             android:layout_width="fill_parent"
-            android:layout_height="200.0dip"
-            android:background="@drawable/sky_gradient_day_one"
+            android:layout_height="wrap_content"
             android:fitsSystemWindows="false">
 
             <ImageView
-                android:id="@+id/ivCloudOne"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:layout_marginTop="28dp"
-                android:background="@drawable/cloud"
-                android:clipToOutline="false"
-                android:scaleType="centerCrop" />
-
-            <ImageView
-                android:id="@+id/ivCloudTwo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="95dp"
-                android:layout_marginTop="48dp"
-                android:background="@drawable/cloud"
-                android:clipToOutline="false"
-                android:scaleType="centerCrop" />
-
-            <ImageView
-                android:id="@+id/ivSun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="145dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/sun"
-                android:clipToOutline="false"
-                android:scaleType="centerCrop" />
+                android:layout_width="match_parent"
+                android:layout_height="210.0dip"
+                android:layout_gravity="center"
+                android:adjustViewBounds="false"
+                android:backgroundTint="#3510101C"
+                android:backgroundTintMode="src_atop"
+                android:clipToOutline="true"
+                android:cropToPadding="false"
+                android:fitsSystemWindows="false"
+                android:scaleType="centerCrop"
+                android:src="@drawable/wt_navdrawer_img" />
 
         </RelativeLayout>
 
@@ -62,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start|bottom|center"
             android:layout_marginRight="24.0dip"
-            android:background="?@attr/colorOnSecondary"
+            android:background="#101720"
             android:orientation="vertical"
             tools:ignore="RtlHardcoded">
 
@@ -72,14 +54,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="?@attr/colorOnSecondary"
+            android:background="#101720"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/navdrawer_items_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?@attr/colorOnSecondary"
+                android:background="#101720"
                 android:fitsSystemWindows="true"
                 android:orientation="vertical">
 

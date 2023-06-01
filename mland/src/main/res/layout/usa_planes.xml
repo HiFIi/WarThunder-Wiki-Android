@@ -1,18 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fll"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/wt_blue"
-    tools:context="com.kyler.mland.egg.activities.planes.USAPlanes">
+    android:layout_height="fill_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/butttt"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="412dp"
+            android:background="#40000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/war_thunder_home_image_one"
+            android:tintMode="src_atop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#20000000"
+            tools:layout_editor_absoluteX="28dp" />
+
+        <ImageButton
+            android:id="@+id/butt"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:background="#40000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/a_ten_mockup"
+            android:tintMode="src_atop"
+            app:tint="#20000000"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="-22dp"
+            tools:layout_editor_absoluteY="560dp" />
+
+        <ImageButton
+            android:id="@+id/buttt"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:background="#40000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/wt_navdrawer_img"
+            android:tintMode="src_atop"
+            app:tint="#20000000"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="266dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
         android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:background="#ededed"
         android:clickable="true"
         android:dividerHeight="1dp"
         android:footerDividersEnabled="false"
@@ -25,7 +70,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center"
-        android:text="planes"
         android:textAlignment="center"
         android:textColor="#304040"
         android:textSize="48sp"

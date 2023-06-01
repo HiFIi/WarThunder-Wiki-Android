@@ -44,7 +44,7 @@
                     android:layout_gravity="top|center"
                     android:outlineProvider="paddedBounds"
                     android:scaleType="centerCrop"
-                    app:fadeDuration="800"
+                    app:fadeDuration="400"
                     app:viewAspectRatio="1.33"
                     fresco:actualImageScaleType="centerCrop" />
             </FrameLayout>

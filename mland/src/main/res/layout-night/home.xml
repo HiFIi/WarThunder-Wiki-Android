@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/wt_blue"
+    android:backgroundTint="#50dddddd"
+    android:backgroundTintMode="src_atop"
+    android:fitsSystemWindows="false">
 
     <com.google.samples.apps.iosched.ui.widget.ObservableScrollView
         android:id="@+id/scroll_viewTwo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/wt_blue"
         android:overScrollMode="never">
 
         <FrameLayout
             android:id="@+id/scroll_view_childTwo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/wt_blue">
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:id="@+id/header_sessionTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:orientation="vertical" />
+
+            <FrameLayout
+                android:id="@+id/session_photo_containerTwo"
+                android:layout_width="match_parent"
+                android:layout_height="900dp">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/session_photoTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:clipChildren="false"
+                    android:elevation="8.0dip"
+                    android:tint="#22707070"
+                    android:tintMode="src_atop"
+                    fresco:actualImageScaleType="centerCrop"
+                    fresco:adjustViewBounds="true"
+                    fresco:placeholderImage="@drawable/wt_navdrawer_img"
+                    fresco:viewAspectRatio="1.33" />
+            </FrameLayout>
 
             <LinearLayout
                 android:id="@+id/details_containerTwo"
@@ -29,141 +57,60 @@
                 <!-- <ListView android:id="@+id/list" android:layout_width="fill_parent" android:layout_height="800dp" android:background="#fafafa" android:clickable="true" android:dividerHeight="1dp" android:footerDividersEnabled="false" android:headerDividersEnabled="false"> </ListView> -->
             </LinearLayout>
 
-            <FrameLayout
-                android:id="@+id/session_photo_containerTwo"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/shadowViewBlue"
+                style="@style/Widget.App.CardView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:background="@color/wt_blue"
-                android:outlineProvider="paddedBounds">
-
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/session_photoTwo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|center"
-                    android:outlineProvider="paddedBounds"
-                    android:scaleType="centerCrop"
-                    app:fadeDuration="800"
-                    app:viewAspectRatio="1.33"
-                    fresco:actualImageScaleType="centerCrop" />
-            </FrameLayout>
-
-            <LinearLayout
-                android:id="@+id/header_sessionTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/wt_blue"
+                android:layout_height="350dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="210dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.92"
+                android:background="@color/wt_blue_darker_transparent"
+                android:checkable="true"
+                android:clipChildren="false"
+                android:fitsSystemWindows="false"
+                android:focusable="true"
                 android:orientation="vertical"
-                android:outlineProvider="paddedBounds">
+                android:paddingBottom="8dp" />
 
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/plane_tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="85.0dip"
-                    android:layout_marginStart="?attr/actionBarSize"
-                    android:layout_marginTop="?attr/actionBarSize"
-                    android:background="@color/wt_blue"
-                    android:clickable="true"
-                    android:elevation="12.0dip"
-                    app:tabIconTint="#fafafa"
-                    app:tabIconTintMode="multiply"
-                    app:tabIndicatorColor="#FAFAFA"
-                    app:tabMode="scrollable"
-                    app:tabRippleColor="@color/black_40"
-                    app:tabSelectedTextAppearance="?attr/textAppearanceCaption"
-                    app:tabTextColor="@android:color/white">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/shadowViewShort"
+                style="@style/Widget.App.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="610dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.96"
+                android:background="@color/off_white"
+                android:checkable="true"
+                android:clipChildren="false"
+                android:fitsSystemWindows="false"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:paddingBottom="8dp" />
 
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/usa_flag"
-                        android:text="@string/country_usa"
-                        customfontdemo:tabIconTint="@android:color/white" />
 
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/germany_flag"
-                        android:text="@string/country_germany"
-                        customfontdemo:tabIconTint="#fafafa" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/ussr_flag"
-                        android:text="@string/country_ussr"
-                        customfontdemo:tabIconTint="@android:color/white" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/britain_flag"
-                        android:text="@string/country_britain"
-                        customfontdemo:tabIconTint="@android:color/white" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/japan_flag"
-                        android:text="@string/country_japan"
-                        customfontdemo:tabIconTint="@android:color/white" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/china_flag"
-                        android:text="@string/country_china"
-                        customfontdemo:tabIconTint="@android:color/white" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/italy_flag"
-                        android:text="@string/country_italy"
-                        customfontdemo:tabIconTint="@android:color/white" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/france_flag"
-                        android:text="@string/country_france"
-                        customfontdemo:tabIconTint="@android:color/white" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/sweden_flag"
-                        android:text="@string/country_sweden"
-                        customfontdemo:tabIconTint="@android:color/white" />
-
-                    <com.google.android.material.tabs.TabItem
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:icon="@drawable/israel_flag"
-                        android:text="@string/country_israel"
-                        customfontdemo:tabIconTint="@android:color/white" />
-
-                </com.google.android.material.tabs.TabLayout>
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/viewpager"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <FrameLayout
-                        android:id="@+id/your_placeholder"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-            </LinearLayout>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/shadowViewWhite"
+                style="@style/Widget.App.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="1010dp"
+                android:layout_marginRight="20dp"
+                android:alpha="0.96"
+                android:background="@color/off_white"
+                android:checkable="true"
+                android:clipChildren="false"
+                android:fitsSystemWindows="false"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:paddingBottom="8dp" />
         </FrameLayout>
+
+
     </com.google.samples.apps.iosched.ui.widget.ObservableScrollView>
 
     <RelativeLayout
@@ -174,7 +121,10 @@
 
         <include layout="@layout/toolbar_actionbar_transparent" />
 
+
     </RelativeLayout>
 
     <include layout="@layout/mland_base" />
+
+
 </androidx.drawerlayout.widget.DrawerLayout>

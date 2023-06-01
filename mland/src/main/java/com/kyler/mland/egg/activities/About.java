@@ -3,9 +3,7 @@ package com.kyler.mland.egg.activities;
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 
-import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -142,7 +139,7 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
         mPhotoHeightPixels = 0;
         if (mHasPhoto) {
             mPhotoHeightPixels = (int) (draweeView.getWidth() / PHOTO_ASPECT_RATIO);
-            mPhotoHeightPixels = Math.min(mPhotoHeightPixels, mScrollView.getHeight());
+            mPhotoHeightPixels = Math.min(mPhotoHeightPixels, mScrollView.getHeight() * 1 / 3);
         }
 
         ViewGroup.LayoutParams lp;
@@ -155,9 +152,9 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
         ViewGroup.MarginLayoutParams mlp =
                 (ViewGroup.MarginLayoutParams) mDetailsContainer.getLayoutParams();
         if (mlp.topMargin != mHeaderHeightPixels + mPhotoHeightPixels) {
-            mlp.topMargin = mHeaderHeightPixels + mPhotoHeightPixels;
+            //    mlp.topMargin = mHeaderHeightPixels + mPhotoHeightPixels;
             mDetailsContainer.setLayoutParams(mlp);
-            mDetailsContainer.setPadding(16, 150, 16, 150);
+            //   mDetailsContainer.setPadding(16, 150, 16, 150);
         }
 
         onScrollChanged(0, 0); // trigger scroll handling
@@ -180,11 +177,9 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
             gapFillProgress =
                     Math.min(Math.max(UIUtils.getProgress(scrollY, 0, mPhotoHeightPixels), 0), 1);
 
-            clearLightStatusBar();
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
             if (gapFillProgress == 1) {
-                activateLightStatusBar();
             } else {
                 getWindow()
                         .setFlags(
@@ -192,7 +187,7 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
             }
 
-            ViewCompat.setElevation(draweeView, gapFillProgress * mMaxHeaderElevation / 2);
+            ViewCompat.setElevation(draweeView, gapFillProgress * 10);
             ViewCompat.setElevation(mDetailsContainer, gapFillProgress * mMaxHeaderElevation / 4);
             ViewCompat.setElevation(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 4);
             ViewCompat.setElevation(
@@ -203,39 +198,11 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
             ViewCompat.setTranslationZ(mHeaderBox, gapFillProgress * mMaxHeaderElevation / 2);
 
             // testing
-            ViewCompat.setTranslationZ(draweeView, gapFillProgress * mMaxHeaderElevation / 2);
+            ViewCompat.setTranslationZ(draweeView, gapFillProgress * mMaxHeaderElevation * 3);
             ViewCompat.setTranslationZ(mDetailsContainer, gapFillProgress * mMaxHeaderElevation / 2);
 
             // Move background photo (parallax effect)
             mPhotoViewContainer.setTranslationY(scrollY * 0.5f);
-        }
-    }
-
-    private void activateLightStatusBar() {
-        int oldSystemUiFlags = getWindow().getDecorView().getSystemUiVisibility();
-        int newSystemUiFlags = oldSystemUiFlags;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            newSystemUiFlags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-            getWindow().setStatusBarColor(ContextCompat.getColor(About.this, R.color.black__10_percent));
-        }
-        if (newSystemUiFlags != oldSystemUiFlags) {
-            final int systemUiFlags = newSystemUiFlags;
-            getWindow().getDecorView().setSystemUiVisibility(systemUiFlags);
-            activateLightStatusBar();
-        }
-    }
-
-    private void clearLightStatusBar() {
-        int oldSystemUiFlags = getWindow().getDecorView().getSystemUiVisibility();
-        int newSystemUiFlags = oldSystemUiFlags;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            newSystemUiFlags |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            getWindow().setStatusBarColor(ContextCompat.getColor(About.this, R.color.black__10_percent));
-        }
-        if (newSystemUiFlags != oldSystemUiFlags) {
-            final int systemUiFlags = newSystemUiFlags;
-            getWindow().getDecorView().setSystemUiVisibility(systemUiFlags);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
     }
 
@@ -254,13 +221,5 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
                         mScrollViewChild.setVisibility(View.VISIBLE);
                     }
                 });
-    }
-
-    public int darkenColor(int color) {
-        float[] hsv = new float[3];
-        Color.colorToHSV(color, hsv);
-        hsv[2] *= 0.8f;
-        return Color.HSVToColor(hsv);
-        // Credits for this: https://github.com/Musenkishi/wally
     }
 }

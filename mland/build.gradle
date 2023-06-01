@@ -7,12 +7,11 @@ android {
     defaultConfig {
         applicationId "com.kyler.mland.egg"
         compileSdk 33
-        buildToolsVersion '34.0.0 rc4'
         minSdkVersion 29
         targetSdkVersion 33
         versionCode 1
         versionName "0.0.1"
-        multiDexEnabled true
+        multiDexEnabled false
         vectorDrawables.useSupportLibrary = true
 
     }
@@ -36,19 +35,19 @@ android {
     buildTypes {
 
         debug {
-            minifyEnabled false
             shrinkResources false
             // ** OUTDATED:
             //    crunchPngs true
             proguardFiles "proguard-android-optimize.txt", "proguard.pro", "proguard-rules.pro"
-            multiDexEnabled true
+            multiDexEnabled false
+            debuggable true
         }
         release {
             minifyEnabled true
             shrinkResources true
             // ** OUTDATED:
             //    crunchPngs true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles "proguard-android-optimize.txt", "proguard.pro", "proguard-rules.pro"
             multiDexEnabled true
         }
     }
@@ -60,34 +59,37 @@ android {
         htmlReport true
         xmlReport true
     }
+    compileSdkPreview 'UpsideDownCake'
+    buildToolsVersion '34.0.0 rc4'
 }
 
 dependencies {
 
     // --- im going to be lazy for now and set everything to '+' --- //
 
-    implementation 'androidx.appcompat:appcompat:+'
-    implementation 'androidx.constraintlayout:constraintlayout:+'
+    implementation 'androidx.appcompat:appcompat:1.7.0-alpha02'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha10'
     implementation 'com.google.android.material:material:1.9.0-rc01'
-    implementation 'androidx.navigation:navigation-ui:+'
-    implementation 'com.facebook.fresco:fresco:+'
-    implementation 'org.jsoup:jsoup:+'
-    implementation 'androidx.cardview:cardview:+'
-    implementation 'com.squareup.okhttp3:okhttp:+'
-    implementation 'com.squareup.picasso:picasso:+'
-    implementation 'androidx.recyclerview:recyclerview:+'
-    implementation 'com.facebook.fresco:animated-webp:+'
-    implementation 'com.facebook.fresco:webpsupport:+'
-    implementation 'com.facebook.fresco:fresco:+'
+    implementation 'androidx.navigation:navigation-ui:2.7.0-alpha01'
+    implementation 'com.facebook.fresco:fresco:3.0.0'
+    implementation 'org.jsoup:jsoup:1.16.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.11'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'androidx.recyclerview:recyclerview:1.3.1-rc01'
+    implementation 'com.facebook.fresco:animated-webp:3.0.0'
+    implementation 'com.facebook.fresco:webpsupport:3.0.0'
+    implementation 'com.facebook.fresco:fresco:3.0.0'
     implementation 'androidx.core:core-splashscreen:1.0.1'
-    implementation 'androidx.percentlayout:percentlayout:+'
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
 
-    implementation 'se.bjurr.gitchangelog:git-changelog-lib:+'
+    implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.169.0'
 
-    implementation 'com.github.jitpack:android-example:+'
+    implementation 'com.github.jitpack:android-example:3.0'
 
-    implementation group: 'androidx.palette', name: 'palette', version: '+'
-    testImplementation 'junit:junit:+'
-    androidTestImplementation 'androidx.test.ext:junit:+'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:+'
+    implementation group: 'androidx.palette', name: 'palette', version: '1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.0-alpha01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.0-alpha01'
 }

@@ -2,18 +2,17 @@ package com.kyler.mland.egg.activities;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import static com.kyler.mland.egg.activities.PlanesTest.fiftyFiveHundred;
-import static com.kyler.mland.egg.activities.PlanesTest.four;
 import static com.kyler.mland.egg.activities.PlanesTest.oneF;
-import static com.kyler.mland.egg.activities.PlanesTest.onePointOhSeven;
-import static com.kyler.mland.egg.activities.PlanesTest.two;
-import static com.kyler.mland.egg.activities.PlanesTest.zero;
 
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -23,24 +22,24 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.core.view.ViewCompat;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.core.ImageTranscoderType;
 import com.facebook.imagepipeline.core.MemoryChunkType;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.samples.apps.iosched.ui.widget.ObservableScrollView;
-import com.kyler.mland.egg.HomeAdapter;
 import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.utils.UIUtils;
@@ -61,12 +60,13 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     protected static final int NAVDRAWER_ITEM_HOME = 0;
     private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
     private static final float DRAWEE_PHOTO_ASPECT_RATIO = 1.33f;
-
+    private static final float onePointOhFive = 1.05f;
     private static Bitmap sIcon = null;
     private static Context cc;
     private static int planeTabsHeight;
     private static int toolBarHeight;
     private static int toolBarPlusPlaneTabsHeight;
+    private static View shadowView;
     private final String[] title = {
             "USA_aircraft",
             "Germany",
@@ -84,7 +84,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private int mPhotoHeightPixels;
     private View mScrollViewChild;
     private int mHeaderHeightPixels;
-    private View mDetailsContainer;
+    private LinearLayout mDetailsContainer;
     private ObservableScrollView mScrollView;
     private View mPhotoViewContainer;
     private boolean mHasPhoto;
@@ -103,9 +103,21 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private Handler mHandlerr;
     private Handler mHandlerTwo;
 
+    private MaterialCardView mcv;
 
     public static Context getAppContext() {
         return Home.cc;
+    }
+
+    public static void setWindowFlag(Activity activity, final int bits, boolean on) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
     }
 
     @Override
@@ -132,10 +144,18 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                         .build());
 
         setContentView(R.layout.home);
-        super.getWindow()
-                .getDecorView()
-                .setSystemUiVisibility(
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        //make translucent statusBar on kitkat devices
+        if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
+            setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
+        }
+        if (Build.VERSION.SDK_INT >= 19) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
+        //make fully Android Transparent Status bar
+        if (Build.VERSION.SDK_INT >= 21) {
+            setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
 
         AsyncTaskRunner runner = new AsyncTaskRunner();
         // String sleepTime = "20000";
@@ -195,6 +215,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         }
     }
 
+    @SuppressLint("WrongViewCast")
     private void initViews() {
         mMaxHeaderElevation =
                 getResources().getDimensionPixelSize(R.dimen.session_detail_max_header_elevation);
@@ -204,37 +225,8 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         if (vto.isAlive()) {
             vto.addOnGlobalLayoutListener(mGlobalLayoutListener);
         }
-        ViewPager2 viewPager = (ViewPager2) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new HomeAdapter(this));
-        mScrollViewChild = findViewById(R.id.scroll_view_childTwo);
-        mScrollViewChild.setVisibility(View.VISIBLE);
-        mDetailsContainer = findViewById(R.id.details_containerTwo);
-        mActionBarToolbar.setVisibility(View.VISIBLE);
-        mHeaderBox = findViewById(R.id.header_sessionTwo);
-        mActionBarToolbar.setVisibility(View.VISIBLE);
-        mPhotoViewContainer = findViewById(R.id.session_photo_containerTwo);
-        planeTabs = (TabLayout) findViewById(R.id.plane_tabs);
-        planeTabs = findViewById(R.id.plane_tabs);
-
-        Uri mDraweeUri =
-                Uri.parse(
-                        "https://static.warthunder.com/upload/image//wallpapers/3840x2160_logo_drone_age_battlecruiser_alaska_eng_f08dcc6737f71a993755c2946b529f9c.jpg");
         draweeView = (SimpleDraweeView) findViewById(R.id.session_photoTwo);
-        planeTabs.measure(zero, zero);
-        mActionBarToolbar.measure(zero, zero);
-        draweeView.setImageURI(mDraweeUri);
-
-        // get the height of the planetabs and toolbar, divide both by 2
-        // this is done to anchor it to the tabs layout on parallax scrolling
-        planeTabsHeight = planeTabs.getMeasuredHeight() / two;
-        toolBarHeight = mActionBarToolbar.getMeasuredHeight() / two;
-
-        // get both above values and then quarter it
-        // this is done to put the drawer icon in the correct place
-        toolBarPlusPlaneTabsHeight = planeTabsHeight + toolBarHeight / four;
-        mActionBarToolbar.setPadding(zero, toolBarPlusPlaneTabsHeight, zero, zero);
-
-        ValueAnimator valueAnimator = ValueAnimator.ofFloat(oneF, onePointOhSeven);
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(oneF, onePointOhFive);
         valueAnimator.setDuration(fiftyFiveHundred);
         valueAnimator.addUpdateListener(
                 new ValueAnimator.AnimatorUpdateListener() {
@@ -248,71 +240,32 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
         valueAnimator.start();
         valueAnimator.start();
+        mScrollViewChild = findViewById(R.id.scroll_view_childTwo);
+        mScrollViewChild.setVisibility(View.VISIBLE);
+        mDetailsContainer = findViewById(R.id.details_containerTwo);
+        mActionBarToolbar.setVisibility(View.VISIBLE);
+        mHeaderBox = findViewById(R.id.header_sessionTwo);
+        mActionBarToolbar.setVisibility(View.VISIBLE);
+        mPhotoViewContainer = findViewById(R.id.session_photo_containerTwo);
+        planeTabs = (TabLayout) findViewById(R.id.plane_tabs);
+        planeTabs = findViewById(R.id.plane_tabs);
+        mcv = findViewById(R.id.shadowViewBlue);
+        shadowView = findViewById(R.id.shadowViewBlue);
 
-        new TabLayoutMediator(planeTabs, viewPager,
-                new TabLayoutMediator.TabConfigurationStrategy() {
-                    @Override
-                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        if (position == 0) {
-                            tab.setText(R.string.country_usa);
-                            tab.setIcon(R.drawable.usa_flag);
-                        }
-                        if (position == 1) {
-                            tab.setText(R.string.country_germany);
-                            tab.setIcon(R.drawable.germany_flag);
-                        }
-                        if (position == 2) {
-                            tab.setText(R.string.country_ussr);
-                            tab.setIcon(R.drawable.ussr_flag);
-                        }
-                        if (position == 3) {
-                            tab.setText(R.string.country_britain);
-                            tab.setIcon(R.drawable.britain_flag);
-                        }
-                        if (position == 4) {
-                            tab.setText(R.string.country_japan);
-                            tab.setIcon(R.drawable.japan_flag);
-                        }
-                        if (position == 5) {
-                            tab.setText(R.string.country_germany);
-                            tab.setIcon(R.drawable.germany_flag);
-                        }
-                        if (position == 6) {
-                            tab.setText(R.string.country_italy);
-                            tab.setIcon(R.drawable.italy_flag);
-                        }
-                        if (position == 7) {
-                            tab.setText(R.string.country_france);
-                            tab.setIcon(R.drawable.france_flag);
-                        }
-                        if (position == 8) {
-                            tab.setText(R.string.country_sweden);
-                            tab.setIcon(R.drawable.sweden_flag);
-                        }
-                        if (position == 9) {
-                            tab.setText(R.string.country_israel);
-                            tab.setIcon(R.drawable.israel_flag);
-                        }
-                    }
-                }).attach();
+        mcv.setBackgroundDrawable(getApplication().getDrawable(R.drawable.a_ten_mockup));
 
-        planeTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+        /** get the height of the planetabs and toolbar, divide both by 2
+         this is done to anchor it to the tabs layout on parallax scrolling
 
-            }
+         planeTabs.measure(zero, zero);
+         mActionBarToolbar.measure(zero, zero);
+         planeTabsHeight = planeTabs.getMeasuredHeight() / two;
+         toolBarHeight = mActionBarToolbar.getMeasuredHeight() / two;
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                // tab.view.setBackgroundColor(Color.TRANSPARENT);
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
+         // get both above values and then quarter it
+         // this is done to put the drawer icon in the correct place
+         toolBarPlusPlaneTabsHeight = planeTabsHeight + toolBarHeight / four;
+         mActionBarToolbar.setPadding(zero, toolBarPlusPlaneTabsHeight, zero, zero); **/
 
         // display the drawee image, etc
         displayData();
@@ -323,12 +276,12 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                 new Runnable() {
                     @Override
                     public void run() {
+
                         Uri mDraweeUri =
                                 Uri.parse(
-                                        "https://static.warthunder.com/upload/image//wallpapers/3840x2160_logo_drone_age_battlecruiser_alaska_eng_f08dcc6737f71a993755c2946b529f9c.jpg");
-
+                                        "https://static.warthunder.com/upload/image//wallpapers/2560x1440_victory_day_2022_logo_eng_3348af0071416896f215298d7a8345ae.jpg");
                         draweeView = (SimpleDraweeView) findViewById(R.id.session_photoTwo);
-                        //     draweeView.setAspectRatio(DRAWEE_PHOTO_ASPECT_RATIO);
+                        draweeView.setAspectRatio(DRAWEE_PHOTO_ASPECT_RATIO);
                         draweeView.setImageURI(mDraweeUri);
                         mScrollViewChild.setVisibility(View.VISIBLE);
                     }
@@ -341,7 +294,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         mPhotoHeightPixels = 0;
         if (mHasPhoto) {
             mPhotoHeightPixels = (int) (draweeView.getWidth() / PHOTO_ASPECT_RATIO);
-            mPhotoHeightPixels = Math.min(mPhotoHeightPixels, mScrollView.getHeight());
+            mPhotoHeightPixels = Math.min(mPhotoHeightPixels, mScrollView.getHeight() / 2);
         }
 
         ViewGroup.LayoutParams lp;
@@ -374,11 +327,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
 
         float gapFillProgress = 1;
         if (mPhotoHeightPixels != 0) {
-            gapFillProgress =
-                    Math.min(Math.max(UIUtils.getProgress(scrollY, 0, mPhotoHeightPixels), 0), 1);
-
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
+            gapFillProgress = Math.min(Math.max(UIUtils.getProgress(scrollY, 0, mPhotoHeightPixels), 0), 1);
             if (gapFillProgress == 1) {
 
             } else {
@@ -388,8 +337,11 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
             }
 
+            ViewCompat.setElevation(draweeView, gapFillProgress * mMaxHeaderElevation);
+            ViewCompat.setElevation(mHeaderBox, gapFillProgress * mMaxHeaderElevation + 5);
+
             // Move background photo (parallax effect)
-            mPhotoViewContainer.setTranslationY(scrollY * 0.5f);
+            mPhotoViewContainer.setTranslationY(scrollY * 0.65f);
         }
     }
 
@@ -446,12 +398,11 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
 
     public void onStart() {
         super.onStart();
-        //        updateNavigationBarState();
     }
 
     public void onPause() {
         super.onPause();
-        //      overridePendingTransition(0, 0);
+        overridePendingTransition(0, 0);
     }
 
     // Remove inter-activity transition to avoid screen tossing on tapping bottom navigation items
@@ -467,7 +418,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     /**
      * @noinspection deprecation
      */
-    private class AsyncTaskRunner extends AsyncTask<String, String, String> {
+    private static class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
         private String resp;
 
@@ -488,18 +439,6 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                 resp = e.getMessage();
             }
             return resp;
-        }
-
-        private void activateLightStatusBar() {
-            int oldSystemUiFlags = getWindow().getDecorView().getSystemUiVisibility();
-            int newSystemUiFlags = oldSystemUiFlags;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                newSystemUiFlags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-                getWindow().setStatusBarColor(ContextCompat.getColor(Home.this, R.color.black__10_percent));
-            }
-            if (newSystemUiFlags != oldSystemUiFlags) {
-                getWindow().getDecorView().setSystemUiVisibility(newSystemUiFlags);
-            }
         }
 
         @Override

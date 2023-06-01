@@ -1,37 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dip">
+    android:layout_height="75dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/off_white">
 
-    <LinearLayout
-        android:id="@+id/thumbnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginRight="5dip"
-        android:padding="3dip">
-
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp" />
-
-    </LinearLayout>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp" />
 
     <com.kyler.mland.egg.ui.MLandTextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignTop="@+id/thumbnail"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:singleLine="true"
+        android:textAlignment="center"
         android:textColor="#040404"
-        android:textSize="15dip"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:typeface="sans"
-        customfontdemo:fontName="Roboto-Regular.ttf" />
-
-</LinearLayout>
+        customfontdemo:fontName="GoogleSansText-Regular.ttf" />
+</RelativeLayout>

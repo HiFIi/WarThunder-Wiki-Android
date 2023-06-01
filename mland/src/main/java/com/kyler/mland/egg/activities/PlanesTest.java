@@ -36,7 +36,7 @@ import java.util.concurrent.Executors;
 
 public class PlanesTest extends MLandBase {
     public static final float oneF = 1f;
-    public static final float onePointOhSeven = 1.07f;
+    public static final float onePointOhThree = 1.03f;
     public static final int two = 2;
     public static final int four = 4;
     public static final int zero = 0;
@@ -108,17 +108,15 @@ public class PlanesTest extends MLandBase {
 
         SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.planeDrawee);
 
-        draweeView
-                .getHierarchy()
-                .setPlaceholderImage(
-                        getApplicationContext().getDrawable(R.drawable.bubbles));
+        draweeView.getHierarchy();
+        // .setPlaceholderImage(getApplicationContext().getDrawable(R.drawable.bubbles));
 
         Resources resources = this.getResources();
 
         Objects.requireNonNull(getSupportActionBar()).setTitle(null);
         mActionBarToolbar.setNavigationIcon(R.drawable.ic_drawer_white);
 
-        ValueAnimator valueAnimator = ValueAnimator.ofFloat(oneF, onePointOhSeven);
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(oneF, onePointOhThree);
         valueAnimator.setDuration(fiftyFiveHundred);
         valueAnimator.addUpdateListener(
                 new ValueAnimator.AnimatorUpdateListener() {
@@ -189,11 +187,11 @@ public class PlanesTest extends MLandBase {
                             Element links = doc.select("div.mw-headline").first();
                             Elements test = doc.select("Description");
 
-                            //      -- Get Country title --
-                            Elements hrefs = doc.select("a[href][title]");
+                            //      -- Get Country name --
+                            Elements countryName = doc.select("a[href][title]");
                             Elements div = doc.select("div.Usage_in_battles");
                             String linkText = div.text();
-                            //    -- end get Country title --
+                            //    -- end get Country name --
 
                             //      -- Get Country rank --
                             Elements divCountryRank = doc.select("div.general_info_rank");
@@ -220,29 +218,24 @@ public class PlanesTest extends MLandBase {
                             //    -- end get plane image --
 
                             //      -- Get usage in battles text --
-                            Elements divUsage = doc.select("div.mw-category-generated");
+                            Elements divUsage = doc.select("div.Usage_in_battles");
                             String usageTextString = divUsage.text();
                             //     -- end get A-Z list of american planes --
 
-                            //      -- Get USA Plane list alphabetically --
-                            Elements usaPlanesList = doc.body().select("li");
-                            String usaPlanesListText = usaPlanesList.text();
-
-                            //     -- end Get USA Plane list alphabetically --
+                            Elements divs = doc.select("div");
+                            for (Element elem : divs) {
+                                System.out.println(elem.html()); //get all elements inside div
+                            }
 
                             // *************      -- CONTINUE --      *************
-                            Element description =
-                                    doc.select("p:contains(The Yak-23)")
-                                            .first()
-                                            .nextElementSibling();
+                            Element description = doc.select("p:contains(The Yak-23)").first().nextElementSibling();
                             Element descriptionTwo = doc.select("p:contains(The Yak-23)").first();
-                            String ddd = description.text();
-                            String dddd = descriptionTwo.text();
+                            String descriptionTextTwo = description.text();
+                            String descriptionTextOne = descriptionTwo.text();
                             Elements linksTwo = doc.select("div.general_info_nation");
                             Elements elementsTwo =
                                     doc.getElementsByClass("general_info_nation");
                             Element countryId = doc.getElementById("title");
-                            //  links.text().replace("<span class=", "")
 
                             Elements elements = doc.getElementsByClass("mw-headline");
                             for (int i = 0; i < elements.size(); i++) {
@@ -257,11 +250,12 @@ public class PlanesTest extends MLandBase {
                             countryRankStringBuilder.append(countryRankTextString);
                             getUsageInBattleStringBuilder.append(usageTextString);
                             planeNameStringBuilder.append(getPlaneNameText);
+
                             descriptionTextStringBuilder
-                                    .append(usaPlanesListText)
+                                    .append(descriptionTextOne)
                                     .append("\n")
                                     .append("\n")
-                                    .append(dddd);
+                                    .append(descriptionTextTwo);
 
                         } catch (IOException e) {
                             stringBuilder
@@ -273,15 +267,11 @@ public class PlanesTest extends MLandBase {
                                 new Runnable() {
                                     @Override
                                     public void run() {
-                                        // resultTwo.setText(stringBuilder.toString());
-                                        countryText.setText(
-                                                countryTextStringBuilder.toString());
-                                        planeName.setText(
-                                                planeNameStringBuilder.toString());
-                                        countryRank.setText(
-                                                countryRankStringBuilder.toString());
-                                        descriptionText.setText(
-                                                descriptionTextStringBuilder.toString());
+                                        getUsageInBattleText.setText(getUsageInBattleStringBuilder.toString());
+                                        countryText.setText(countryTextStringBuilder.toString());
+                                        planeName.setText(planeNameStringBuilder.toString());
+                                        countryRank.setText(countryRankStringBuilder.toString());
+                                        descriptionText.setText(descriptionTextStringBuilder.toString());
                                     }
                                 });
                     }

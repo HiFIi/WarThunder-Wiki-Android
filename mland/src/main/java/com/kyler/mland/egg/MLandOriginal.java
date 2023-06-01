@@ -53,7 +53,7 @@ import java.util.ArrayList;
 // It's like LLand, but "M"ultiplayer.
 public class MLandOriginal extends FrameLayout {
     public static final int MAX_PLAYERS = 6;
-    static final float hsv[] = {0, 0, 0};
+    static final float[] hsv = {0, 0, 0};
     static final Rect sTmpRect = new Rect();
     private static final String TAG = "MLandOriginal";
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);

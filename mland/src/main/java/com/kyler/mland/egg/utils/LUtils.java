@@ -44,7 +44,7 @@ public class LUtils {
     private static Typeface sMediumTypeface;
 
     private final AppCompatActivity mActivity;
-    private Handler mHandler = new Handler();
+    private final Handler mHandler = new Handler();
 
     private LUtils(AppCompatActivity activity) {
         mActivity = activity;

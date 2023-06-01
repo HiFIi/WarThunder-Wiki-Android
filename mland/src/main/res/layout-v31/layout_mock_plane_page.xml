@@ -1,59 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/deep_red">
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-    <androidx.percentlayout.widget.PercentRelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+    <com.google.samples.apps.iosched.ui.widget.ObservableScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/off_white"
+        android:fitsSystemWindows="true"
+        android:overScrollMode="never">
 
-        <ImageButton
-            android:id="@+id/butt"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_centerInParent="true"
-            android:background="#40000000"
-            android:elevation="16.0dip"
-            android:scaleType="centerCrop"
-            android:src="@drawable/a_ten_mockup"
-            android:tintMode="src_atop"
-            app:layout_heightPercent="10%"
-            app:layout_marginPercent="3%"
-            app:layout_widthPercent="90%"
-            app:tint="#50000000" />
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_below="@id/butt"
-            android:layout_centerInParent="true"
-            android:adjustViewBounds="true"
-            android:background="#40000000"
-            android:scaleType="centerCrop"
-            android:src="@drawable/cool_jet_pic"
-            android:tintMode="src_atop"
-            app:layout_heightPercent="10%"
-            app:layout_marginPercent="3%"
-            app:layout_widthPercent="90%"
-            app:tint="#70000000" />
-
-    </androidx.percentlayout.widget.PercentRelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <com.kyler.mland.egg.ui.MLandTextView
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/plane_name"
-            android:textColor="#fafafa"
-            android:textSize="24sp"
-            customfontdemo:fontName="GoogleSansText-Medium.ttf" />
+            android:layout_height="wrap_content">
 
-    </RelativeLayout>
-</RelativeLayout>
+            <com.kyler.mland.egg.ui.MLandTextView
+                android:id="@+id/textAlphabeticalList"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
+                android:gravity="left"
+                android:text="@string/plane_name"
+                android:textColor="#404040"
+                android:textSize="22sp"
+                customfontdemo:fontName="ProductSans-Regular.ttf" />
+
+            <ListView
+                android:id="@+id/lvItems"
+                android:layout_width="fill_parent"
+                android:layout_height="800dp"
+                android:background="#fafafa"
+                android:clickable="true"
+                android:dividerHeight="1dp"
+                android:footerDividersEnabled="false"
+                android:headerDividersEnabled="false"></ListView>
+
+        </RelativeLayout>
+    </com.google.samples.apps.iosched.ui.widget.ObservableScrollView>
+</androidx.drawerlayout.widget.DrawerLayout>

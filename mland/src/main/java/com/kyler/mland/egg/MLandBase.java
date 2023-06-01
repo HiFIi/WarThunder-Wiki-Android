@@ -26,9 +26,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.samples.apps.iosched.ui.widget.ScrimInsetsScrollView;
-import com.kyler.mland.egg.activities.About;
 import com.kyler.mland.egg.activities.Home;
-import com.kyler.mland.egg.activities.MLandModifiedActivity;
+import com.kyler.mland.egg.activities.MockPlanePage;
+import com.kyler.mland.egg.activities.MoreInfo;
 import com.kyler.mland.egg.activities.PlanesTest;
 import com.kyler.mland.egg.utils.LUtils;
 import com.kyler.mland.egg.utils.UIUtils;
@@ -344,12 +344,12 @@ public abstract class MLandBase extends AppCompatActivity {
                 overridePendingTransition(0, 0);
                 break;
             case NAVDRAWER_ITEM_MLANDMODIFIED:
-                intent = new Intent(this, MLandModifiedActivity.class);
+                intent = new Intent(this, MockPlanePage.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case NAVDRAWER_ITEM_ABOUT:
-                intent = new Intent(this, About.class);
+                intent = new Intent(this, MoreInfo.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
@@ -493,12 +493,8 @@ public abstract class MLandBase extends AppCompatActivity {
 
         // configure its appearance according to whether or not it's selected
         titleView.setTextColor(
-                selected
-                        ? getResources().getColor(R.color.navdrawer_item_text_color)
-                        : getResources().getColor(R.color.navdrawer_item_text_color));
-        //    iconView.setColorFilter(selected ?
-        // getResources().getColor(R.color.navdrawer_item_icon_color) :
-        // getResources().getColor(R.color.navdrawer_item_icon_color)); *
+                getApplicationContext().getColor(R.color.navdrawer_item_text_color));
+        iconView.setColorFilter(getApplicationContext().getColor(R.color.navdrawer_item_icon_color));
     }
 
     public LUtils getLUtils() {

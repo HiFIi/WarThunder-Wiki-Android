@@ -76,15 +76,12 @@ public class UIUtils {
      * a semicolon. (Example: &amp;amp;)
      */
     private static final Pattern REGEX_HTML_ESCAPE = Pattern.compile(".*&\\S;.*");
-
+    @SuppressLint("SimpleDateFormat")
+    private static final SimpleDateFormat sDayOfWeekFormat = new SimpleDateFormat("E");
+    private static final DateFormat sShortTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
     private static CharSequence sNowPlayingText;
     private static CharSequence sLivestreamNowText;
     private static CharSequence sLivestreamAvailableText;
-
-    @SuppressLint("SimpleDateFormat")
-    private static SimpleDateFormat sDayOfWeekFormat = new SimpleDateFormat("E");
-
-    private static DateFormat sShortTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
     public Context context;
     long currentTimeMillis = UIUtils.getCurrentTime(null);
 

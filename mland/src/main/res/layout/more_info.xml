@@ -1,6 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/wt_blue"
+    android:fitsSystemWindows="false">
 
-</RelativeLayout>
+    <com.kyler.mland.egg.ui.ObservableScrollView
+        android:id="@+id/navdrawer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false"
+        app:appInsetForeground="@android:color/transparent">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/wt_blue">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:contentScrim="@color/black_40"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <ImageView
+                        android:id="@+id/ivParallax"
+                        android:layout_width="match_parent"
+                        android:layout_height="260.0dip"
+                        android:paddingLeft="-90dp"
+                        android:paddingRight="-85dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/war_thunder_home_image_one"
+                        android:tintMode="src_atop"
+                        app:layout_collapseMode="parallax"
+                        app:layout_collapseParallaxMultiplier="0.5"
+                        app:tint="#20ffffff" />
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="parallax"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                        app:title="" />
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/wt_blue"
+                android:fillViewport="true"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/wt_blue"
+                    android:clipChildren="false"
+                    android:elevation="12.0dip"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/plane_tabs2"
+                        android:layout_width="match_parent"
+                        android:layout_height="90.0dip"
+                        android:layout_marginTop="12dp"
+                        android:alpha="0.95"
+                        android:background="@drawable/gradient_test"
+                        android:clickable="true"
+                        android:elevation="12.0dip"
+                        android:tintMode="src_atop"
+                        app:tabIconTint="#fafafa"
+                        app:tabIconTintMode="multiply"
+                        app:tabIndicatorColor="#FAFAFA"
+                        app:tabMode="scrollable"
+                        app:tabRippleColor="@color/black_40"
+                        app:tabSelectedTextAppearance="?attr/textAppearanceCaption"
+                        app:tabTextColor="@android:color/white"
+                        app:tint="#40ffffff">
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/usa_flag"
+                            android:text="@string/country_usa"
+                            customfontdemo:tabIconTint="@android:color/white" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/germany_flag"
+                            android:text="@string/country_germany"
+                            customfontdemo:tabIconTint="#fafafa" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/ussr_flag"
+                            android:text="@string/country_ussr"
+                            customfontdemo:tabIconTint="@android:color/white" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/britain_flag"
+                            android:text="@string/country_britain"
+                            customfontdemo:tabIconTint="@android:color/white" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/japan_flag"
+                            android:text="@string/country_japan"
+                            customfontdemo:tabIconTint="@android:color/white" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/china_flag"
+                            android:text="@string/country_china"
+                            customfontdemo:tabIconTint="@android:color/white" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/italy_flag"
+                            android:text="@string/country_italy"
+                            customfontdemo:tabIconTint="@android:color/white" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/france_flag"
+                            android:text="@string/country_france"
+                            customfontdemo:tabIconTint="@android:color/white" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/sweden_flag"
+                            android:text="@string/country_sweden"
+                            customfontdemo:tabIconTint="@android:color/white" />
+
+                        <com.google.android.material.tabs.TabItem
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:icon="@drawable/israel_flag"
+                            android:text="@string/country_israel"
+                            customfontdemo:tabIconTint="@android:color/white" />
+
+                    </com.google.android.material.tabs.TabLayout>
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/text_slideshow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2500dp"
+                        android:layout_marginEnd="8dp"
+                        android:textAlignment="center"
+                        android:textColor="#00000000"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </RelativeLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </com.kyler.mland.egg.ui.ObservableScrollView>
+
+    <RelativeLayout
+        android:id="@+id/md_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false">
+
+        <include layout="@layout/toolbar_actionbar_transparent" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/mland_base" />
+</androidx.drawerlayout.widget.DrawerLayout>

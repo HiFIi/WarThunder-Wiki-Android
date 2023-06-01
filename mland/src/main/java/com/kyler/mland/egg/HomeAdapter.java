@@ -21,7 +21,7 @@ public class HomeAdapter extends FragmentStateAdapter {
             case 0:
                 return new USAPlanes();
             case 1:
-                return new USAPlanes();
+                return new ItemFragment();
             case 2:
                 return new USAPlanes();
             case 3:

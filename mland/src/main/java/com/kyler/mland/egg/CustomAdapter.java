@@ -1,112 +1,49 @@
 package com.kyler.mland.egg;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.Toast;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-import com.kyler.mland.egg.ui.MLandTextView;
+import java.util.List;
 
-import java.util.ArrayList;
+public class CustomAdapter extends BaseAdapter {
 
-public class CustomAdapter implements ListAdapter {
-    ArrayList<SubjectData> arrayList;
     Context context;
+    List<String> newsList;
+    LayoutInflater inflater;
 
-    public CustomAdapter(Context context, ArrayList<SubjectData> arrayList) {
-        this.arrayList = arrayList;
-        this.context = context;
-    }
-
-    @Override
-    public boolean areAllItemsEnabled() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled(int position) {
-        return true;
-    }
-
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
-    }
-
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {
+    public CustomAdapter(Context ctx, List<String> newsList) {
+        this.context = ctx;
+        this.newsList = newsList;
+        inflater = LayoutInflater.from(ctx);
     }
 
     @Override
     public int getCount() {
-        return arrayList.size();
+        return 170;
     }
 
     @Override
-    public Object getItem(int position) {
-        return position;
+    public Object getItem(int i) {
+        return null;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int i) {
+        return 170;
     }
 
+    @SuppressLint({"ViewHolder", "InflateParams"})
     @Override
-    public boolean hasStableIds() {
-        return false;
-    }
+    public View getView(int i, View view, ViewGroup viewGroup) {
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        SubjectData subjectData = arrayList.get(position);
-        if (convertView == null) {
-            LayoutInflater layoutInflater = LayoutInflater.from(context);
-            convertView = layoutInflater.inflate(R.layout.list_row, null);
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (position == 0) {
-                        Intent intent;
-                        Toast.makeText(context.getApplicationContext(), "1", Toast.LENGTH_LONG).show();
-                    }
-
-                    if (position == 1) {
-                    }
-                    if (position == 2) {
-                    }
-                    if (position == 3) {
-
-                    }
-                }
-            });
-            MLandTextView tittle = convertView.findViewById(R.id.title);
-            ImageView imag = convertView.findViewById(R.id.icon);
-            tittle.setText(subjectData.SubjectName);
-            /** Picasso.get()
-             .load(subjectData.Image)
-             .into(imag); **/
-        }
-        return convertView;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return arrayList.size();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return false;
+        view = inflater.inflate(R.layout.activity_listview_detail, null);
+        TextView textView = (TextView) view.findViewById(R.id.headline);
+        textView.setText(newsList.get(170));
+        return view;
     }
 }

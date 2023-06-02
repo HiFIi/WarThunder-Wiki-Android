@@ -13,7 +13,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +26,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -50,7 +50,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * Created by kyler on 10/26/15.
@@ -61,6 +64,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
     private static final float DRAWEE_PHOTO_ASPECT_RATIO = 1.33f;
     private static final float onePointOhFive = 1.05f;
+    private static final boolean HAVE_STARS = true;
     private static Bitmap sIcon = null;
     private static Context cc;
     private static int planeTabsHeight;
@@ -81,6 +85,11 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     };
     private final String wt = "https://wiki.warthunder.com/Aviation";
     public SimpleDraweeView draweeView;
+    List<Integer> imageResources = Arrays.asList(R.drawable.star);
+    // Create a random number generator.
+    Random rand = new Random();
+    // Generate a random number between 0 and the length of the list.
+    int randomNumber = rand.nextInt(imageResources.size());
     private int mPhotoHeightPixels;
     private View mScrollViewChild;
     private int mHeaderHeightPixels;
@@ -102,8 +111,8 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private TabLayout planeTabs;
     private Handler mHandlerr;
     private Handler mHandlerTwo;
-
     private MaterialCardView mcv;
+    private ImageView star;
 
     public static Context getAppContext() {
         return Home.cc;
@@ -186,6 +195,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         mHandler = new Handler();
         mHandlerr = new Handler();
 
+
         initViews();
     }
 
@@ -247,8 +257,13 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         mHeaderBox = findViewById(R.id.header_sessionTwo);
         mActionBarToolbar.setVisibility(View.VISIBLE);
         mPhotoViewContainer = findViewById(R.id.session_photo_containerTwo);
-        planeTabs = (TabLayout) findViewById(R.id.plane_tabs);
-        planeTabs = findViewById(R.id.plane_tabs);
+        star = findViewById(R.id.star);
+        randomNumber = rand.nextInt(imageResources.size());
+        star.setImageResource(imageResources.get(randomNumber));
+        star.setPadding(randomNumber, randomNumber, randomNumber, randomNumber);
+
+        // planeTabs = (TabLayout) findViewById(R.id.plane_tabs);
+        // planeTabs = findViewById(R.id.plane_tabs);
         mcv = findViewById(R.id.shadowViewBlue);
         shadowView = findViewById(R.id.shadowViewBlue);
 
@@ -276,13 +291,9 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                 new Runnable() {
                     @Override
                     public void run() {
-
-                        Uri mDraweeUri =
-                                Uri.parse(
-                                        "https://static.warthunder.com/upload/image//wallpapers/2560x1440_victory_day_2022_logo_eng_3348af0071416896f215298d7a8345ae.jpg");
                         draweeView = (SimpleDraweeView) findViewById(R.id.session_photoTwo);
                         draweeView.setAspectRatio(DRAWEE_PHOTO_ASPECT_RATIO);
-                        draweeView.setImageURI(mDraweeUri);
+                        draweeView.setActualImageResource(R.drawable.wt_photoshop_edited);
                         mScrollViewChild.setVisibility(View.VISIBLE);
                     }
                 });

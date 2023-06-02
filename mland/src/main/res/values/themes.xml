@@ -12,8 +12,8 @@
     </style>
 
     <style name="Theme.Drawertest.NoActionBar" parent="Theme.Material3.DynamicColors.DayNight">
-        <item name="colorSecondary">@color/wt_blue</item>
-        <item name="colorSurface">@color/wt_alternate</item>
+        <item name="colorSecondary">#88FFFFFF</item>
+        <item name="colorSurface">#67ffffff</item>
         <item name="materialCardViewStyle">@style/Widget.App.CardView</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.App.MediumComponent
         </item>
@@ -37,8 +37,8 @@
     </style>
 
     <style name="ThemeOverlay.App.Card" parent="">
-        <item name="colorSecondary">@color/wt_blue</item>
-        <item name="colorSurface">@color/wt_alternate</item>
+        <item name="colorSecondary">@color/pretty_indigo</item>
+        <item name="colorSurface">#fafafa</item>
         <item name="colorOnSurfaceVariant">@color/pretty_indigo</item>
     </style>
 
@@ -50,6 +50,32 @@
         <item name="cornerFamily">rounded</item>
         <item name="cardCornerRadius">12dp</item>
         <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ThemeOverlay.Material3.Catalog.Toolbar.Contextual" parent="">
+        <item name="colorControlNormal">#FAFAFA</item>
+    </style>
+
+    <style name="TextAppearance.Material3.Catalog.Toolbar.Contextual.Title" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">#16161c</item>
+        <item name="android:textSize">@dimen/m3_toolbar_text_size_title</item>
+        <item name="android:textColorHint">#505050</item>
+    </style>
+
+    <style name="TextAppearance.Material3.SearchBar" parent="Base.TextAppearance.Material3.Search">
+        <item name="android:textAppearance">@style/TextAppearance.Material3.SearchView</item>
+        <item name="android:textColor">#303030</item>
+        <item name="android:textColorHint">#505050</item>
+        <item name="navigationIcon">@drawable/temp_drawer_plane</item>
+    </style>
+
+    <style name="TextAppearance.Material3.SearchView" parent="Base.TextAppearance.Material3.Search">
+        <item name="enforceMaterialTheme">true</item>
+        <item name="android:textColor">#404040</item>
+        <item name="android:textColorHint">#505050</item>
+        <item name="navigationIcon">@drawable/temp_drawer_plane</item>
+
+
     </style>
 
 </resources>

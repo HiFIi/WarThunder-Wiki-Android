@@ -31,6 +31,14 @@
                 customfontdemo:fontName="ProductSans-Regular.ttf" />
 
             <ListView
+                android:id="@+id/news_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            </ListView>
+
+            <ListView
                 android:id="@+id/lvItems"
                 android:layout_width="fill_parent"
                 android:layout_height="800dp"

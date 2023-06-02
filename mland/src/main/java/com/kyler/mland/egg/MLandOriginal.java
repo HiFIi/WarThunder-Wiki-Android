@@ -1312,7 +1312,7 @@ public class MLandOriginal extends FrameLayout {
         }
     }
 
-    private class Star extends Scenery {
+    public class Star extends Scenery {
         public Star(Context context) {
             super(context);
             setBackgroundResource(R.drawable.star);

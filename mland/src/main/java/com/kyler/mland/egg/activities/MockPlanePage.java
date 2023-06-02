@@ -1,6 +1,8 @@
 package com.kyler.mland.egg.activities;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -9,6 +11,7 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.kyler.mland.egg.CustomAdapter;
 import com.kyler.mland.egg.PlaneAdapter;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.activities.planes.Planes;
@@ -33,15 +36,23 @@ public class MockPlanePage extends AppCompatActivity {
     public ImageView imageView;
     public ArrayList<String> newsList = new ArrayList<>();
     public ArrayList<String> newsListMain = new ArrayList<>();
+    public Elements news;
     int start = 0;
     private SimpleDraweeView dv;
     private String usaPlanesListText;
+    private ListView lv;
+    private CustomAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.layout_mock_plane_page);
+
+        lv = (ListView) findViewById(R.id.news_list);
+        customAdapter = new CustomAdapter(this, newsListMain);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.activity_listview_detail, R.id.headline, newsList);
+        ArrayAdapter<String> adapterMain = new ArrayAdapter<String>(this, R.layout.activity_listview_detail, R.id.headline_main, newsListMain);
 
         getPlaneInfo();
     }
@@ -90,7 +101,9 @@ public class MockPlanePage extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         //     planeName.setText(planeNameStringBuilder.toString());
-                                        loadIntoList();
+                                        //  loadIntoList();
+                                        lv.setAdapter(customAdapter);
+
                                     }
                                 });
                     }
@@ -122,5 +135,46 @@ public class MockPlanePage extends AppCompatActivity {
         hsv[2] *= 0.8f;
         return Color.HSVToColor(hsv);
         // Credits for this: https://github.com/Musenkishi/wally
+    }
+
+    public class NewThread extends AsyncTask<String, Void, String> {
+
+        ProgressDialog dialog = new ProgressDialog(MockPlanePage.this);
+
+
+        @Override
+        protected void onPreExecute() {
+            dialog.setMessage(getString(R.string.app_name));
+            dialog.show();
+
+        }
+
+        @Override
+        protected String doInBackground(String... arg) {
+
+            Document doc;
+            try {
+                doc = Jsoup.connect("https://varzesh3.com").get();
+                news = doc.select("li.text-type>a");
+                newsList.clear();
+                for (Element news : news) {
+                    newsList.add(news.attr("href"));
+                    newsListMain.add(news.text());
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            dialog.dismiss();
+
+            lv.setAdapter(customAdapter);
+
+        }
+
     }
 }

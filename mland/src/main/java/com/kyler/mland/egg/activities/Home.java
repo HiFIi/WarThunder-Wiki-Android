@@ -29,6 +29,11 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.google.android.material.search.SearchBar;
+
+import android.widget.Toast;
+
+import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
 
@@ -261,10 +266,10 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         randomNumber = rand.nextInt(imageResources.size());
         star.setImageResource(imageResources.get(randomNumber));
         star.setPadding(randomNumber, randomNumber, randomNumber, randomNumber);
-
+        
         // planeTabs = (TabLayout) findViewById(R.id.plane_tabs);
         // planeTabs = findViewById(R.id.plane_tabs);
-        mcv = findViewById(R.id.shadowViewBlue);
+        mcv = findViewById(R.id.shadowViewWhite);
         shadowView = findViewById(R.id.shadowViewBlue);
 
         mcv.setBackgroundDrawable(getApplication().getDrawable(R.drawable.a_ten_mockup));

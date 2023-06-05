@@ -24,6 +24,9 @@ import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.ui.MLandTextView;
 
+import android.os.*;
+import android.view.*;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -218,7 +221,8 @@ public class PlanesTest extends MLandBase {
                             //    -- end get plane image --
 
                             //      -- Get usage in battles text --
-                            Elements divUsage = doc.select("div.Usage_in_battles");
+                            Elements divUsage = doc.select("span[id=Usage_in_battles]");
+                            divUsage.select("div > p");
                             String usageTextString = divUsage.text();
                             //     -- end get A-Z list of american planes --
 

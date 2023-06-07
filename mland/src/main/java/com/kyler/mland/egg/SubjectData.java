@@ -10,5 +10,13 @@ public class SubjectData {
         this.Link = link;
         this.Image = image;
     }
+
+    public String getItemName() {
+        return this.SubjectName;
+    }
+
+    public String getItemDescription() {
+        return Image;
+    }
 }
 

@@ -1,21 +1,24 @@
 package com.kyler.mland.egg.activities;
 
+import static com.kyler.mland.egg.activities.Home.setWindowFlag;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
-
-import android.view.WindowManager;
-import android.os.*;
-import android.view.*;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.kyler.mland.egg.R;
+import com.kyler.mland.egg.activities.planes.USAPlanes;
 import com.kyler.mland.egg.utils.UIUtils;
 
 /*
@@ -48,31 +51,81 @@ public class MoreInfo extends AppCompatActivity {
         NSV = findViewById(R.id.nestedScrollView);
         planePic = findViewById(R.id.ivParallax);
 
-        int baseColor = getApplication().getColor(android.R.color.white);
-        float alpha = Math.min(1, (float) 0.5 / planePic.getHeight());
-        Window window = getWindow();
-        planePic.setBackgroundColor(UIUtils.getColorWithAlpha(alpha, (darkenColor(baseColor))));
+        planeTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            Intent intent;
 
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
+                    case 0:
+                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                        ft.add(R.id.your_placeholder, new USAPlanes());
+                        ft.commit();
+                        break;
+                    case 1:
+                        intent = new Intent(getApplicationContext(), MockPlanePage.class);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+                        break;
+                    case 2:
+//                        codes related to the third tab
+                        break;
+                    case 3:
+//                        codes related to the fourth tab
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
+        hideStatusBar();
+
+        int baseColor = getApplication().getColor(android.R.color.white);
         planePic.measure(0, 0);
+        float alpha = Math.min(1, (float) 0.5 / planePic.getHeight());
+
         int planePicHeight = planePic.getMeasuredHeight();
 
-        mPhotoHeightPixels = 0;
-
+        mPhotoHeightPixels = planePicHeight;
 
         float gapFillProgress = 1;
-        gapFillProgress = Math.min(Math.max(UIUtils.getProgress(1, 0, planePicHeight), 0), 1);
 
         if (planePicHeight != 0) {
-            gapFillProgress = Math.min(Math.max(UIUtils.getProgress(3,
-                    100,
-                    mPhotoHeightPixels), 0), 1);
+            gapFillProgress = Math.min(Math.max(UIUtils.getProgress(3, 100, mPhotoHeightPixels), 0), 1);
+            planePic.setBackgroundColor(UIUtils.getColorWithAlpha(alpha, (darkenColor(baseColor))));
+            System.out.println(baseColor);
 
+            System.out.println("TEST 3\n\n" + gapFillProgress);
             if (gapFillProgress == 1) {
-                //    Toast.makeText(this, "Okay we're locked", Toast.LENGTH_LONG).show();
+                System.out.println("\nIt hit ONE HUNNID");
+                System.out.println(gapFillProgress);
+
+
+
             } else if (gapFillProgress >= 1) {
+                System.out.println(gapFillProgress);
 
             }
         }
+    }
+
+    private void hideStatusBar() {
+        Window window = getWindow();
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        super.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
     public int darkenColor(int color) {

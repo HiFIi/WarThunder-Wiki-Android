@@ -29,11 +29,6 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.google.android.material.search.SearchBar;
-
-import android.widget.Toast;
-
-import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
 
@@ -42,7 +37,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.core.ImageTranscoderType;
 import com.facebook.imagepipeline.core.MemoryChunkType;
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.samples.apps.iosched.ui.widget.ObservableScrollView;
 import com.kyler.mland.egg.MLandBase;
@@ -55,7 +49,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -90,7 +84,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     };
     private final String wt = "https://wiki.warthunder.com/Aviation";
     public SimpleDraweeView draweeView;
-    List<Integer> imageResources = Arrays.asList(R.drawable.star);
+    List<Integer> imageResources = Collections.singletonList(R.drawable.star);
     // Create a random number generator.
     Random rand = new Random();
     // Generate a random number between 0 and the length of the list.
@@ -116,7 +110,6 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private TabLayout planeTabs;
     private Handler mHandlerr;
     private Handler mHandlerTwo;
-    private MaterialCardView mcv;
     private ImageView star;
 
     public static Context getAppContext() {
@@ -170,6 +163,10 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
+        super.getWindow()
+                .getDecorView()
+                .setSystemUiVisibility(
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         AsyncTaskRunner runner = new AsyncTaskRunner();
         // String sleepTime = "20000";
@@ -199,7 +196,6 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
 
         mHandler = new Handler();
         mHandlerr = new Handler();
-
 
         initViews();
     }
@@ -266,13 +262,9 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         randomNumber = rand.nextInt(imageResources.size());
         star.setImageResource(imageResources.get(randomNumber));
         star.setPadding(randomNumber, randomNumber, randomNumber, randomNumber);
-        
+
         // planeTabs = (TabLayout) findViewById(R.id.plane_tabs);
         // planeTabs = findViewById(R.id.plane_tabs);
-        mcv = findViewById(R.id.shadowViewWhite);
-        shadowView = findViewById(R.id.shadowViewBlue);
-
-        mcv.setBackgroundDrawable(getApplication().getDrawable(R.drawable.a_ten_mockup));
 
         /** get the height of the planetabs and toolbar, divide both by 2
          this is done to anchor it to the tabs layout on parallax scrolling

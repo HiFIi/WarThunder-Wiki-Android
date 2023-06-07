@@ -24,9 +24,6 @@ import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.ui.MLandTextView;
 
-import android.os.*;
-import android.view.*;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -44,26 +41,6 @@ public class PlanesTest extends MLandBase {
     public static final int four = 4;
     public static final int zero = 0;
     public static final int fiftyFiveHundred = 5500;
-    private static final String mUSAFlagLink =
-            "https://wiki.warthunder.com/images/9/9f/USA_flag.png";
-    private static final String mGermanyFlagLink =
-            "https://wiki.warthunder.com/images/4/49/Germany_flag.png";
-    private static final String mUSSRFlagLink =
-            "https://wiki.warthunder.com/images/f/f9/USSR_flag.png";
-    private static final String mBritainFlagLink =
-            "https://wiki.warthunder.com/images/d/d0/Britain_flag.png";
-    private static final String mJapanFlagLink =
-            "https://wiki.warthunder.com/images/2/2e/Japan_flag.png";
-    private static final String mChinaFlagLink =
-            "https://wiki.warthunder.com/images/a/ac/China_flag.png";
-    private static final String mItalyFlagLink =
-            "https://wiki.warthunder.com/images/e/e9/Italy_flag.png";
-    private static final String mFranceFlagLink =
-            "https://wiki.warthunder.com/images/7/73/France_flag.png";
-    private static final String mSwedenFlagLink =
-            "https://wiki.warthunder.com/images/c/ca/Sweden_flag.png";
-    private static final String mIsraelFlagLink =
-            "https://wiki.warthunder.com/images/f/f9/Israel_flag.png";
     private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
     private static final float DRAWEE_PHOTO_ASPECT_RATIO = 1.33f;
     private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
@@ -191,9 +168,8 @@ public class PlanesTest extends MLandBase {
                             Elements test = doc.select("Description");
 
                             //      -- Get Country name --
-                            Elements countryName = doc.select("a[href][title]");
-                            Elements div = doc.select("div.Usage_in_battles");
-                            String linkText = div.text();
+                            Element div = doc.select("a[href*=/category:]").first();
+                            String countryName = div.text();
                             //    -- end get Country name --
 
                             //      -- Get Country rank --
@@ -249,8 +225,7 @@ public class PlanesTest extends MLandBase {
 
                             String textTwo = doc.body().text();
 
-                            Elements table = doc.select("table");
-                            countryTextStringBuilder.append(linkText);
+                            countryTextStringBuilder.append(countryName);
                             countryRankStringBuilder.append(countryRankTextString);
                             getUsageInBattleStringBuilder.append(usageTextString);
                             planeNameStringBuilder.append(getPlaneNameText);
@@ -268,15 +243,12 @@ public class PlanesTest extends MLandBase {
                                     .append(" ");
                         }
                         runOnUiThread(
-                                new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        getUsageInBattleText.setText(getUsageInBattleStringBuilder.toString());
-                                        countryText.setText(countryTextStringBuilder.toString());
-                                        planeName.setText(planeNameStringBuilder.toString());
-                                        countryRank.setText(countryRankStringBuilder.toString());
-                                        descriptionText.setText(descriptionTextStringBuilder.toString());
-                                    }
+                                () -> {
+                                    getUsageInBattleText.setText(getUsageInBattleStringBuilder.toString());
+                                    countryText.setText(countryTextStringBuilder.toString());
+                                    planeName.setText(planeNameStringBuilder.toString());
+                                    countryRank.setText(countryRankStringBuilder.toString());
+                                    descriptionText.setText(descriptionTextStringBuilder.toString());
                                 });
                     }
                 })

@@ -1,30 +1,30 @@
 package com.kyler.mland.egg;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
 
 public class CustomAdapter extends BaseAdapter {
-
     Context context;
-    List<String> newsList;
-    LayoutInflater inflater;
+    String[] countryList;
+    int[] flags;
+    LayoutInflater inflter;
 
-    public CustomAdapter(Context ctx, List<String> newsList) {
-        this.context = ctx;
-        this.newsList = newsList;
-        inflater = LayoutInflater.from(ctx);
+    public CustomAdapter(Context applicationContext, String[] countryList, int[] flags) {
+        this.context = context;
+        this.countryList = countryList;
+        this.flags = flags;
+        inflter = (LayoutInflater.from(applicationContext));
     }
 
     @Override
     public int getCount() {
-        return 170;
+        return countryList.length;
     }
 
     @Override
@@ -34,16 +34,16 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 170;
+        return 0;
     }
 
-    @SuppressLint({"ViewHolder", "InflateParams"})
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-
-        view = inflater.inflate(R.layout.activity_listview_detail, null);
-        TextView textView = (TextView) view.findViewById(R.id.headline);
-        textView.setText(newsList.get(170));
+        view = inflter.inflate(R.layout.plane_list, null);
+        TextView country = (TextView) view.findViewById(R.id.textView);
+        ImageView icon = (ImageView) view.findViewById(R.id.icon);
+        country.setText(countryList[i]);
+        icon.setImageResource(flags[i]);
         return view;
     }
 }

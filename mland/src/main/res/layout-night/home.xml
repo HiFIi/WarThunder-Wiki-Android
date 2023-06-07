@@ -74,23 +74,12 @@
                     android:layout_marginStart="140dp"
                     android:layout_marginTop="462dp"
                     android:background="@drawable/star" />
-
-                <RelativeLayout
-                    android:id="@+id/md_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fitsSystemWindows="false">
-
-                    <include layout="@layout/toolbar_actionbar_transparent" />
-
-
-                </RelativeLayout>
             </FrameLayout>
 
             <LinearLayout
                 android:id="@+id/details_containerTwo"
                 android:layout_width="match_parent"
-                android:layout_height="2500dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <!-- <ListView android:id="@+id/list" android:layout_width="fill_parent" android:layout_height="800dp" android:background="#fafafa" android:clickable="true" android:dividerHeight="1dp" android:footerDividersEnabled="false" android:headerDividersEnabled="false"> </ListView> -->
@@ -105,26 +94,67 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_behavior="@string/searchbar_scrolling_view_behavior">
-                    <!-- Screen content goes here. -->
+
+
                 </androidx.core.widget.NestedScrollView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="false"
+                    android:background="#e8e8e8"
+                    android:cropToPadding="false"
+                    android:fitsSystemWindows="false"
+                    android:textAlignment="gravity">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/planeName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="30dp"
+                        android:elevation="11dp"
+                        android:hapticFeedbackEnabled="true"
+                        android:text="@string/about"
+                        android:textColor="#080808"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:typeface="sans"
+                        android:visibility="visible" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/planeListImages"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="24dp"
+                        android:scaleType="centerCrop"
+                        app:cardBackgroundColor="@color/off_white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp" />
+
+
+                </RelativeLayout>
 
                 <com.google.android.material.appbar.AppBarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/off_white"
                     android:layout_marginLeft="24dp"
                     android:layout_marginTop="175dp"
-                    android:layout_marginRight="24dp">
+                    android:layout_marginRight="24dp"
+                    android:background="@color/off_white">
 
                     <com.google.android.material.search.SearchBar
                         android:id="@+id/search_bar"
+                        style="@style/TextAppearance.Material3.SearchBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/off_white"
                         android:backgroundTint="#FFFFFF"
                         android:backgroundTintMode="src_atop"
                         android:hint="Search for any plane..."
-                        style="@style/TextAppearance.Material3.SearchBar"
                         android:textColorHint="#14141c"
                         app:elevation="12.0dip"
                         app:navigationIconTint="#454550"
@@ -143,59 +173,20 @@
                 </com.google.android.material.search.SearchView>
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/shadowViewShort"
-                style="@style/Widget.App.CardView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="410dp"
-                android:layout_marginRight="36dp"
-                android:alpha="0.89"
-                android:checkable="true"
-                android:clipChildren="false"
-                android:fitsSystemWindows="false"
-                android:focusable="true"
-                android:orientation="vertical"
-                android:paddingBottom="8dp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/shadowViewWhite"
-                style="@style/Widget.App.CardView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="710dp"
-                android:layout_marginRight="36dp"
-                android:alpha="0.80"
-                android:background="@color/off_white"
-                android:checkable="true"
-                android:clipChildren="false"
-                android:fitsSystemWindows="false"
-                android:focusable="true"
-                android:orientation="vertical"
-                android:paddingBottom="8dp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/shadowViewWhiteTwo"
-                style="@style/Widget.App.CardView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="910dp"
-                android:layout_marginRight="36dp"
-                android:alpha="1.00"
-                android:background="@color/off_white"
-                android:checkable="true"
-                android:clipChildren="false"
-                android:fitsSystemWindows="false"
-                android:focusable="true"
-                android:orientation="vertical"
-                android:paddingBottom="8dp" />
         </FrameLayout>
 
 
     </com.google.samples.apps.iosched.ui.widget.ObservableScrollView>
+
+    <RelativeLayout
+        android:id="@+id/md_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false">
+
+        <include layout="@layout/toolbar_actionbar_transparent" />
+
+    </RelativeLayout>
 
     <include layout="@layout/mland_base" />
 

@@ -14,7 +14,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="windowActionBarOverlay">false</item>
         <item name="windowActionModeOverlay">false</item>
-        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:fitsSystemWindows">false</item>
         // make status bar icons colour grey
@@ -109,7 +109,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="windowActionBarOverlay">false</item>
         <item name="windowActionModeOverlay">false</item>
-        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:fitsSystemWindows">false</item>
         // make status bar icons colour grey

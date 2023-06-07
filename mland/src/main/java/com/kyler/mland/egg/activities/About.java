@@ -139,7 +139,7 @@ public class About extends MLandBase implements ObservableScrollView.Callbacks {
         mPhotoHeightPixels = 0;
         if (mHasPhoto) {
             mPhotoHeightPixels = (int) (draweeView.getWidth() / PHOTO_ASPECT_RATIO);
-            mPhotoHeightPixels = Math.min(mPhotoHeightPixels, mScrollView.getHeight() * 1 / 3);
+            mPhotoHeightPixels = Math.min(mPhotoHeightPixels, mScrollView.getHeight() / 3);
         }
 
         ViewGroup.LayoutParams lp;

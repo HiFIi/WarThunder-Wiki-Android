@@ -1,11 +1,39 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:adjustViewBounds="false"
+    android:background="#e8e8e8"
+    android:cropToPadding="false"
+    android:fitsSystemWindows="false"
+    android:textAlignment="gravity">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/planeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:elevation="5dp"
+        android:hapticFeedbackEnabled="true"
+        android:text="@string/about"
+        android:textColor="#080808"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        android:visibility="visible" />
 
-</LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/planeListImages"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="centerCrop"
+        app:cardBackgroundColor="@color/off_white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp" />
+
+
+</RelativeLayout>

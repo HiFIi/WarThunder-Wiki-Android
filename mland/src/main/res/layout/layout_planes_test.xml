@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e5e5e5"
+    android:background="#fafafa"
     android:fitsSystemWindows="false">
 
     <com.google.samples.apps.iosched.ui.widget.ObservableScrollView
@@ -18,7 +18,8 @@
         <FrameLayout
             android:id="@+id/scroll_view_child"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#fafafa">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,15 +30,15 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/off_white"
-                    android:clipChildren="false"
-                    android:elevation="14.0dip">
+                    android:layout_gravity="top|center"
+
+                    android:clipChildren="false">
 
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/planeDrawee"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_gravity="top"
+                        android:layout_height="220dp"
+                        android:layout_gravity="top|center"
                         android:clipChildren="false"
                         android:tint="#20ffffff"
                         android:tintMode="src_atop"
@@ -47,18 +48,23 @@
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clipChildren="false">
+                    android:layout_height="75dp"
+                    android:layout_gravity="top|center"
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginTop="-64dp"
+                    android:layout_marginRight="36dp"
+                    android:background="#fafafa"
+                    android:clipChildren="false"
+                    android:elevation="16dp">
 
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/countryImage"
                         android:layout_width="40dp"
                         android:layout_height="30dp"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="12dp"
                         android:layout_toEndOf="@id/planeName"
                         android:adjustViewBounds="false"
-                        android:clipToOutline="true"
                         android:cropToPadding="false"
                         fresco:actualImageScaleType="centerCrop" />
 
@@ -67,7 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginBottom="4dp"
                         android:layout_toEndOf="@id/countryImage"
                         android:text="@string/country"
@@ -80,13 +86,12 @@
                         android:id="@+id/planeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="6dp"
                         android:text="@string/plane_name"
                         android:textColor="#050505"
-                        android:textSize="44sp"
+                        android:textSize="38sp"
                         customfontdemo:fontName="GoogleSansText-Medium.ttf" />
 
                     <com.kyler.mland.egg.ui.MLandTextView
@@ -95,6 +100,7 @@
                         android:layout_height="match_parent"
                         android:layout_below="@id/countryText"
                         android:layout_marginLeft="4dp"
+                        android:layout_marginRight="8dp"
                         android:layout_marginBottom="8dp"
                         android:layout_toEndOf="@id/countryImage"
                         android:text="@string/country_rank"
@@ -104,14 +110,64 @@
 
                 </RelativeLayout>
 
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/wt_grey_darker"
+                    android:clipChildren="false">
+
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/researchText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="top"
+                        android:text="Plane cost:"
+                        android:textColor="#10101c"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        customfontdemo:fontName="symbols_skyquake.ttf"
+                        fresco:ignore="RtlSymmetry" />
+
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/researchTextAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/researchText"
+                        android:layout_marginLeft="16dp"
+                        android:text="AMOUNT"
+                        android:textColor="#10101c"
+                        android:textSize="18sp"
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/resarchPointsImage"
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:layout_below="@id/researchText"
+                        android:adjustViewBounds="false"
+                        android:cropToPadding="false"
+                        android:text="RP COST"
+                        fresco:actualImageScaleType="centerCrop" />
+
+
+                </RelativeLayout>
+
                 <com.kyler.mland.egg.ui.MLandTextView
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="12dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="16dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="16dp"
                     android:text="@string/description"
                     android:textColor="#30301c"
                     android:textSize="30sp"
@@ -189,14 +245,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="false">
-
-        <ImageView
-            android:id="@+id/circle_2"
-            android:layout_width="36.0dip"
-            android:layout_height="36.0dip"
-            android:src="@drawable/circle"
-            android:visibility="invisible"
-            fresco:ignore="ContentDescription" />
 
         <include layout="@layout/toolbar_actionbar_transparent" />
 

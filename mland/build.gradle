@@ -60,6 +60,8 @@ android {
         htmlReport true
         xmlReport true
     }
+    buildToolsVersion '34.0.0 rc4'
+    compileSdkPreview 'UpsideDownCake'
 }
 
 dependencies {

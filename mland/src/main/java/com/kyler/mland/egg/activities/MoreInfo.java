@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
+import com.google.samples.apps.iosched.ui.widget.ObservableScrollView;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.activities.planes.USAPlanes;
 import com.kyler.mland.egg.utils.UIUtils;
@@ -35,10 +37,16 @@ public class MoreInfo extends AppCompatActivity {
     private static TabLayout planeTabs;
     private CollapsingToolbarLayout collapsingTB;
     private NestedScrollView NSV;
+    private boolean mHasPhoto;
 
     private ImageView planePic;
 
     private int mPhotoHeightPixels;
+
+    private ObservableScrollView mScrollView;
+
+
+    private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
 
 
     @Override
@@ -50,6 +58,8 @@ public class MoreInfo extends AppCompatActivity {
         collapsingTB = findViewById(R.id.collapsingToolbarLayout);
         NSV = findViewById(R.id.nestedScrollView);
         planePic = findViewById(R.id.ivParallax);
+        mScrollView = (ObservableScrollView) findViewById(R.id.scroll_view);
+
 
         planeTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             Intent intent;
@@ -89,31 +99,32 @@ public class MoreInfo extends AppCompatActivity {
 
 
         hideStatusBar();
+        mHasPhoto = true;
 
-        int baseColor = getApplication().getColor(android.R.color.white);
-        planePic.measure(0, 0);
-        float alpha = Math.min(1, (float) 0.5 / planePic.getHeight());
 
-        int planePicHeight = planePic.getMeasuredHeight();
-
-        mPhotoHeightPixels = planePicHeight;
+        mPhotoHeightPixels = 1;
+        mPhotoHeightPixels = (int) (planePic.getWidth() / PHOTO_ASPECT_RATIO);
+        mPhotoHeightPixels = Math.min(mPhotoHeightPixels, planePic.getHeight() / 3);
 
         float gapFillProgress = 1;
+        int baseColor = getApplication().getColor(android.R.color.black);
+        planePic.measure(0, 0);
+        float alpha = Math.min(0, (float) 0.75 / planePic.getHeight());
+        planePic.setBackgroundColor(UIUtils.getColorWithAlpha(alpha, (darkenColor(baseColor))));
+        System.out.println(baseColor);
+        System.out.println("TEST 3\n\n" + gapFillProgress);
+        Toast.makeText(getApplicationContext(), "test:\n" + alpha, Toast.LENGTH_SHORT).show();
 
-        if (planePicHeight != 0) {
-            gapFillProgress = Math.min(Math.max(UIUtils.getProgress(3, 100, mPhotoHeightPixels), 0), 1);
-            planePic.setBackgroundColor(UIUtils.getColorWithAlpha(alpha, (darkenColor(baseColor))));
-            System.out.println(baseColor);
+        if (mPhotoHeightPixels != 0) {
+            gapFillProgress =
+                    Math.min(Math.max(UIUtils.getProgress(1, 0, mPhotoHeightPixels), 0), 1);
+            if (gapFillProgress != 1) {
+                Toast.makeText(getApplicationContext(), "We arent locked", Toast.LENGTH_SHORT).show();
 
-            System.out.println("TEST 3\n\n" + gapFillProgress);
-            if (gapFillProgress == 1) {
-                System.out.println("\nIt hit ONE HUNNID");
+
+            } else if (gapFillProgress == 1) {
                 System.out.println(gapFillProgress);
-
-
-
-            } else if (gapFillProgress >= 1) {
-                System.out.println(gapFillProgress);
+                Toast.makeText(getApplicationContext(), "We are locked", Toast.LENGTH_SHORT).show();
 
             }
         }

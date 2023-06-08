@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     android:adjustViewBounds="false"
-    android:background="#e8e8e8"
+    android:background="@drawable/gradient_test"
+    android:foreground="?android:attr/selectableItemBackground"
     android:cropToPadding="false"
     android:fitsSystemWindows="false"
     android:textAlignment="gravity">
@@ -15,25 +16,32 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:elevation="5dp"
+        android:layout_marginTop="40dp"
+        android:elevation="50dp"
         android:hapticFeedbackEnabled="true"
-        android:text="@string/about"
-        android:textColor="#080808"
-        android:textSize="26sp"
+        android:text="Test"
+        android:textColor="#fafafa"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:typeface="sans"
+        android:typeface="normal"
         android:visibility="visible" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/planeListImages"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="16dp"
         android:scaleType="centerCrop"
-        app:cardBackgroundColor="@color/off_white"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="4dp" />
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardPreventCornerOverlap="true"
+        android:alpha="0.85"
+        app:cardBackgroundColor="@color/pretty_indigo_transparent"
+        android:backgroundTint="@color/black_40"
+        android:backgroundTintMode="src_atop"
+        app:cardCornerRadius="12dp" />
 
 
 </RelativeLayout>

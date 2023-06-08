@@ -20,8 +20,10 @@
     android:id="@+id/ll"
     android:layout_width="match_parent"
     android:layout_height="56.0dip"
-    android:layout_marginLeft="12dp"
-    android:layout_marginRight="@dimen/keyline_1"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:gravity="start|center_vertical"
     android:orientation="horizontal">
 
@@ -32,7 +34,6 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="12dp"
         android:adjustViewBounds="false"
-        android:clipToOutline="true"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
         tools:ignore="ContentDescription,RtlHardcoded" />
@@ -43,6 +44,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/navdrawer_item_text_color"
         android:textSize="14.0sp"
-        customfontdemo:fontName="ProductSans-Regular.ttf" />
+        android:textStyle="bold"
+        customfontdemo:fontName="GoogleSansText-Medium.ttf" />
 
 </LinearLayout>

@@ -32,22 +32,16 @@ import com.kyler.mland.egg.utils.UIUtils;
  */
 @SuppressWarnings("DefaultFileTemplate")
 public class MoreInfo extends AppCompatActivity {
+    private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
     // int scrollY = mScrollView.getScrollY();
     private static AppBarLayout parallaxAPB;
     private static TabLayout planeTabs;
     private CollapsingToolbarLayout collapsingTB;
     private NestedScrollView NSV;
     private boolean mHasPhoto;
-
     private ImageView planePic;
-
     private int mPhotoHeightPixels;
-
     private ObservableScrollView mScrollView;
-
-
-    private static final float PHOTO_ASPECT_RATIO = 1.7777777f;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

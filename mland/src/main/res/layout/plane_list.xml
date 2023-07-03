@@ -5,9 +5,9 @@
     android:layout_gravity="center_horizontal"
     android:adjustViewBounds="false"
     android:background="@drawable/gradient_test"
-    android:foreground="?android:attr/selectableItemBackground"
     android:cropToPadding="false"
     android:fitsSystemWindows="false"
+    android:foreground="?android:attr/selectableItemBackground"
     android:textAlignment="gravity">
 
     <com.google.android.material.textview.MaterialTextView
@@ -30,18 +30,18 @@
         android:id="@+id/planeListImages"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="24dp"
         android:layout_marginBottom="16dp"
-        android:scaleType="centerCrop"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardPreventCornerOverlap="true"
         android:alpha="0.85"
-        app:cardBackgroundColor="@color/pretty_indigo_transparent"
         android:backgroundTint="@color/black_40"
         android:backgroundTintMode="src_atop"
-        app:cardCornerRadius="12dp" />
+        android:foreground="?android:attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        app:cardBackgroundColor="@color/pretty_indigo_transparent"
+        app:cardCornerRadius="12dp"
+        app:cardPreventCornerOverlap="true" />
 
 
 </RelativeLayout>

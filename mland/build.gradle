@@ -60,8 +60,8 @@ android {
         htmlReport true
         xmlReport true
     }
-    buildToolsVersion '34.0.0 rc4'
-    compileSdkPreview 'UpsideDownCake'
+    buildToolsVersion '34.0.0 rc3'
+    compileSdk 34
 }
 
 dependencies {
@@ -71,7 +71,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0-alpha02'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha10'
     implementation 'com.google.android.material:material:1.9.0-rc01'
-    implementation 'androidx.navigation:navigation-ui:2.7.0-alpha01'
+    implementation 'androidx.navigation:navigation-ui:2.7.0-beta02'
     implementation 'com.facebook.fresco:fresco:3.0.0'
     implementation 'org.jsoup:jsoup:1.16.1'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -84,7 +84,7 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
 
-    implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.169.0'
+    implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.170.0'
 
     implementation 'com.github.jitpack:android-example:3.0'
 

@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/wt_blue"
-                    app:liftOnScroll="true">
+                    app:liftOnScroll="false">
 
                     <com.google.android.material.appbar.CollapsingToolbarLayout
                         android:id="@+id/collapsingToolbarLayout"
@@ -41,7 +41,7 @@
                         android:background="@color/wt_blue"
                         app:contentScrim="@color/black_40"
                         app:layout_scrollEffect="compress"
-                        app:layout_scrollFlags="scroll">
+                        app:layout_scrollFlags="exitUntilCollapsed">
 
                         <com.google.android.material.tabs.TabLayout
                             android:id="@+id/plane_tabs2"

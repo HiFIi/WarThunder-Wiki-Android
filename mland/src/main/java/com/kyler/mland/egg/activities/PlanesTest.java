@@ -148,6 +148,7 @@ public class PlanesTest extends MLandBase {
                         final StringBuilder countryRankStringBuilder = new StringBuilder();
                         final StringBuilder getUsageInBattleStringBuilder = new StringBuilder();
                         final StringBuilder descriptionTextStringBuilder = new StringBuilder();
+                        final StringBuilder researchCostStringBuilder = new StringBuilder();
                         MLandTextView countryText =
                                 (MLandTextView) findViewById(R.id.countryText);
                         MLandTextView descriptionText =
@@ -160,6 +161,8 @@ public class PlanesTest extends MLandBase {
                                 (SimpleDraweeView) findViewById(R.id.planeDrawee);
                         MLandTextView planeName =
                                 (MLandTextView) findViewById(R.id.planeName);
+                        MLandTextView researchCostText =
+                                (MLandTextView) findViewById(R.id.researchTextAmount);
 
                         try {
                             Document doc = Jsoup.connect(wt).get();
@@ -181,6 +184,11 @@ public class PlanesTest extends MLandBase {
                             Elements divGeneralInfo = doc.select("div.general_info");
                             String generalInfoTextString = divGeneralInfo.text();
                             //     -- end get general info --
+
+                            //      -- Get Research Cost --
+                            Elements divResearchCost = doc.select("div.general_info_price_research");
+                            String researchCostTextString = divResearchCost.text();
+                            //     -- end get Resaarch Cost --
 
                             //      -- Get plane name --
                             Elements getPlaneName = doc.select("h1");
@@ -229,6 +237,7 @@ public class PlanesTest extends MLandBase {
                             countryRankStringBuilder.append(countryRankTextString);
                             getUsageInBattleStringBuilder.append(usageTextString);
                             planeNameStringBuilder.append(getPlaneNameText);
+                            researchCostStringBuilder.append(researchCostTextString);
 
                             descriptionTextStringBuilder
                                     .append(descriptionTextOne)
@@ -248,7 +257,7 @@ public class PlanesTest extends MLandBase {
                                     countryText.setText(countryTextStringBuilder.toString());
                                     planeName.setText(planeNameStringBuilder.toString());
                                     countryRank.setText(countryRankStringBuilder.toString());
-                                    descriptionText.setText(descriptionTextStringBuilder.toString());
+                                    researchCostText.setText(researchCostStringBuilder.toString());
                                 });
                     }
                 })

@@ -84,7 +84,7 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.1'
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
 
-    implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.170.0'
+    implementation 'se.bjurr.gitchangelog:git-changelog-lib:1.170.1'
 
     implementation 'com.github.jitpack:android-example:3.0'
 

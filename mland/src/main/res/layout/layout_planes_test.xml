@@ -126,15 +126,15 @@
                         android:layout_centerInParent="true"
                         android:layout_gravity="top"
                         android:layout_marginStart="4dp"
-                        android:paddingLeft="3dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="4dp"
                         android:gravity="top"
-                        android:visibility="invisible"
+                        android:paddingLeft="3dp"
                         android:text="cost:"
                         android:textColor="#10101c"
                         android:textSize="24sp"
                         android:textStyle="bold"
+                        android:visibility="invisible"
                         customfontdemo:fontName="symbols_skyquake.ttf"
                         fresco:ignore="RtlSymmetry" />
 
@@ -148,13 +148,13 @@
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="4dp"
-                        android:gravity="top"
                         android:layout_toLeftOf="@id/researchText"
+                        android:gravity="top"
                         android:text="Research"
                         android:textColor="#10101c"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        customfontdemo:fontName="symbols_skyquake.ttf"/>
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
 
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/resarchPointsImage"

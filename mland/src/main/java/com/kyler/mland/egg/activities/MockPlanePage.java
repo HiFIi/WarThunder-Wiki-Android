@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -55,6 +56,17 @@ public class MockPlanePage extends AppCompatActivity {
     private String usaPlanesListText;
     private CustomAdapter customAdapter;
 
+    private static String trim(String s, int width) {
+        if (s.length() > width)
+            return s.substring(0, width - 1) + ".";
+        else
+            return s;
+    }
+
+    private static void print(String msg, Object... args) {
+        System.out.println(String.format(msg, args));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +102,6 @@ public class MockPlanePage extends AppCompatActivity {
         super.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
-
     public void getPlaneInfo() {
         new Thread(
                 new Runnable() {
@@ -111,6 +122,30 @@ public class MockPlanePage extends AppCompatActivity {
                             // Get USA Plane list (alphabetically)
                             Elements usaPlanesList = (Elements) doc.select("div.mw-category li");
                             list = new ArrayList<>();
+                            String url = usaPlanesList.attr("href");
+                            Elements links = doc.select("a[href]");
+                            Elements media = doc.select("[src]");
+                            Elements imports = doc.select("link[href]");
+                            print("\nLinks: (%d)", links.size());
+                            for (Element link : links) {
+                                print(" * a: <%s>  (%s)", link.attr("abs:href"), trim(link.text(), 35));
+                            }
+
+                            Thread thread = new Thread() {
+                                @Override
+                                public void run() {
+                                    // Call Looper.prepare() on the thread.
+                                    Looper.prepare();
+                                    // Call Toast.makeText() on the thread.
+                                    Toast.makeText(getApplicationContext(), links.text().trim(), Toast.LENGTH_SHORT).show();
+                                    // Call Looper.loop() to start the message loop.
+                                    Looper.loop();
+                                }
+                            };
+
+// Start the thread.
+                            thread.start();
+
 
                             for (Element element : doc.select("div.mw-category li")) {
                                 list.add(element.text());
@@ -161,7 +196,6 @@ public class MockPlanePage extends AppCompatActivity {
                 .start();
     }
 
-
     public int darkenColor(int color) {
         float[] hsv = new float[3];
         Color.colorToHSV(color, hsv);
@@ -177,7 +211,7 @@ public class MockPlanePage extends AppCompatActivity {
         ArrayList<SubjectData> list = new ArrayList<>();
 
         for (int i = 0; i < itemNames.length; i++) {
-            list.add(new SubjectData(itemNames[i], "", itemDescriptions[i]));
+            list.add(new SubjectData(itemNames[i], "https://google.com", itemDescriptions[i]));
         }
 
 
@@ -205,7 +239,7 @@ public class MockPlanePage extends AppCompatActivity {
                 news = doc.select("li.text-type>a");
                 newsList.clear();
                 for (Element news : news) {
-                    newsList.add(news.attr("href"));
+                    newsList.add(news.attr("a[href]"));
                     newsListMain.add(news.text());
 
                 }

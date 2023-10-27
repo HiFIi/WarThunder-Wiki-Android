@@ -157,8 +157,10 @@ public class PlanesTest extends MLandBase {
                                 (MLandTextView) findViewById(R.id.researchTextAmount);
 
                         try {
+                            // String url = args[0];
                             Document doc = Jsoup.connect(wt).get();
-                            // String title = doc.title();
+                            Elements links2 = doc.select("a[href]");
+
                             Element links = doc.select("div.mw-headline").first();
                             Elements test = doc.select("Description");
 
@@ -185,6 +187,8 @@ public class PlanesTest extends MLandBase {
                             researchCostTextString.replace("\\n", ",");
                             //Replace a space with a comma
                             researchCostTextString.replaceAll("\\n", ",");
+                            divResearchCost.after(researchCostTextString).append(" Silver Lions");
+                            divResearchCost.append(" Silver Lions");
                             //     -- end get Resaarch Cost --
 
                             //      -- Get plane name --

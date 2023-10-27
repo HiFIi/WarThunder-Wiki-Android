@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.tabs.TabLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/plane_tabs2"
+    android:layout_width="match_parent"
+    android:layout_height="100.0dip"
+    android:layout_gravity="bottom"
+    android:background="#161735"
+    android:clickable="true"
+    android:elevation="36.0dip"
+    android:tintMode="src_atop"
+    app:barrierDirection="start"
+    app:tabIconTint="#fafafa"
+    app:tabIconTintMode="multiply"
+    app:tabIndicatorColor="#FAFAFA"
+    app:tabMode="auto"
+    app:tabRippleColor="@color/black_40"
+    app:tabSelectedTextAppearance="?attr/textAppearanceCaption"
+    app:tabTextColor="@android:color/white"
+    app:tint="#FAFAFA">
+
+    <com.google.android.material.tabs.TabItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/news_icon"
+        android:text="War Thunder News"
+        customfontdemo:tabIconTint="@android:color/white" />
+
+    <com.google.android.material.tabs.TabItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/update_icon"
+        android:text="War Thunder Updates"
+        customfontdemo:tabIconTint="#fafafa" />
+
+</com.google.android.material.tabs.TabLayout>

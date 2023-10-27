@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WT App</string>
+    <string name="app_name">WT Wiki</string>
     <string name="mland_original">Ships</string>
     <string name="mland_modified">Tanks</string>
     <string name="home">Planes / Jets</string>

@@ -27,6 +27,7 @@
                 android:clipChildren="false"
                 android:orientation="vertical" />
 
+
             <FrameLayout
                 android:id="@+id/session_photo_containerTwo"
                 android:layout_width="match_parent"
@@ -34,33 +35,35 @@
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/session_photoTwo"
-                    android:layout_width="match_parent"
-                    android:layout_height="190dp"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_gravity="top"
+                    android:visibility="gone"
                     fresco:actualImageScaleType="centerCrop"
                     fresco:adjustViewBounds="true"
                     fresco:placeholderImage="@drawable/wt_home_pic" />
 
             </FrameLayout>
 
-            <com.kyler.mland.egg.ui.MLandTextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="200dp"
-                android:paddingTop="-40dp"
-                android:text="War Thunder News:"
-                android:textColor="#FAFAFA"
-                android:textSize="26.0sp"
-                android:textStyle="bold"
-                customfontdemo:fontName="LyftPro-Bold.ttf" />
-
             <LinearLayout
                 android:id="@+id/details_containerTwo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+
+                <com.kyler.mland.egg.ui.MLandTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal|center|center_vertical"
+                    android:singleLine="true"
+                    android:text="@string/app_name"
+                    android:textColor="#fafafa"
+                    android:textSize="48sp"
+                    android:textStyle="bold"
+                    customfontdemo:fontName="LyftPro-Bold.ttf" />
+
 
                 <!-- <ListView android:id="@+id/list" android:layout_width="fill_parent" android:layout_height="800dp" android:background="#fafafa" android:clickable="true" android:dividerHeight="1dp" android:footerDividersEnabled="false" android:headerDividersEnabled="false"> </ListView> -->
             </LinearLayout>
@@ -69,12 +72,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <!-- NestedScrollingChild goes here (NestedScrollView, RecyclerView, etc.). -->
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_behavior="@string/searchbar_scrolling_view_behavior">
-
 
                 </androidx.core.widget.NestedScrollView>
 
@@ -82,52 +85,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:adjustViewBounds="false"
-                    android:cropToPadding="false"
+                    android:layout_marginTop="95dp"
                     android:fitsSystemWindows="false"
                     android:textAlignment="gravity">
+
+                    <include layout="@layout/test"></include>
 
 
                 </RelativeLayout>
 
-                <com.google.android.material.appbar.AppBarLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:layout_marginTop="175dp"
-                    android:layout_marginRight="24dp"
-                    android:background="@color/off_white">
-
-                    <com.google.android.material.search.SearchBar
-                        android:id="@+id/search_bar"
-                        style="@style/TextAppearance.Material3.SearchBar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/off_white"
-                        android:backgroundTint="#FFFFFF"
-                        android:backgroundTintMode="src_atop"
-                        android:hint="Search for anything..."
-                        android:textColorHint="#14141c"
-                        android:visibility="invisible"
-                        app:elevation="12.0dip"
-                        app:navigationIconTint="#454550"
-                        app:subtitleTextColor="#14141c"
-                        app:tintNavigationIcon="true"
-                        app:titleTextAppearance="@style/ShapeAppearanceOverlay.Material3.SearchBar"
-                        app:titleTextColor="#202020" />
-                </com.google.android.material.appbar.AppBarLayout>
-
-                <com.google.android.material.search.SearchView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/app_name"
-                    app:layout_anchor="@id/search_bar">
-                    <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
-                </com.google.android.material.search.SearchView>
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         </FrameLayout>
-
 
     </com.google.samples.apps.iosched.ui.widget.ObservableScrollView>
 
@@ -136,6 +105,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="false">
+
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_marginTop="350dp"
+            android:background="@drawable/cactus2" />
 
         <include layout="@layout/toolbar_actionbar_transparent" />
 

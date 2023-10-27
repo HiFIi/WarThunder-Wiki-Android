@@ -2,12 +2,12 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:innerRadius="30dp"
     android:shape="rectangle"
-    android:thickness="20dp"
-    android:tint="#33000000"
-    android:tintMode="src_atop">
+    android:tint="#22100000"
+    android:tintMode="src_atop"
+    android:useLevel="true">
     <gradient
         android:centerY="160"
-        android:endColor="@color/cactus_purple_1"
-        android:startColor="@color/pretty_indigo"
-        android:type="linear" />
+        android:endColor="#161735"
+        android:startColor="@color/black_40"
+        android:type="radial" />
 </shape>

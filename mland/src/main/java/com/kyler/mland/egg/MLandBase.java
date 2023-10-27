@@ -46,7 +46,8 @@ public abstract class MLandBase extends AppCompatActivity {
     protected static final int NAVDRAWER_ITEM_HOME = 0;
     protected static final int NAVDRAWER_ITEM_MLAND = 1;
     protected static final int NAVDRAWER_ITEM_MLANDMODIFIED = 2;
-    protected static final int NAVDRAWER_ITEM_ABOUT = 3;
+    protected static final int NAVDRAWER_ITEM_TANKS = 3;
+    protected static final int NAVDRAWER_ITEM_ABOUT = 4;
 
     private static final int NAVDRAWER_ITEM_INVALID = -1;
     private static final int NAVDRAWER_ITEM_SEPARATOR = -2;
@@ -267,6 +268,7 @@ public abstract class MLandBase extends AppCompatActivity {
 
         mNavDrawerItems.add(NAVDRAWER_ITEM_MLAND);
         mNavDrawerItems.add(NAVDRAWER_ITEM_MLANDMODIFIED);
+        mNavDrawerItems.add(NAVDRAWER_ITEM_TANKS);
 
         mNavDrawerItems.add(NAVDRAWER_ITEM_SEPARATOR);
 

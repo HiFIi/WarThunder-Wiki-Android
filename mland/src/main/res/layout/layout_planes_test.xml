@@ -37,10 +37,10 @@
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/planeDrawee"
                         android:layout_width="match_parent"
-                        android:layout_height="220dp"
+                        android:layout_height="285dp"
                         android:layout_gravity="top|center"
                         android:clipChildren="false"
-                        android:tint="#20ffffff"
+                        android:tint="#23ffffff"
                         android:tintMode="src_atop"
                         fresco:actualImageScaleType="centerCrop"
                         fresco:placeholderImage="@drawable/yak_test_pic" />
@@ -48,14 +48,14 @@
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="75dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="top|center"
                     android:layout_marginLeft="24dp"
-                    android:layout_marginTop="-64dp"
+                    android:layout_marginTop="-86dp"
                     android:layout_marginRight="24dp"
+                    android:alpha="0.97"
                     android:background="#fafafa"
-                    android:clipChildren="false"
-                    android:elevation="16dp">
+                    android:elevation="20dp">
 
                     <com.facebook.drawee.view.SimpleDraweeView
                         android:id="@+id/countryImage"
@@ -86,14 +86,14 @@
                         android:id="@+id/planeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginLeft="12dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="12dp"
                         android:text="@string/plane_name"
-                        android:textColor="#050505"
+                        android:textColor="#505050"
                         android:textSize="38sp"
-                        customfontdemo:fontName="GoogleSansText-Medium.ttf" />
+                        customfontdemo:fontName="GoogleSansText-Regular.ttf" />
 
                     <com.kyler.mland.egg.ui.MLandTextView
                         android:id="@+id/countryRank"
@@ -113,8 +113,9 @@
 
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="350dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:background="@color/wt_grey_darker"
                     android:clipChildren="false">
@@ -125,16 +126,14 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_gravity="top"
-                        android:layout_marginLeft="16dp"
+                        android:layout_marginLeft="24dp"
                         android:layout_marginTop="12dp"
                         android:layout_toRightOf="@id/researchTextAmount"
                         android:gravity="top"
                         android:paddingLeft="3dp"
-                        android:text="cost:"
                         android:textColor="#10101c"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:visibility="invisible"
                         customfontdemo:fontName="symbols_skyquake.ttf"
                         fresco:ignore="RtlSymmetry" />
 
@@ -148,22 +147,11 @@
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="4dp"
                         android:gravity="top"
-                        android:text="Research"
+                        android:text="Research   "
                         android:textColor="#10101c"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         customfontdemo:fontName="symbols_skyquake.ttf" />
-
-                    <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/resarchPointsImage"
-                        android:layout_width="40dp"
-                        android:layout_height="30dp"
-                        android:layout_below="@id/researchText"
-                        android:adjustViewBounds="false"
-                        android:cropToPadding="false"
-                        android:text="RP COST"
-                        fresco:actualImageScaleType="centerCrop" />
-
 
                 </RelativeLayout>
 

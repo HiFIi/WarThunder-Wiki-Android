@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         android:id="@+id/scroll_viewTwo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#081010"
+        android:background="#161735"
         android:overScrollMode="never">
 
         <FrameLayout
@@ -29,52 +30,31 @@
             <FrameLayout
                 android:id="@+id/session_photo_containerTwo"
                 android:layout_width="match_parent"
-                android:layout_height="900dp">
+                android:layout_height="wrap_content">
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/session_photoTwo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="190dp"
                     android:layout_gravity="top"
-                    android:backgroundTint="#12fafafa"
-                    android:backgroundTintMode="src_atop"
-                    android:clipChildren="false"
-                    android:elevation="16.0dip"
                     fresco:actualImageScaleType="centerCrop"
                     fresco:adjustViewBounds="true"
-                    fresco:placeholderImage="@drawable/wt_photoshop_edited"
-                    fresco:viewAspectRatio="1.33" />
+                    fresco:placeholderImage="@drawable/wt_home_pic" />
 
-                <ImageView
-                    android:id="@+id/star"
-                    android:layout_width="40dp"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginTop="740dp"
-                    android:background="@drawable/star" />
-
-                <ImageView
-                    android:id="@+id/star2"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="450dp"
-                    android:background="@drawable/star" />
-
-                <ImageView
-                    android:layout_width="34dp"
-                    android:layout_height="34dp"
-                    android:layout_marginStart="300dp"
-                    android:layout_marginTop="730dp"
-                    android:background="@drawable/star" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="140dp"
-                    android:layout_marginTop="462dp"
-                    android:background="@drawable/star" />
             </FrameLayout>
+
+            <com.kyler.mland.egg.ui.MLandTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="200dp"
+                android:paddingTop="-40dp"
+                android:text="War Thunder News:"
+                android:textColor="#FAFAFA"
+                android:textSize="26.0sp"
+                android:textStyle="bold"
+                customfontdemo:fontName="LyftPro-Bold.ttf" />
 
             <LinearLayout
                 android:id="@+id/details_containerTwo"
@@ -103,37 +83,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:adjustViewBounds="false"
-                    android:background="#e8e8e8"
                     android:cropToPadding="false"
                     android:fitsSystemWindows="false"
                     android:textAlignment="gravity">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/planeName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="30dp"
-                        android:elevation="11dp"
-                        android:hapticFeedbackEnabled="true"
-                        android:text="@string/about"
-                        android:textColor="#080808"
-                        android:textSize="26sp"
-                        android:textStyle="bold"
-                        android:typeface="sans"
-                        android:visibility="visible" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/planeListImages"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="24dp"
-                        android:scaleType="centerCrop"
-                        app:cardBackgroundColor="@color/off_white"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp" />
 
 
                 </RelativeLayout>
@@ -154,8 +106,9 @@
                         android:background="@color/off_white"
                         android:backgroundTint="#FFFFFF"
                         android:backgroundTintMode="src_atop"
-                        android:hint="Search for any plane..."
+                        android:hint="Search for anything..."
                         android:textColorHint="#14141c"
+                        android:visibility="invisible"
                         app:elevation="12.0dip"
                         app:navigationIconTint="#454550"
                         app:subtitleTextColor="#14141c"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:customfontdemo="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -11,7 +12,7 @@
         android:id="@+id/scroll_viewTwo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#081010"
+        android:background="#161735"
         android:overScrollMode="never">
 
         <FrameLayout
@@ -29,68 +30,36 @@
             <FrameLayout
                 android:id="@+id/session_photo_containerTwo"
                 android:layout_width="match_parent"
-                android:layout_height="900dp">
+                android:layout_height="wrap_content">
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/session_photoTwo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="190dp"
                     android:layout_gravity="top"
-                    android:backgroundTint="#12fafafa"
-                    android:backgroundTintMode="src_atop"
-                    android:clipChildren="false"
-                    android:elevation="16.0dip"
                     fresco:actualImageScaleType="centerCrop"
                     fresco:adjustViewBounds="true"
-                    fresco:placeholderImage="@drawable/wt_photoshop_edited"
-                    fresco:viewAspectRatio="1.33" />
+                    fresco:placeholderImage="@drawable/wt_home_pic" />
 
-                <ImageView
-                    android:id="@+id/star"
-                    android:layout_width="40dp"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="150dp"
-                    android:layout_marginTop="740dp"
-                    android:background="@drawable/star" />
-
-                <ImageView
-                    android:id="@+id/star2"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="450dp"
-                    android:background="@drawable/star" />
-
-                <ImageView
-                    android:layout_width="34dp"
-                    android:layout_height="34dp"
-                    android:layout_marginStart="300dp"
-                    android:layout_marginTop="730dp"
-                    android:background="@drawable/star" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="140dp"
-                    android:layout_marginTop="462dp"
-                    android:background="@drawable/star" />
-
-                <RelativeLayout
-                    android:id="@+id/md_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fitsSystemWindows="false">
-
-                    <include layout="@layout/toolbar_actionbar_transparent" />
-
-
-                </RelativeLayout>
             </FrameLayout>
+
+            <com.kyler.mland.egg.ui.MLandTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="200dp"
+                android:paddingTop="-40dp"
+                android:text="War Thunder News:"
+                android:textColor="#FAFAFA"
+                android:textSize="26.0sp"
+                android:textStyle="bold"
+                customfontdemo:fontName="LyftPro-Bold.ttf" />
 
             <LinearLayout
                 android:id="@+id/details_containerTwo"
                 android:layout_width="match_parent"
-                android:layout_height="2500dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <!-- <ListView android:id="@+id/list" android:layout_width="fill_parent" android:layout_height="800dp" android:background="#fafafa" android:clickable="true" android:dividerHeight="1dp" android:footerDividersEnabled="false" android:headerDividersEnabled="false"> </ListView> -->
@@ -105,8 +74,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:layout_behavior="@string/searchbar_scrolling_view_behavior">
-                    <!-- Screen content goes here. -->
+
+
                 </androidx.core.widget.NestedScrollView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="false"
+                    android:cropToPadding="false"
+                    android:fitsSystemWindows="false"
+                    android:textAlignment="gravity">
+
+
+                </RelativeLayout>
 
                 <com.google.android.material.appbar.AppBarLayout
                     android:layout_width="match_parent"
@@ -124,8 +106,9 @@
                         android:background="@color/off_white"
                         android:backgroundTint="#FFFFFF"
                         android:backgroundTintMode="src_atop"
-                        android:hint="Search for any plane..."
+                        android:hint="Search for anything..."
                         android:textColorHint="#14141c"
+                        android:visibility="invisible"
                         app:elevation="12.0dip"
                         app:navigationIconTint="#454550"
                         app:subtitleTextColor="#14141c"
@@ -143,59 +126,20 @@
                 </com.google.android.material.search.SearchView>
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/shadowViewShort"
-                style="@style/Widget.App.CardView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="410dp"
-                android:layout_marginRight="36dp"
-                android:alpha="0.89"
-                android:checkable="true"
-                android:clipChildren="false"
-                android:fitsSystemWindows="false"
-                android:focusable="true"
-                android:orientation="vertical"
-                android:paddingBottom="8dp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/shadowViewWhite"
-                style="@style/Widget.App.CardView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="710dp"
-                android:layout_marginRight="36dp"
-                android:alpha="0.80"
-                android:background="@color/off_white"
-                android:checkable="true"
-                android:clipChildren="false"
-                android:fitsSystemWindows="false"
-                android:focusable="true"
-                android:orientation="vertical"
-                android:paddingBottom="8dp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/shadowViewWhiteTwo"
-                style="@style/Widget.App.CardView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="910dp"
-                android:layout_marginRight="36dp"
-                android:alpha="1.00"
-                android:background="@color/off_white"
-                android:checkable="true"
-                android:clipChildren="false"
-                android:fitsSystemWindows="false"
-                android:focusable="true"
-                android:orientation="vertical"
-                android:paddingBottom="8dp" />
         </FrameLayout>
 
 
     </com.google.samples.apps.iosched.ui.widget.ObservableScrollView>
+
+    <RelativeLayout
+        android:id="@+id/md_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="false">
+
+        <include layout="@layout/toolbar_actionbar_transparent" />
+
+    </RelativeLayout>
 
     <include layout="@layout/mland_base" />
 

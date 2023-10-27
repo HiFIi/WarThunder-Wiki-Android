@@ -26,7 +26,6 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -34,9 +33,6 @@ import androidx.core.view.ViewCompat;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.facebook.imagepipeline.core.ImagePipelineConfig;
-import com.facebook.imagepipeline.core.ImageTranscoderType;
-import com.facebook.imagepipeline.core.MemoryChunkType;
 import com.google.android.material.tabs.TabLayout;
 import com.google.samples.apps.iosched.ui.widget.ObservableScrollView;
 import com.kyler.mland.egg.MLandBase;
@@ -110,7 +106,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
     private TabLayout planeTabs;
     private Handler mHandlerr;
     private Handler mHandlerTwo;
-    private ImageView star;
+    //private ImageView star;
 
     public static Context getAppContext() {
         return Home.cc;
@@ -142,13 +138,8 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         setTheme(R.style.Theme_MLand_Home);
         super.onCreate(savedInstanceState);
         Fresco.initialize(
-                getApplicationContext(),
-                ImagePipelineConfig.newBuilder(getApplicationContext())
-                        .setMemoryChunkType(MemoryChunkType.BUFFER_MEMORY)
-                        .setImageTranscoderType(ImageTranscoderType.JAVA_TRANSCODER)
-                        .experiment()
-                        .setNativeCodeDisabled(true)
-                        .build());
+                getApplicationContext()
+        );
 
         setContentView(R.layout.home);
         //make translucent statusBar on kitkat devices
@@ -258,10 +249,10 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
         mHeaderBox = findViewById(R.id.header_sessionTwo);
         mActionBarToolbar.setVisibility(View.VISIBLE);
         mPhotoViewContainer = findViewById(R.id.session_photo_containerTwo);
-        star = findViewById(R.id.star);
+        //star = findViewById(R.id.star);
         randomNumber = rand.nextInt(imageResources.size());
-        star.setImageResource(imageResources.get(randomNumber));
-        star.setPadding(randomNumber, randomNumber, randomNumber, randomNumber);
+        // star.setImageResource(imageResources.get(randomNumber));
+        // star.setPadding(randomNumber, randomNumber, randomNumber, randomNumber);
 
         // planeTabs = (TabLayout) findViewById(R.id.plane_tabs);
         // planeTabs = findViewById(R.id.plane_tabs);
@@ -290,7 +281,7 @@ public class Home extends MLandBase implements ObservableScrollView.Callbacks {
                     public void run() {
                         draweeView = (SimpleDraweeView) findViewById(R.id.session_photoTwo);
                         draweeView.setAspectRatio(DRAWEE_PHOTO_ASPECT_RATIO);
-                        draweeView.setActualImageResource(R.drawable.wt_photoshop_edited);
+                        draweeView.setActualImageResource(R.drawable.wt_home_pic);
                         mScrollViewChild.setVisibility(View.VISIBLE);
                     }
                 });

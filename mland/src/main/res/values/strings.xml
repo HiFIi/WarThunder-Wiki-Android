@@ -3,6 +3,7 @@
     <string name="mland_original">Ships</string>
     <string name="mland_modified">Tanks</string>
     <string name="home">Planes / Jets</string>
+    <string name="real_home">Home</string>
     <string name="about">About</string>
 
     <string name="anim_even_longer" translatable="false">5000</string>

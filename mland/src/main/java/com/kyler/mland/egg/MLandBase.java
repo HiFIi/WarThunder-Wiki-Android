@@ -64,11 +64,11 @@ public abstract class MLandBase extends AppCompatActivity {
 
     // titles for navdrawer items (indices must correspond to the above)
     private static final int[] NAVDRAWER_TITLE_RES_ID =
-            new int[]{R.string.home, R.string.mland_original, R.string.mland_modified, R.string.about};
+            new int[]{R.string.real_home, R.string.home, R.string.mland_original, R.string.mland_modified, R.string.about};
     // icons for navdrawer items (indices must correspond to above array)
     private static final int[] NAVDRAWER_ICON_RES_ID =
             new int[]{
-                    R.drawable.temp_drawer_plane, R.drawable.temp_drawer_naval, R.drawable.temp_drawer_tank, 0
+                    R.drawable.ic_home, R.drawable.temp_drawer_plane, R.drawable.temp_drawer_naval, R.drawable.temp_drawer_tank, 0
             };
     // list of navdrawer items that were actually added to the navdrawer, in order
     private final ArrayList<Integer> mNavDrawerItems = new ArrayList<>();

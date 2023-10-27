@@ -17,9 +17,6 @@ import androidx.annotation.NonNull;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.facebook.imagepipeline.core.ImagePipelineConfig;
-import com.facebook.imagepipeline.core.ImageTranscoderType;
-import com.facebook.imagepipeline.core.MemoryChunkType;
 import com.kyler.mland.egg.MLandBase;
 import com.kyler.mland.egg.R;
 import com.kyler.mland.egg.ui.MLandTextView;
@@ -70,13 +67,8 @@ public class PlanesTest extends MLandBase {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(
-                getApplicationContext(),
-                ImagePipelineConfig.newBuilder(getApplicationContext())
-                        .setMemoryChunkType(MemoryChunkType.BUFFER_MEMORY)
-                        .setImageTranscoderType(ImageTranscoderType.JAVA_TRANSCODER)
-                        .experiment()
-                        .setNativeCodeDisabled(true)
-                        .build());
+                getApplicationContext()
+        );
 
         super.getWindow()
                 .getDecorView()
@@ -171,9 +163,9 @@ public class PlanesTest extends MLandBase {
                             Elements test = doc.select("Description");
 
                             //      -- Get Country name --
-                            Element div = doc.select("a[href*=/category:]").first();
+                            Elements div = doc.select("div.general_info_nation");
                             String countryName = div.text();
-                            //    -- end get Country name --
+                            //    -- end get Country name --ee
 
                             //      -- Get Country rank --
                             Elements divCountryRank = doc.select("div.general_info_rank");
@@ -187,13 +179,23 @@ public class PlanesTest extends MLandBase {
 
                             //      -- Get Research Cost --
                             Elements divResearchCost = doc.select("div.general_info_price_research");
-                            String researchCostTextString = divResearchCost.text();
+                            //Replace a space with a comma
+                            String researchCostTextString = divResearchCost.text().replace(" ", ",");
+                            //Replace a space with a comma
+                            researchCostTextString.replace("\\n", ",");
+                            //Replace a space with a comma
+                            researchCostTextString.replaceAll("\\n", ",");
                             //     -- end get Resaarch Cost --
 
                             //      -- Get plane name --
                             Elements getPlaneName = doc.select("h1");
                             String getPlaneNameText = getPlaneName.text();
                             //    -- end get plane name --
+
+                            //      -- Get plane description --
+                            Element getPlaneDescription = doc.select("h2 ~ p").first();
+                            String getPlaneDescriptionTextString = getPlaneDescription.text();
+                            //    -- end get plane description --
 
                             //      -- Get plane image --
                             Element planeImageElement = doc.select("img[src$=.jpg]").last();
@@ -216,10 +218,6 @@ public class PlanesTest extends MLandBase {
                             }
 
                             // *************      -- CONTINUE --      *************
-                            Element description = doc.select("p:contains(The Yak-23)").first().nextElementSibling();
-                            Element descriptionTwo = doc.select("p:contains(The Yak-23)").first();
-                            String descriptionTextTwo = description.text();
-                            String descriptionTextOne = descriptionTwo.text();
                             Elements linksTwo = doc.select("div.general_info_nation");
                             Elements elementsTwo =
                                     doc.getElementsByClass("general_info_nation");
@@ -238,12 +236,7 @@ public class PlanesTest extends MLandBase {
                             getUsageInBattleStringBuilder.append(usageTextString);
                             planeNameStringBuilder.append(getPlaneNameText);
                             researchCostStringBuilder.append(researchCostTextString);
-
-                            descriptionTextStringBuilder
-                                    .append(descriptionTextOne)
-                                    .append("\n")
-                                    .append("\n")
-                                    .append(descriptionTextTwo);
+                            descriptionTextStringBuilder.append(getPlaneDescriptionTextString);
 
                         } catch (IOException e) {
                             stringBuilder
@@ -254,6 +247,7 @@ public class PlanesTest extends MLandBase {
                         runOnUiThread(
                                 () -> {
                                     getUsageInBattleText.setText(getUsageInBattleStringBuilder.toString());
+                                    descriptionText.setText(descriptionTextStringBuilder.toString());
                                     countryText.setText(countryTextStringBuilder.toString());
                                     planeName.setText(planeNameStringBuilder.toString());
                                     countryRank.setText(countryRankStringBuilder.toString());

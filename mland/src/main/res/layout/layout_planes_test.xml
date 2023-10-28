@@ -86,13 +86,13 @@
                         android:id="@+id/planeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginLeft="12dp"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="4dp"
                         android:text="@string/plane_name"
                         android:textColor="#505050"
-                        android:textSize="38sp"
+                        android:textSize="32sp"
                         customfontdemo:fontName="GoogleSansText-Regular.ttf" />
 
                     <com.kyler.mland.egg.ui.MLandTextView
@@ -111,12 +111,12 @@
 
                 </RelativeLayout>
 
-
                 <RelativeLayout
-                    android:layout_width="350dp"
-                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="85dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
+                    android:alpha="0.85"
                     android:background="@color/wt_grey_darker"
                     android:clipChildren="false">
 
@@ -153,6 +153,20 @@
                         android:textStyle="bold"
                         customfontdemo:fontName="symbols_skyquake.ttf" />
 
+                    <com.kyler.mland.egg.ui.MLandTextView
+                        android:id="@+id/costTextAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/researchTextAmount"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="Cost   "
+                        android:textColor="#10101c"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        customfontdemo:fontName="symbols_skyquake.ttf" />
+
                 </RelativeLayout>
 
                 <com.kyler.mland.egg.ui.MLandTextView
@@ -161,12 +175,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="12dp"
+                    android:fontFamily="sans-serif-medium"
                     android:paddingStart="8dp"
                     android:paddingEnd="16dp"
                     android:text="@string/description"
                     android:textColor="#30301c"
-                    android:textSize="30sp"
-                    customfontdemo:fontName="symbols_skyquake.ttf" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <com.kyler.mland.egg.ui.MLandTextView
                     android:id="@+id/descriptionText"
@@ -178,34 +193,9 @@
                     android:paddingRight="16dp"
                     android:text="@string/description_text"
                     android:textColor="#30301c"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     customfontdemo:fontName="symbols_skyquake.ttf" />
 
-                <com.kyler.mland.egg.ui.MLandTextView
-                    android:id="@+id/generalInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="12dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="16dp"
-                    android:text="@string/general_info"
-                    android:textColor="#30301c"
-                    android:textSize="30sp"
-                    customfontdemo:fontName="symbols_skyquake.ttf" />
-
-                <com.kyler.mland.egg.ui.MLandTextView
-                    android:id="@+id/generalInfoText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/generalInfo"
-                    android:layout_marginTop="4dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="16dp"
-                    android:text="@string/general_info_text"
-                    android:textColor="#10101c"
-                    android:textSize="18sp"
-                    customfontdemo:fontName="symbols_skyquake.ttf" />
 
                 <com.kyler.mland.egg.ui.MLandTextView
                     android:id="@+id/usageInBattles"
@@ -213,12 +203,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="12dp"
+                    android:fontFamily="sans-serif-medium"
                     android:paddingLeft="8dp"
                     android:paddingRight="16dp"
                     android:text="@string/usage_in_battle"
                     android:textColor="#30301c"
-                    android:textSize="30sp"
-                    customfontdemo:fontName="symbols_skyquake.ttf" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <com.kyler.mland.egg.ui.MLandTextView
                     android:id="@+id/usageInBattlesText"
@@ -229,7 +220,7 @@
                     android:paddingRight="16dp"
                     android:text="@string/usage_in_battle_text"
                     android:textColor="#10101c"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     customfontdemo:fontName="symbols_skyquake.ttf" />
             </LinearLayout>
         </FrameLayout>

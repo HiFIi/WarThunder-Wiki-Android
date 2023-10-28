@@ -175,8 +175,9 @@ public class PlanesTest extends MLandBase {
                             //     -- end get Country rank --
 
                             //      -- Get General Info --
-                            Elements divGeneralInfo = doc.select("div.general_info");
-                            String generalInfoTextString = divGeneralInfo.text();
+                            //      -- NOT USED ANYMORE --
+                            // Elements divGeneralInfo = doc.select("div.general_info");
+                            // String generalInfoTextString = divGeneralInfo.text();
                             //     -- end get general info --
 
                             //      -- Get Research Cost --
@@ -202,7 +203,7 @@ public class PlanesTest extends MLandBase {
                             //    -- end get plane description --
 
                             //      -- Get plane image --
-                            Element planeImageElement = doc.select("img[src$=.jpg]").last();
+                            Element planeImageElement = doc.select("img[src$=.jpg]").first();
                             String absoluteUrl =
                                     planeImageElement.absUrl("src"); // absolute URL on src
                             String srcValue = planeImageElement.attr("src");
@@ -211,8 +212,7 @@ public class PlanesTest extends MLandBase {
                             //    -- end get plane image --
 
                             //      -- Get usage in battles text --
-                            Elements divUsage = doc.select("span[id=Usage_in_battles]");
-                            divUsage.select("div > p");
+                            Element divUsage = doc.select("div > p ~ p ~ p ~ p ~ p").first();
                             String usageTextString = divUsage.text();
                             //     -- end get A-Z list of american planes --
 

@@ -106,12 +106,6 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="false">
 
-        <ImageView
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:layout_marginTop="350dp"
-            android:background="@drawable/cactus2" />
-
         <include layout="@layout/toolbar_actionbar_transparent" />
 
     </RelativeLayout>
